@@ -7,7 +7,7 @@
 		revision="1.5"
 		conf="compile"
 		confs="compile, runtime, test, provided, optional, compile-internal, runtime-internal, test-internal, plugin, pom, scala-tool"
-		date="20180927230830"/>
+		date="20181212091741"/>
 	<dependencies>
 		<module organisation="org.scala-lang" name="scala-library">
 			<revision name="2.12.3" status="release" pubdate="20170725124730" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://www.scala-lang.org/" extra-info.apiURL="http://www.scala-lang.org/api/2.12.3/" downloaded="false" searched="false" default="false" conf="default, compile, runtime(*), master(compile), runtime, default(compile), compile(*), master" position="1">
@@ -15,10 +15,10 @@
 				<metadata-artifact status="no" details="" size="2471" time="0" location="/home/sebastien/.ivy2/cache/org.scala-lang/scala-library/ivy-2.12.3.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/scala-lang/scala-library/2.12.3/scala-library-2.12.3.pom"/>
 				<caller organisation="ch.epfl.lara" name="amyc$sources_javadoc" conf="compile" rev="2.12.3" rev-constraint-default="2.12.3" rev-constraint-dynamic="2.12.3" callerrev="1.5" extra-info.apiURL="http://www.scala-lang.org/api/2.12.3/"/>
 				<artifacts>
-					<artifact name="scala-library" type="doc" ext="jar" extra-classifier="javadoc" status="successful" details="" size="30941243" time="7628" location="/home/sebastien/.ivy2/cache/org.scala-lang/scala-library/docs/scala-library-2.12.3-javadoc.jar">
+					<artifact name="scala-library" type="doc" ext="jar" extra-classifier="javadoc" status="no" details="" size="30941243" time="0" location="/home/sebastien/.ivy2/cache/org.scala-lang/scala-library/docs/scala-library-2.12.3-javadoc.jar">
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/scala-lang/scala-library/2.12.3/scala-library-2.12.3-javadoc.jar"/>
 					</artifact>
-					<artifact name="scala-library" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="990602" time="293" location="/home/sebastien/.ivy2/cache/org.scala-lang/scala-library/srcs/scala-library-2.12.3-sources.jar">
+					<artifact name="scala-library" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="990602" time="0" location="/home/sebastien/.ivy2/cache/org.scala-lang/scala-library/srcs/scala-library-2.12.3-sources.jar">
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/scala-lang/scala-library/2.12.3/scala-library-2.12.3-sources.jar"/>
 					</artifact>
 				</artifacts>
@@ -30,10 +30,10 @@
 				<metadata-artifact status="no" details="" size="2929" time="0" location="/home/sebastien/.ivy2/cache/org.scala-lang.modules/scala-parser-combinators_2.12/ivy-1.1.1.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/scala-lang/modules/scala-parser-combinators_2.12/1.1.1/scala-parser-combinators_2.12-1.1.1.pom"/>
 				<caller organisation="ch.epfl.lara" name="amyc$sources_javadoc" conf="compile" rev="1.1.1" rev-constraint-default="1.1.1" rev-constraint-dynamic="1.1.1" callerrev="1.5"/>
 				<artifacts>
-					<artifact name="scala-parser-combinators_2.12" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="47350" time="607" location="/home/sebastien/.ivy2/cache/org.scala-lang.modules/scala-parser-combinators_2.12/srcs/scala-parser-combinators_2.12-1.1.1-sources.jar">
+					<artifact name="scala-parser-combinators_2.12" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="47350" time="0" location="/home/sebastien/.ivy2/cache/org.scala-lang.modules/scala-parser-combinators_2.12/srcs/scala-parser-combinators_2.12-1.1.1-sources.jar">
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/scala-lang/modules/scala-parser-combinators_2.12/1.1.1/scala-parser-combinators_2.12-1.1.1-sources.jar"/>
 					</artifact>
-					<artifact name="scala-parser-combinators_2.12" type="doc" ext="jar" extra-classifier="javadoc" status="successful" details="" size="1601097" time="852" location="/home/sebastien/.ivy2/cache/org.scala-lang.modules/scala-parser-combinators_2.12/docs/scala-parser-combinators_2.12-1.1.1-javadoc.jar">
+					<artifact name="scala-parser-combinators_2.12" type="doc" ext="jar" extra-classifier="javadoc" status="no" details="" size="1601097" time="0" location="/home/sebastien/.ivy2/cache/org.scala-lang.modules/scala-parser-combinators_2.12/docs/scala-parser-combinators_2.12-1.1.1-javadoc.jar">
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/scala-lang/modules/scala-parser-combinators_2.12/1.1.1/scala-parser-combinators_2.12-1.1.1-javadoc.jar"/>
 					</artifact>
 				</artifacts>

@@ -4,7 +4,7 @@
 		module="amyc$sources_javadoc"
 		revision="1.5"
 		status="integration"
-		publication="20180927230830"
+		publication="20181212091741"
 	/>
 	<configurations>
 		<conf name="compile" visibility="public" description=""/>
