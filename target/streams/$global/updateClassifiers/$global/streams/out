@@ -1,0 +1,799 @@
+[0m[[0m[0mdebug[0m] [0m[0m:: resolving dependencies :: ch.epfl.lara#amyc$sources_javadoc;1.5[0m
+[0m[[0m[0mdebug[0m] [0m[0m	confs: [compile, runtime, test, provided, optional, compile-internal, runtime-internal, test-internal, plugin, pom, scala-tool][0m
+[0m[[0m[0mdebug[0m] [0m[0m	validate = true[0m
+[0m[[0m[0mdebug[0m] [0m[0m	refresh = false[0m
+[0m[[0m[0mdebug[0m] [0m[0mresolving dependencies for configuration 'compile'[0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies for ch.epfl.lara#amyc$sources_javadoc;1.5 [compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [compile->default][0m
+[0m[[0m[0mdebug[0m] [0m[0msbt-chain: Checking cache for: dependency: org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 {compile=[default, compile, runtime, default(compile), master], runtime=[default, compile, runtime, default(compile), master], test=[default, compile, runtime, default(compile), master], compile-internal=[default, compile, runtime, default(compile), master], runtime-internal=[default, compile, runtime, default(compile), master], test-internal=[default, compile, runtime, default(compile), master]}[0m
+[0m[[0m[0mdebug[0m] [0m[0msbt-chain: module revision found in cache: org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1[0m
+[0m[[0m[0mdebug[0m] [0m[0m	found org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 in sbt-chain[0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [compile->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [compile->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [compile->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [compile->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [compile->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [compile->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [compile->default(compile)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [compile->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [compile->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [compile->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [compile->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->default][0m
+[0m[[0m[0mdebug[0m] [0m[0msbt-chain: Checking cache for: dependency: org.scala-lang#scala-library;2.12.3 {compile=[default, compile, runtime(*), master(compile), runtime, default(compile), compile(*), master], runtime=[default, compile, runtime(*), master(compile), runtime, default(compile), compile(*), master], test=[default, compile, runtime(*), master(compile), runtime, default(compile), compile(*), master], compile-internal=[default, compile, runtime(*), master(compile), runtime, default(compile), compile(*), master], runtime-internal=[default, compile, runtime(*), master(compile), runtime, default(compile), compile(*), master], test-internal=[default, compile, runtime(*), master(compile), runtime, default(compile), compile(*), master], scala-tool=[default, master(*), compile, runtime(*), runtime, optional, optional(default), compile(*), master]}[0m
+[0m[[0m[0mdebug[0m] [0m[0msbt-chain: module revision found in cache: org.scala-lang#scala-library;2.12.3[0m
+[0m[[0m[0mdebug[0m] [0m[0m	found org.scala-lang#scala-library;2.12.3 in sbt-chain[0m
+[0m[[0m[0mdebug[0m] [0m[0m	[2.12.3] org.scala-lang#scala-library;2.12.3[0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->runtime(*)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->master(compile)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->default(compile)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->compile(*)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->master][0m
+[0m[[0m[0mdebug[0m] [0m[0mresolving dependencies for configuration 'runtime'[0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies for ch.epfl.lara#amyc$sources_javadoc;1.5 [runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies for ch.epfl.lara#amyc$sources_javadoc;1.5 [compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [compile->default][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [compile->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [compile->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [compile->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [compile->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [compile->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [compile->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [compile->default(compile)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [compile->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [compile->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [compile->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [compile->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->default][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->runtime(*)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->master(compile)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->default(compile)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->compile(*)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [runtime->default][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [runtime->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [runtime->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [runtime->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [runtime->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [runtime->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [runtime->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [runtime->default(compile)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [runtime->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [runtime->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [runtime->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [runtime->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [runtime->default][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [runtime->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [runtime->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [runtime->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [runtime->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [runtime->runtime(*)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [runtime->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [runtime->master(compile)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [runtime->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [runtime->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [runtime->default(compile)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [runtime->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [runtime->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [runtime->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [runtime->compile(*)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [runtime->master][0m
+[0m[[0m[0mdebug[0m] [0m[0mresolving dependencies for configuration 'test'[0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies for ch.epfl.lara#amyc$sources_javadoc;1.5 [test][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies for ch.epfl.lara#amyc$sources_javadoc;1.5 [runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies for ch.epfl.lara#amyc$sources_javadoc;1.5 [compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [compile->default][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [compile->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [compile->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [compile->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [compile->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [compile->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [compile->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [compile->default(compile)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [compile->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [compile->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [compile->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [compile->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->default][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->runtime(*)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->master(compile)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->default(compile)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->compile(*)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [runtime->default][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [runtime->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [runtime->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [runtime->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [runtime->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [runtime->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [runtime->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [runtime->default(compile)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [runtime->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [runtime->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [runtime->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [runtime->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [runtime->default][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [runtime->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [runtime->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [runtime->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [runtime->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [runtime->runtime(*)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [runtime->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [runtime->master(compile)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [runtime->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [runtime->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [runtime->default(compile)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [runtime->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [runtime->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [runtime->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [runtime->compile(*)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [runtime->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->junit#junit;4.11 [test->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0msbt-chain: Checking cache for: dependency: junit#junit;4.11 {test=[compile, runtime(*), master(compile), runtime, compile(*), master], test-internal=[compile, runtime(*), master(compile), runtime, compile(*), master]}[0m
+[0m[[0m[0mdebug[0m] [0m[0msbt-chain: module revision found in cache: junit#junit;4.11[0m
+[0m[[0m[0mdebug[0m] [0m[0m	found junit#junit;4.11 in sbt-chain[0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->junit#junit;4.11 [test->runtime(*)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->junit#junit;4.11 [test->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->junit#junit;4.11 [test->master(compile)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->junit#junit;4.11 [test->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->junit#junit;4.11 [test->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->junit#junit;4.11 [test->compile(*)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->junit#junit;4.11 [test->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [test->default][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [test->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [test->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [test->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [test->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [test->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [test->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [test->default(compile)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [test->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [test->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [test->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [test->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [test->default][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [test->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [test->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [test->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [test->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [test->runtime(*)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [test->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [test->master(compile)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [test->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [test->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [test->default(compile)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [test->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [test->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [test->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [test->compile(*)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [test->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.hamcrest#hamcrest-core;1.3 [test->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0msbt-chain: Checking cache for: dependency: org.hamcrest#hamcrest-core;1.3 {test=[compile, runtime(*), master(compile), runtime, compile(*), master], test-internal=[compile, runtime(*), master(compile), runtime, compile(*), master]}[0m
+[0m[[0m[0mdebug[0m] [0m[0msbt-chain: module revision found in cache: org.hamcrest#hamcrest-core;1.3[0m
+[0m[[0m[0mdebug[0m] [0m[0m	found org.hamcrest#hamcrest-core;1.3 in sbt-chain[0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.hamcrest#hamcrest-core;1.3 [test->runtime(*)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.hamcrest#hamcrest-core;1.3 [test->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.hamcrest#hamcrest-core;1.3 [test->master(compile)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.hamcrest#hamcrest-core;1.3 [test->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.hamcrest#hamcrest-core;1.3 [test->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.hamcrest#hamcrest-core;1.3 [test->compile(*)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.hamcrest#hamcrest-core;1.3 [test->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-sbt#test-interface;1.0 [test->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0msbt-chain: Checking cache for: dependency: org.scala-sbt#test-interface;1.0 {test=[compile, runtime(*), master(compile), runtime, compile(*), master], test-internal=[compile, runtime(*), master(compile), runtime, compile(*), master]}[0m
+[0m[[0m[0mdebug[0m] [0m[0msbt-chain: module revision found in cache: org.scala-sbt#test-interface;1.0[0m
+[0m[[0m[0mdebug[0m] [0m[0m	found org.scala-sbt#test-interface;1.0 in sbt-chain[0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-sbt#test-interface;1.0 [test->runtime(*)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-sbt#test-interface;1.0 [test->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-sbt#test-interface;1.0 [test->master(compile)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-sbt#test-interface;1.0 [test->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-sbt#test-interface;1.0 [test->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-sbt#test-interface;1.0 [test->compile(*)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-sbt#test-interface;1.0 [test->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->com.novocode#junit-interface;0.11 [test->default][0m
+[0m[[0m[0mdebug[0m] [0m[0msbt-chain: Checking cache for: dependency: com.novocode#junit-interface;0.11 {test=[default, compile, runtime, default(compile), master], test-internal=[default, compile, runtime, default(compile), master]}[0m
+[0m[[0m[0mdebug[0m] [0m[0msbt-chain: module revision found in cache: com.novocode#junit-interface;0.11[0m
+[0m[[0m[0mdebug[0m] [0m[0m	found com.novocode#junit-interface;0.11 in sbt-chain[0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->com.novocode#junit-interface;0.11 [test->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->com.novocode#junit-interface;0.11 [test->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->com.novocode#junit-interface;0.11 [test->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->com.novocode#junit-interface;0.11 [test->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->com.novocode#junit-interface;0.11 [test->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->com.novocode#junit-interface;0.11 [test->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->com.novocode#junit-interface;0.11 [test->default(compile)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->com.novocode#junit-interface;0.11 [test->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->com.novocode#junit-interface;0.11 [test->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->com.novocode#junit-interface;0.11 [test->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->com.novocode#junit-interface;0.11 [test->master][0m
+[0m[[0m[0mdebug[0m] [0m[0mresolving dependencies for configuration 'provided'[0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies for ch.epfl.lara#amyc$sources_javadoc;1.5 [provided][0m
+[0m[[0m[0mdebug[0m] [0m[0mresolving dependencies for configuration 'optional'[0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies for ch.epfl.lara#amyc$sources_javadoc;1.5 [optional][0m
+[0m[[0m[0mdebug[0m] [0m[0mresolving dependencies for configuration 'compile-internal'[0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies for ch.epfl.lara#amyc$sources_javadoc;1.5 [compile-internal][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies for ch.epfl.lara#amyc$sources_javadoc;1.5 [compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [compile->default][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [compile->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [compile->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [compile->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [compile->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [compile->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [compile->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [compile->default(compile)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [compile->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [compile->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [compile->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [compile->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->default][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->runtime(*)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->master(compile)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->default(compile)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->compile(*)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies for ch.epfl.lara#amyc$sources_javadoc;1.5 [optional][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies for ch.epfl.lara#amyc$sources_javadoc;1.5 [provided][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [compile-internal->default][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [compile-internal->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [compile-internal->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [compile-internal->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [compile-internal->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [compile-internal->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [compile-internal->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [compile-internal->default(compile)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [compile-internal->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [compile-internal->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [compile-internal->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [compile-internal->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile-internal->default][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile-internal->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile-internal->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile-internal->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile-internal->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile-internal->runtime(*)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile-internal->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile-internal->master(compile)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile-internal->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile-internal->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile-internal->default(compile)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile-internal->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile-internal->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile-internal->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile-internal->compile(*)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile-internal->master][0m
+[0m[[0m[0mdebug[0m] [0m[0mresolving dependencies for configuration 'runtime-internal'[0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies for ch.epfl.lara#amyc$sources_javadoc;1.5 [runtime-internal][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies for ch.epfl.lara#amyc$sources_javadoc;1.5 [runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies for ch.epfl.lara#amyc$sources_javadoc;1.5 [compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [compile->default][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [compile->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [compile->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [compile->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [compile->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [compile->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [compile->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [compile->default(compile)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [compile->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [compile->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [compile->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [compile->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->default][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->runtime(*)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->master(compile)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->default(compile)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->compile(*)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [runtime->default][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [runtime->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [runtime->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [runtime->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [runtime->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [runtime->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [runtime->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [runtime->default(compile)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [runtime->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [runtime->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [runtime->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [runtime->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [runtime->default][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [runtime->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [runtime->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [runtime->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [runtime->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [runtime->runtime(*)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [runtime->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [runtime->master(compile)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [runtime->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [runtime->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [runtime->default(compile)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [runtime->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [runtime->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [runtime->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [runtime->compile(*)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [runtime->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies for ch.epfl.lara#amyc$sources_javadoc;1.5 [optional][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [runtime-internal->default][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [runtime-internal->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [runtime-internal->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [runtime-internal->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [runtime-internal->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [runtime-internal->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [runtime-internal->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [runtime-internal->default(compile)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [runtime-internal->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [runtime-internal->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [runtime-internal->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [runtime-internal->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [runtime-internal->default][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [runtime-internal->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [runtime-internal->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [runtime-internal->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [runtime-internal->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [runtime-internal->runtime(*)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [runtime-internal->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [runtime-internal->master(compile)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [runtime-internal->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [runtime-internal->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [runtime-internal->default(compile)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [runtime-internal->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [runtime-internal->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [runtime-internal->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [runtime-internal->compile(*)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [runtime-internal->master][0m
+[0m[[0m[0mdebug[0m] [0m[0mresolving dependencies for configuration 'test-internal'[0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies for ch.epfl.lara#amyc$sources_javadoc;1.5 [test-internal][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies for ch.epfl.lara#amyc$sources_javadoc;1.5 [test][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies for ch.epfl.lara#amyc$sources_javadoc;1.5 [runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies for ch.epfl.lara#amyc$sources_javadoc;1.5 [compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [compile->default][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [compile->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [compile->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [compile->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [compile->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [compile->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [compile->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [compile->default(compile)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [compile->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [compile->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [compile->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [compile->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->default][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->runtime(*)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->master(compile)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->default(compile)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->compile(*)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [compile->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [runtime->default][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [runtime->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [runtime->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [runtime->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [runtime->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [runtime->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [runtime->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [runtime->default(compile)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [runtime->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [runtime->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [runtime->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [runtime->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [runtime->default][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [runtime->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [runtime->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [runtime->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [runtime->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [runtime->runtime(*)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [runtime->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [runtime->master(compile)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [runtime->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [runtime->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [runtime->default(compile)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [runtime->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [runtime->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [runtime->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [runtime->compile(*)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [runtime->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->junit#junit;4.11 [test->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->junit#junit;4.11 [test->runtime(*)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->junit#junit;4.11 [test->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->junit#junit;4.11 [test->master(compile)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->junit#junit;4.11 [test->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->junit#junit;4.11 [test->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->junit#junit;4.11 [test->compile(*)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->junit#junit;4.11 [test->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [test->default][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [test->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [test->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [test->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [test->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [test->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [test->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [test->default(compile)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [test->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [test->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [test->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [test->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [test->default][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [test->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [test->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [test->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [test->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [test->runtime(*)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [test->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [test->master(compile)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [test->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [test->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [test->default(compile)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [test->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [test->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [test->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [test->compile(*)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [test->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.hamcrest#hamcrest-core;1.3 [test->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.hamcrest#hamcrest-core;1.3 [test->runtime(*)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.hamcrest#hamcrest-core;1.3 [test->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.hamcrest#hamcrest-core;1.3 [test->master(compile)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.hamcrest#hamcrest-core;1.3 [test->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.hamcrest#hamcrest-core;1.3 [test->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.hamcrest#hamcrest-core;1.3 [test->compile(*)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.hamcrest#hamcrest-core;1.3 [test->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-sbt#test-interface;1.0 [test->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-sbt#test-interface;1.0 [test->runtime(*)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-sbt#test-interface;1.0 [test->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-sbt#test-interface;1.0 [test->master(compile)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-sbt#test-interface;1.0 [test->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-sbt#test-interface;1.0 [test->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-sbt#test-interface;1.0 [test->compile(*)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-sbt#test-interface;1.0 [test->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->com.novocode#junit-interface;0.11 [test->default][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->com.novocode#junit-interface;0.11 [test->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->com.novocode#junit-interface;0.11 [test->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->com.novocode#junit-interface;0.11 [test->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->com.novocode#junit-interface;0.11 [test->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->com.novocode#junit-interface;0.11 [test->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->com.novocode#junit-interface;0.11 [test->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->com.novocode#junit-interface;0.11 [test->default(compile)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->com.novocode#junit-interface;0.11 [test->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->com.novocode#junit-interface;0.11 [test->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->com.novocode#junit-interface;0.11 [test->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->com.novocode#junit-interface;0.11 [test->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies for ch.epfl.lara#amyc$sources_javadoc;1.5 [optional][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies for ch.epfl.lara#amyc$sources_javadoc;1.5 [provided][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->junit#junit;4.11 [test-internal->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->junit#junit;4.11 [test-internal->runtime(*)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->junit#junit;4.11 [test-internal->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->junit#junit;4.11 [test-internal->master(compile)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->junit#junit;4.11 [test-internal->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->junit#junit;4.11 [test-internal->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->junit#junit;4.11 [test-internal->compile(*)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->junit#junit;4.11 [test-internal->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [test-internal->default][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [test-internal->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [test-internal->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [test-internal->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [test-internal->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [test-internal->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [test-internal->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [test-internal->default(compile)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [test-internal->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [test-internal->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [test-internal->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1 [test-internal->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [test-internal->default][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [test-internal->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [test-internal->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [test-internal->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [test-internal->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [test-internal->runtime(*)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [test-internal->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [test-internal->master(compile)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [test-internal->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [test-internal->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [test-internal->default(compile)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [test-internal->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [test-internal->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [test-internal->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [test-internal->compile(*)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [test-internal->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.hamcrest#hamcrest-core;1.3 [test-internal->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.hamcrest#hamcrest-core;1.3 [test-internal->runtime(*)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.hamcrest#hamcrest-core;1.3 [test-internal->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.hamcrest#hamcrest-core;1.3 [test-internal->master(compile)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.hamcrest#hamcrest-core;1.3 [test-internal->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.hamcrest#hamcrest-core;1.3 [test-internal->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.hamcrest#hamcrest-core;1.3 [test-internal->compile(*)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.hamcrest#hamcrest-core;1.3 [test-internal->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-sbt#test-interface;1.0 [test-internal->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-sbt#test-interface;1.0 [test-internal->runtime(*)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-sbt#test-interface;1.0 [test-internal->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-sbt#test-interface;1.0 [test-internal->master(compile)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-sbt#test-interface;1.0 [test-internal->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-sbt#test-interface;1.0 [test-internal->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-sbt#test-interface;1.0 [test-internal->compile(*)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-sbt#test-interface;1.0 [test-internal->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->com.novocode#junit-interface;0.11 [test-internal->default][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->com.novocode#junit-interface;0.11 [test-internal->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->com.novocode#junit-interface;0.11 [test-internal->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->com.novocode#junit-interface;0.11 [test-internal->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->com.novocode#junit-interface;0.11 [test-internal->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->com.novocode#junit-interface;0.11 [test-internal->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->com.novocode#junit-interface;0.11 [test-internal->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->com.novocode#junit-interface;0.11 [test-internal->default(compile)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->com.novocode#junit-interface;0.11 [test-internal->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->com.novocode#junit-interface;0.11 [test-internal->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->com.novocode#junit-interface;0.11 [test-internal->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->com.novocode#junit-interface;0.11 [test-internal->master][0m
+[0m[[0m[0mdebug[0m] [0m[0mresolving dependencies for configuration 'plugin'[0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies for ch.epfl.lara#amyc$sources_javadoc;1.5 [plugin][0m
+[0m[[0m[0mdebug[0m] [0m[0mresolving dependencies for configuration 'pom'[0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies for ch.epfl.lara#amyc$sources_javadoc;1.5 [pom][0m
+[0m[[0m[0mdebug[0m] [0m[0mresolving dependencies for configuration 'scala-tool'[0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies for ch.epfl.lara#amyc$sources_javadoc;1.5 [scala-tool][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-reflect;2.12.3 [scala-tool->master(*)][0m
+[0m[[0m[0mdebug[0m] [0m[0msbt-chain: Checking cache for: dependency: org.scala-lang#scala-reflect;2.12.3 {scala-tool=[master(*), compile, runtime(*), runtime, compile(*), master]}[0m
+[0m[[0m[0mdebug[0m] [0m[0msbt-chain: module revision found in cache: org.scala-lang#scala-reflect;2.12.3[0m
+[0m[[0m[0mdebug[0m] [0m[0m	found org.scala-lang#scala-reflect;2.12.3 in sbt-chain[0m
+[0m[[0m[0mdebug[0m] [0m[0m	[2.12.3] org.scala-lang#scala-reflect;2.12.3[0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-reflect;2.12.3 [scala-tool->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-reflect;2.12.3 [scala-tool->runtime(*)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-reflect;2.12.3 [scala-tool->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-reflect;2.12.3 [scala-tool->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-reflect;2.12.3 [scala-tool->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-reflect;2.12.3 [scala-tool->compile(*)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-reflect;2.12.3 [scala-tool->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-xml_2.12;1.0.6 [scala-tool->master(*)][0m
+[0m[[0m[0mdebug[0m] [0m[0msbt-chain: Checking cache for: dependency: org.scala-lang.modules#scala-xml_2.12;1.0.6 {scala-tool=[master(*), compile, runtime(*), runtime, compile(*), master]}[0m
+[0m[[0m[0mdebug[0m] [0m[0msbt-chain: module revision found in cache: org.scala-lang.modules#scala-xml_2.12;1.0.6[0m
+[0m[[0m[0mdebug[0m] [0m[0m	found org.scala-lang.modules#scala-xml_2.12;1.0.6 in sbt-chain[0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-xml_2.12;1.0.6 [scala-tool->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-xml_2.12;1.0.6 [scala-tool->runtime(*)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-xml_2.12;1.0.6 [scala-tool->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-xml_2.12;1.0.6 [scala-tool->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-xml_2.12;1.0.6 [scala-tool->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-xml_2.12;1.0.6 [scala-tool->compile(*)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang.modules#scala-xml_2.12;1.0.6 [scala-tool->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [scala-tool->default][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [scala-tool->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [scala-tool->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [scala-tool->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [scala-tool->master(*)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [scala-tool->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [scala-tool->runtime(*)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [scala-tool->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [scala-tool->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [scala-tool->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [scala-tool->optional][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [scala-tool->optional(default)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [scala-tool->compile(*)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-library;2.12.3 [scala-tool->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-compiler;2.12.3 [scala-tool->default][0m
+[0m[[0m[0mdebug[0m] [0m[0msbt-chain: Checking cache for: dependency: org.scala-lang#scala-compiler;2.12.3 {scala-tool=[default, compile, runtime, optional, optional(default), master]}[0m
+[0m[[0m[0mdebug[0m] [0m[0msbt-chain: module revision found in cache: org.scala-lang#scala-compiler;2.12.3[0m
+[0m[[0m[0mdebug[0m] [0m[0m	found org.scala-lang#scala-compiler;2.12.3 in sbt-chain[0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-compiler;2.12.3 [scala-tool->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-compiler;2.12.3 [scala-tool->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-compiler;2.12.3 [scala-tool->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-compiler;2.12.3 [scala-tool->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-compiler;2.12.3 [scala-tool->runtime][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-compiler;2.12.3 [scala-tool->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-compiler;2.12.3 [scala-tool->optional][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-compiler;2.12.3 [scala-tool->optional(default)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->org.scala-lang#scala-compiler;2.12.3 [scala-tool->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->jline#jline;2.14.4 [scala-tool->master(*)][0m
+[0m[[0m[0mdebug[0m] [0m[0msbt-chain: Checking cache for: dependency: jline#jline;2.14.4 {scala-tool=[master(*), compile, compile(*), master]}[0m
+[0m[[0m[0mdebug[0m] [0m[0msbt-chain: module revision found in cache: jline#jline;2.14.4[0m
+[0m[[0m[0mdebug[0m] [0m[0m	found jline#jline;2.14.4 in sbt-chain[0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->jline#jline;2.14.4 [scala-tool->compile][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->jline#jline;2.14.4 [scala-tool->compile(*)][0m
+[0m[[0m[0mdebug[0m] [0m[0m== resolving dependencies ch.epfl.lara#amyc$sources_javadoc;1.5->jline#jline;2.14.4 [scala-tool->master][0m
+[0m[[0m[0mdebug[0m] [0m[0m	resolved ivy file produced in cache[0m
+[0m[[0m[0mdebug[0m] [0m[0m:: downloading artifacts ::[0m
+[0m[[0m[0mdebug[0m] [0m[0m		tried /home/sebastien/.ivy2/local/com.novocode/junit-interface//0.11/srcs/junit-interface-sources.jar[0m
+[0m[[0m[0mdebug[0m] [0m[0m		tried /home/sebastien/.ivy2/local/junit/junit//4.11/srcs/junit-sources.jar[0m
+[0m[[0m[0mdebug[0m] [0m[0m		tried /home/sebastien/.ivy2/local/com.novocode/junit-interface//0.11/docs/junit-interface-javadoc.jar[0m
+[0m[[0m[0mdebug[0m] [0m[0m		tried /home/sebastien/.ivy2/local/org.scala-lang.modules/scala-parser-combinators_2.12//1.1.1/srcs/scala-parser-combinators_2.12-sources.jar[0m
+[0m[[0m[0mdebug[0m] [0m[0m		tried https://repo1.maven.org/maven2/com/novocode/junit-interface/0.11/junit-interface-0.11-sources.jar[0m
+[0m[[0m[0mdebug[0m] [0m[0m		tried /home/sebastien/.ivy2/local/org.scala-lang.modules/scala-parser-combinators_2.12//1.1.1/docs/scala-parser-combinators_2.12-javadoc.jar[0m
+[0m[[0m[0mdebug[0m] [0m[0m		tried https://repo1.maven.org/maven2/org/scala-lang/modules/scala-parser-combinators_2.12/1.1.1/scala-parser-combinators_2.12-1.1.1-sources.jar[0m
+[0m[[0m[0mdebug[0m] [0m[0m		tried /home/sebastien/.ivy2/local/org.scala-lang.modules/scala-xml_2.12//1.0.6/srcs/scala-xml_2.12-sources.jar[0m
+[0m[[0m[0mdebug[0m] [0m[0m		tried /home/sebastien/.ivy2/local/org.scala-lang.modules/scala-xml_2.12//1.0.6/docs/scala-xml_2.12-javadoc.jar[0m
+[0m[[0m[0mdebug[0m] [0m[0m		tried https://repo1.maven.org/maven2/org/scala-lang/modules/scala-xml_2.12/1.0.6/scala-xml_2.12-1.0.6-sources.jar[0m
+[0m[[0m[0mdebug[0m] [0m[0m		tried /home/sebastien/.ivy2/local/junit/junit//4.11/docs/junit-javadoc.jar[0m
+[0m[[0m[0mdebug[0m] [0m[0m		tried https://repo1.maven.org/maven2/junit/junit/4.11/junit-4.11-sources.jar[0m
+[0m[[0m[0minfo[0m] [0m[0mdownloading https://repo1.maven.org/maven2/com/novocode/junit-interface/0.11/junit-interface-0.11-sources.jar ...[0m
+[0m[[0m[0mdebug[0m] [0m[0m	public: downloading https://repo1.maven.org/maven2/com/novocode/junit-interface/0.11/junit-interface-0.11-sources.jar[0m
+[0m[[0m[0mdebug[0m] [0m[0m	public: downloading https://repo1.maven.org/maven2/com/novocode/junit-interface/0.11/junit-interface-0.11-sources.jar.sha1[0m
+[0m[[0m[0mdebug[0m] [0m[0msha1 OK for https://repo1.maven.org/maven2/com/novocode/junit-interface/0.11/junit-interface-0.11-sources.jar[0m
+[0m[[0m[0minfo[0m] [0m[0m	[SUCCESSFUL ] com.novocode#junit-interface;0.11!junit-interface.jar(src) (103ms)[0m
+[0m[[0m[0mdebug[0m] [0m[0m		tried https://repo1.maven.org/maven2/com/novocode/junit-interface/0.11/junit-interface-0.11-javadoc.jar[0m
+[0m[[0m[0minfo[0m] [0m[0mdownloading https://repo1.maven.org/maven2/com/novocode/junit-interface/0.11/junit-interface-0.11-javadoc.jar ...[0m
+[0m[[0m[0mdebug[0m] [0m[0m	public: downloading https://repo1.maven.org/maven2/com/novocode/junit-interface/0.11/junit-interface-0.11-javadoc.jar[0m
+[0m[[0m[0minfo[0m] [0m[0mdownloading https://repo1.maven.org/maven2/junit/junit/4.11/junit-4.11-sources.jar ...[0m
+[0m[[0m[0minfo[0m] [0m[0mdownloading https://repo1.maven.org/maven2/org/scala-lang/modules/scala-xml_2.12/1.0.6/scala-xml_2.12-1.0.6-sources.jar ...[0m
+[0m[[0m[0minfo[0m] [0m[0mdownloading https://repo1.maven.org/maven2/org/scala-lang/modules/scala-parser-combinators_2.12/1.1.1/scala-parser-combinators_2.12-1.1.1-sources.jar ...[0m
+[0m[[0m[0mdebug[0m] [0m[0m	public: downloading https://repo1.maven.org/maven2/junit/junit/4.11/junit-4.11-sources.jar[0m
+[0m[[0m[0mdebug[0m] [0m[0m	public: downloading https://repo1.maven.org/maven2/org/scala-lang/modules/scala-xml_2.12/1.0.6/scala-xml_2.12-1.0.6-sources.jar[0m
+[0m[[0m[0mdebug[0m] [0m[0m	public: downloading https://repo1.maven.org/maven2/org/scala-lang/modules/scala-parser-combinators_2.12/1.1.1/scala-parser-combinators_2.12-1.1.1-sources.jar[0m
+[0m[[0m[0mdebug[0m] [0m[0m	public: downloading https://repo1.maven.org/maven2/com/novocode/junit-interface/0.11/junit-interface-0.11-javadoc.jar.sha1[0m
+[0m[[0m[0mdebug[0m] [0m[0msha1 OK for https://repo1.maven.org/maven2/com/novocode/junit-interface/0.11/junit-interface-0.11-javadoc.jar[0m
+[0m[[0m[0minfo[0m] [0m[0m	[SUCCESSFUL ] com.novocode#junit-interface;0.11!junit-interface.jar(doc) (355ms)[0m
+[0m[[0m[0mdebug[0m] [0m[0m		tried /home/sebastien/.ivy2/local/org.scala-lang/scala-reflect//2.12.3/docs/scala-reflect-javadoc.jar[0m
+[0m[[0m[0mdebug[0m] [0m[0m		tried /home/sebastien/.ivy2/local/org.scala-lang/scala-reflect//2.12.3/srcs/scala-reflect-sources.jar[0m
+[0m[[0m[0mdebug[0m] [0m[0m		tried https://repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.12.3/scala-reflect-2.12.3-javadoc.jar[0m
+[0m[[0m[0minfo[0m] [0m[0mdownloading https://repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.12.3/scala-reflect-2.12.3-javadoc.jar ...[0m
+[0m[[0m[0mdebug[0m] [0m[0m	public: downloading https://repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.12.3/scala-reflect-2.12.3-javadoc.jar[0m
+[0m[[0m[0mdebug[0m] [0m[0m	public: downloading https://repo1.maven.org/maven2/org/scala-lang/modules/scala-xml_2.12/1.0.6/scala-xml_2.12-1.0.6-sources.jar.sha1[0m
+[0m[[0m[0mdebug[0m] [0m[0m	public: downloading https://repo1.maven.org/maven2/org/scala-lang/modules/scala-parser-combinators_2.12/1.1.1/scala-parser-combinators_2.12-1.1.1-sources.jar.sha1[0m
+[0m[[0m[0mdebug[0m] [0m[0msha1 OK for https://repo1.maven.org/maven2/org/scala-lang/modules/scala-parser-combinators_2.12/1.1.1/scala-parser-combinators_2.12-1.1.1-sources.jar[0m
+[0m[[0m[0mdebug[0m] [0m[0msha1 OK for https://repo1.maven.org/maven2/org/scala-lang/modules/scala-xml_2.12/1.0.6/scala-xml_2.12-1.0.6-sources.jar[0m
+[0m[[0m[0minfo[0m] [0m[0m	[SUCCESSFUL ] org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1!scala-parser-combinators_2.12.jar(src) (607ms)[0m
+[0m[[0m[0minfo[0m] [0m[0m	[SUCCESSFUL ] org.scala-lang.modules#scala-xml_2.12;1.0.6!scala-xml_2.12.jar(src) (606ms)[0m
+[0m[[0m[0mdebug[0m] [0m[0m		tried https://repo1.maven.org/maven2/org/scala-lang/modules/scala-parser-combinators_2.12/1.1.1/scala-parser-combinators_2.12-1.1.1-javadoc.jar[0m
+[0m[[0m[0mdebug[0m] [0m[0m		tried https://repo1.maven.org/maven2/org/scala-lang/modules/scala-xml_2.12/1.0.6/scala-xml_2.12-1.0.6-javadoc.jar[0m
+[0m[[0m[0mdebug[0m] [0m[0m	public: downloading https://repo1.maven.org/maven2/junit/junit/4.11/junit-4.11-sources.jar.sha1[0m
+[0m[[0m[0minfo[0m] [0m[0mdownloading https://repo1.maven.org/maven2/org/scala-lang/modules/scala-xml_2.12/1.0.6/scala-xml_2.12-1.0.6-javadoc.jar ...[0m
+[0m[[0m[0mdebug[0m] [0m[0m	public: downloading https://repo1.maven.org/maven2/org/scala-lang/modules/scala-xml_2.12/1.0.6/scala-xml_2.12-1.0.6-javadoc.jar[0m
+[0m[[0m[0minfo[0m] [0m[0mdownloading https://repo1.maven.org/maven2/org/scala-lang/modules/scala-parser-combinators_2.12/1.1.1/scala-parser-combinators_2.12-1.1.1-javadoc.jar ...[0m
+[0m[[0m[0mdebug[0m] [0m[0m	public: downloading https://repo1.maven.org/maven2/org/scala-lang/modules/scala-parser-combinators_2.12/1.1.1/scala-parser-combinators_2.12-1.1.1-javadoc.jar[0m
+[0m[[0m[0mdebug[0m] [0m[0msha1 OK for https://repo1.maven.org/maven2/junit/junit/4.11/junit-4.11-sources.jar[0m
+[0m[[0m[0minfo[0m] [0m[0m	[SUCCESSFUL ] junit#junit;4.11!junit.jar(src) (687ms)[0m
+[0m[[0m[0mdebug[0m] [0m[0m		tried https://repo1.maven.org/maven2/junit/junit/4.11/junit-4.11-javadoc.jar[0m
+[0m[[0m[0minfo[0m] [0m[0mdownloading https://repo1.maven.org/maven2/junit/junit/4.11/junit-4.11-javadoc.jar ...[0m
+[0m[[0m[0mdebug[0m] [0m[0m	public: downloading https://repo1.maven.org/maven2/junit/junit/4.11/junit-4.11-javadoc.jar[0m
+[0m[[0m[0mdebug[0m] [0m[0m	public: downloading https://repo1.maven.org/maven2/junit/junit/4.11/junit-4.11-javadoc.jar.sha1[0m
+[0m[[0m[0mdebug[0m] [0m[0msha1 OK for https://repo1.maven.org/maven2/junit/junit/4.11/junit-4.11-javadoc.jar[0m
+[0m[[0m[0minfo[0m] [0m[0m	[SUCCESSFUL ] junit#junit;4.11!junit.jar(doc) (399ms)[0m
+[0m[[0m[0mdebug[0m] [0m[0m		tried /home/sebastien/.ivy2/local/org.hamcrest/hamcrest-core//1.3/srcs/hamcrest-core-sources.jar[0m
+[0m[[0m[0mdebug[0m] [0m[0m		tried /home/sebastien/.ivy2/local/org.hamcrest/hamcrest-core//1.3/docs/hamcrest-core-javadoc.jar[0m
+[0m[[0m[0mdebug[0m] [0m[0m		tried https://repo1.maven.org/maven2/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3-sources.jar[0m
+[0m[[0m[0minfo[0m] [0m[0mdownloading https://repo1.maven.org/maven2/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3-sources.jar ...[0m
+[0m[[0m[0mdebug[0m] [0m[0m	public: downloading https://repo1.maven.org/maven2/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3-sources.jar[0m
+[0m[[0m[0mdebug[0m] [0m[0m	public: downloading https://repo1.maven.org/maven2/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3-sources.jar.sha1[0m
+[0m[[0m[0mdebug[0m] [0m[0m	public: downloading https://repo1.maven.org/maven2/org/scala-lang/modules/scala-parser-combinators_2.12/1.1.1/scala-parser-combinators_2.12-1.1.1-javadoc.jar.sha1[0m
+[0m[[0m[0mdebug[0m] [0m[0msha1 OK for https://repo1.maven.org/maven2/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3-sources.jar[0m
+[0m[[0m[0minfo[0m] [0m[0m	[SUCCESSFUL ] org.hamcrest#hamcrest-core;1.3!hamcrest-core.jar(src) (264ms)[0m
+[0m[[0m[0mdebug[0m] [0m[0m		tried https://repo1.maven.org/maven2/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3-javadoc.jar[0m
+[0m[[0m[0minfo[0m] [0m[0mdownloading https://repo1.maven.org/maven2/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3-javadoc.jar ...[0m
+[0m[[0m[0mdebug[0m] [0m[0m	public: downloading https://repo1.maven.org/maven2/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3-javadoc.jar[0m
+[0m[[0m[0mdebug[0m] [0m[0msha1 OK for https://repo1.maven.org/maven2/org/scala-lang/modules/scala-parser-combinators_2.12/1.1.1/scala-parser-combinators_2.12-1.1.1-javadoc.jar[0m
+[0m[[0m[0minfo[0m] [0m[0m	[SUCCESSFUL ] org.scala-lang.modules#scala-parser-combinators_2.12;1.1.1!scala-parser-combinators_2.12.jar(doc) (852ms)[0m
+[0m[[0m[0mdebug[0m] [0m[0m		tried /home/sebastien/.ivy2/local/org.scala-lang/scala-library//2.12.3/docs/scala-library-javadoc.jar[0m
+[0m[[0m[0mdebug[0m] [0m[0m		tried /home/sebastien/.ivy2/local/org.scala-lang/scala-library//2.12.3/srcs/scala-library-sources.jar[0m
+[0m[[0m[0mdebug[0m] [0m[0m		tried https://repo1.maven.org/maven2/org/scala-lang/scala-library/2.12.3/scala-library-2.12.3-javadoc.jar[0m
+[0m[[0m[0minfo[0m] [0m[0mdownloading https://repo1.maven.org/maven2/org/scala-lang/scala-library/2.12.3/scala-library-2.12.3-javadoc.jar ...[0m
+[0m[[0m[0mdebug[0m] [0m[0m	public: downloading https://repo1.maven.org/maven2/org/scala-lang/scala-library/2.12.3/scala-library-2.12.3-javadoc.jar[0m
+[0m[[0m[0mdebug[0m] [0m[0m	public: downloading https://repo1.maven.org/maven2/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3-javadoc.jar.sha1[0m
+[0m[[0m[0mdebug[0m] [0m[0m	public: downloading https://repo1.maven.org/maven2/org/scala-lang/modules/scala-xml_2.12/1.0.6/scala-xml_2.12-1.0.6-javadoc.jar.sha1[0m
+[0m[[0m[0mdebug[0m] [0m[0msha1 OK for https://repo1.maven.org/maven2/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3-javadoc.jar[0m
+[0m[[0m[0minfo[0m] [0m[0m	[SUCCESSFUL ] org.hamcrest#hamcrest-core;1.3!hamcrest-core.jar(doc) (487ms)[0m
+[0m[[0m[0mdebug[0m] [0m[0m		tried /home/sebastien/.ivy2/local/org.scala-sbt/test-interface//1.0/srcs/test-interface-sources.jar[0m
+[0m[[0m[0mdebug[0m] [0m[0m		tried /home/sebastien/.ivy2/local/org.scala-sbt/test-interface//1.0/docs/test-interface-javadoc.jar[0m
+[0m[[0m[0mdebug[0m] [0m[0m		tried https://repo1.maven.org/maven2/org/scala-sbt/test-interface/1.0/test-interface-1.0-sources.jar[0m
+[0m[[0m[0minfo[0m] [0m[0mdownloading https://repo1.maven.org/maven2/org/scala-sbt/test-interface/1.0/test-interface-1.0-sources.jar ...[0m
+[0m[[0m[0mdebug[0m] [0m[0m	public: downloading https://repo1.maven.org/maven2/org/scala-sbt/test-interface/1.0/test-interface-1.0-sources.jar[0m
+[0m[[0m[0mdebug[0m] [0m[0msha1 OK for https://repo1.maven.org/maven2/org/scala-lang/modules/scala-xml_2.12/1.0.6/scala-xml_2.12-1.0.6-javadoc.jar[0m
+[0m[[0m[0minfo[0m] [0m[0m	[SUCCESSFUL ] org.scala-lang.modules#scala-xml_2.12;1.0.6!scala-xml_2.12.jar(doc) (1363ms)[0m
+[0m[[0m[0mdebug[0m] [0m[0m		tried /home/sebastien/.ivy2/local/org.scala-lang/scala-compiler//2.12.3/docs/scala-compiler-javadoc.jar[0m
+[0m[[0m[0mdebug[0m] [0m[0m		tried /home/sebastien/.ivy2/local/org.scala-lang/scala-compiler//2.12.3/srcs/scala-compiler-sources.jar[0m
+[0m[[0m[0mdebug[0m] [0m[0m		tried https://repo1.maven.org/maven2/org/scala-lang/scala-compiler/2.12.3/scala-compiler-2.12.3-javadoc.jar[0m
+[0m[[0m[0minfo[0m] [0m[0mdownloading https://repo1.maven.org/maven2/org/scala-lang/scala-compiler/2.12.3/scala-compiler-2.12.3-javadoc.jar ...[0m
+[0m[[0m[0mdebug[0m] [0m[0m	public: downloading https://repo1.maven.org/maven2/org/scala-lang/scala-compiler/2.12.3/scala-compiler-2.12.3-javadoc.jar[0m
+[0m[[0m[0mdebug[0m] [0m[0m	public: downloading https://repo1.maven.org/maven2/org/scala-sbt/test-interface/1.0/test-interface-1.0-sources.jar.sha1[0m
+[0m[[0m[0mdebug[0m] [0m[0msha1 OK for https://repo1.maven.org/maven2/org/scala-sbt/test-interface/1.0/test-interface-1.0-sources.jar[0m
+[0m[[0m[0minfo[0m] [0m[0m	[SUCCESSFUL ] org.scala-sbt#test-interface;1.0!test-interface.jar(src) (416ms)[0m
+[0m[[0m[0mdebug[0m] [0m[0m		tried https://repo1.maven.org/maven2/org/scala-sbt/test-interface/1.0/test-interface-1.0-javadoc.jar[0m
+[0m[[0m[0minfo[0m] [0m[0mdownloading https://repo1.maven.org/maven2/org/scala-sbt/test-interface/1.0/test-interface-1.0-javadoc.jar ...[0m
+[0m[[0m[0mdebug[0m] [0m[0m	public: downloading https://repo1.maven.org/maven2/org/scala-sbt/test-interface/1.0/test-interface-1.0-javadoc.jar[0m
+[0m[[0m[0mdebug[0m] [0m[0m	public: downloading https://repo1.maven.org/maven2/org/scala-sbt/test-interface/1.0/test-interface-1.0-javadoc.jar.sha1[0m
+[0m[[0m[0mdebug[0m] [0m[0msha1 OK for https://repo1.maven.org/maven2/org/scala-sbt/test-interface/1.0/test-interface-1.0-javadoc.jar[0m
+[0m[[0m[0minfo[0m] [0m[0m	[SUCCESSFUL ] org.scala-sbt#test-interface;1.0!test-interface.jar(doc) (563ms)[0m
+[0m[[0m[0mdebug[0m] [0m[0m	public: downloading https://repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.12.3/scala-reflect-2.12.3-javadoc.jar.sha1[0m
+[0m[[0m[0mdebug[0m] [0m[0msha1 OK for https://repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.12.3/scala-reflect-2.12.3-javadoc.jar[0m
+[0m[[0m[0minfo[0m] [0m[0m	[SUCCESSFUL ] org.scala-lang#scala-reflect;2.12.3!scala-reflect.jar(doc) (2700ms)[0m
+[0m[[0m[0mdebug[0m] [0m[0m		tried https://repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.12.3/scala-reflect-2.12.3-sources.jar[0m
+[0m[[0m[0minfo[0m] [0m[0mdownloading https://repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.12.3/scala-reflect-2.12.3-sources.jar ...[0m
+[0m[[0m[0mdebug[0m] [0m[0m	public: downloading https://repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.12.3/scala-reflect-2.12.3-sources.jar[0m
+[0m[[0m[0mdebug[0m] [0m[0m	public: downloading https://repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.12.3/scala-reflect-2.12.3-sources.jar.sha1[0m
+[0m[[0m[0mdebug[0m] [0m[0msha1 OK for https://repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.12.3/scala-reflect-2.12.3-sources.jar[0m
+[0m[[0m[0minfo[0m] [0m[0m	[SUCCESSFUL ] org.scala-lang#scala-reflect;2.12.3!scala-reflect.jar(src) (705ms)[0m
+[0m[[0m[0mdebug[0m] [0m[0m	public: downloading https://repo1.maven.org/maven2/org/scala-lang/scala-compiler/2.12.3/scala-compiler-2.12.3-javadoc.jar.sha1[0m
+[0m[[0m[0mdebug[0m] [0m[0msha1 OK for https://repo1.maven.org/maven2/org/scala-lang/scala-compiler/2.12.3/scala-compiler-2.12.3-javadoc.jar[0m
+[0m[[0m[0minfo[0m] [0m[0m	[SUCCESSFUL ] org.scala-lang#scala-compiler;2.12.3!scala-compiler.jar(doc) (5119ms)[0m
+[0m[[0m[0mdebug[0m] [0m[0m		tried https://repo1.maven.org/maven2/org/scala-lang/scala-compiler/2.12.3/scala-compiler-2.12.3-sources.jar[0m
+[0m[[0m[0minfo[0m] [0m[0mdownloading https://repo1.maven.org/maven2/org/scala-lang/scala-compiler/2.12.3/scala-compiler-2.12.3-sources.jar ...[0m
+[0m[[0m[0mdebug[0m] [0m[0m	public: downloading https://repo1.maven.org/maven2/org/scala-lang/scala-compiler/2.12.3/scala-compiler-2.12.3-sources.jar[0m
+[0m[[0m[0mdebug[0m] [0m[0m	public: downloading https://repo1.maven.org/maven2/org/scala-lang/scala-compiler/2.12.3/scala-compiler-2.12.3-sources.jar.sha1[0m
+[0m[[0m[0mdebug[0m] [0m[0msha1 OK for https://repo1.maven.org/maven2/org/scala-lang/scala-compiler/2.12.3/scala-compiler-2.12.3-sources.jar[0m
+[0m[[0m[0minfo[0m] [0m[0m	[SUCCESSFUL ] org.scala-lang#scala-compiler;2.12.3!scala-compiler.jar(src) (476ms)[0m
+[0m[[0m[0mdebug[0m] [0m[0m		tried /home/sebastien/.ivy2/local/jline/jline//2.14.4/srcs/jline-sources.jar[0m
+[0m[[0m[0mdebug[0m] [0m[0m		tried /home/sebastien/.ivy2/local/jline/jline//2.14.4/docs/jline-javadoc.jar[0m
+[0m[[0m[0mdebug[0m] [0m[0m		tried https://repo1.maven.org/maven2/jline/jline/2.14.4/jline-2.14.4-sources.jar[0m
+[0m[[0m[0minfo[0m] [0m[0mdownloading https://repo1.maven.org/maven2/jline/jline/2.14.4/jline-2.14.4-sources.jar ...[0m
+[0m[[0m[0mdebug[0m] [0m[0m	public: downloading https://repo1.maven.org/maven2/jline/jline/2.14.4/jline-2.14.4-sources.jar[0m
+[0m[[0m[0mdebug[0m] [0m[0m	public: downloading https://repo1.maven.org/maven2/jline/jline/2.14.4/jline-2.14.4-sources.jar.sha1[0m
+[0m[[0m[0mdebug[0m] [0m[0msha1 OK for https://repo1.maven.org/maven2/jline/jline/2.14.4/jline-2.14.4-sources.jar[0m
+[0m[[0m[0minfo[0m] [0m[0m	[SUCCESSFUL ] jline#jline;2.14.4!jline.jar(src) (284ms)[0m
+[0m[[0m[0mdebug[0m] [0m[0m		tried https://repo1.maven.org/maven2/jline/jline/2.14.4/jline-2.14.4-javadoc.jar[0m
+[0m[[0m[0minfo[0m] [0m[0mdownloading https://repo1.maven.org/maven2/jline/jline/2.14.4/jline-2.14.4-javadoc.jar ...[0m
+[0m[[0m[0mdebug[0m] [0m[0m	public: downloading https://repo1.maven.org/maven2/jline/jline/2.14.4/jline-2.14.4-javadoc.jar[0m
+[0m[[0m[0mdebug[0m] [0m[0m	public: downloading https://repo1.maven.org/maven2/jline/jline/2.14.4/jline-2.14.4-javadoc.jar.sha1[0m
+[0m[[0m[0mdebug[0m] [0m[0msha1 OK for https://repo1.maven.org/maven2/jline/jline/2.14.4/jline-2.14.4-javadoc.jar[0m
+[0m[[0m[0minfo[0m] [0m[0m	[SUCCESSFUL ] jline#jline;2.14.4!jline.jar(doc) (279ms)[0m
+[0m[[0m[0mdebug[0m] [0m[0m	public: downloading https://repo1.maven.org/maven2/org/scala-lang/scala-library/2.12.3/scala-library-2.12.3-javadoc.jar.sha1[0m
+[0m[[0m[0mdebug[0m] [0m[0msha1 OK for https://repo1.maven.org/maven2/org/scala-lang/scala-library/2.12.3/scala-library-2.12.3-javadoc.jar[0m
+[0m[[0m[0minfo[0m] [0m[0m	[SUCCESSFUL ] org.scala-lang#scala-library;2.12.3!scala-library.jar(doc) (7628ms)[0m
+[0m[[0m[0mdebug[0m] [0m[0m		tried https://repo1.maven.org/maven2/org/scala-lang/scala-library/2.12.3/scala-library-2.12.3-sources.jar[0m
+[0m[[0m[0minfo[0m] [0m[0mdownloading https://repo1.maven.org/maven2/org/scala-lang/scala-library/2.12.3/scala-library-2.12.3-sources.jar ...[0m
+[0m[[0m[0mdebug[0m] [0m[0m	public: downloading https://repo1.maven.org/maven2/org/scala-lang/scala-library/2.12.3/scala-library-2.12.3-sources.jar[0m
+[0m[[0m[0mdebug[0m] [0m[0m	public: downloading https://repo1.maven.org/maven2/org/scala-lang/scala-library/2.12.3/scala-library-2.12.3-sources.jar.sha1[0m
+[0m[[0m[0mdebug[0m] [0m[0msha1 OK for https://repo1.maven.org/maven2/org/scala-lang/scala-library/2.12.3/scala-library-2.12.3-sources.jar[0m
+[0m[[0m[0minfo[0m] [0m[0m	[SUCCESSFUL ] org.scala-lang#scala-library;2.12.3!scala-library.jar(src) (293ms)[0m
+[0m[[0m[0mdebug[0m] [0m[0m:: resolution report :: resolve 102ms :: artifacts dl 9396ms[0m
+[0m[[0m[0mdebug[0m] [0m[0m	report for ch.epfl.lara#amyc$sources_javadoc;1.5 compile produced in /home/sebastien/EPFL/Bachelor 5/Computer Language Processing/Projet/lab02/target/scala-2.12/resolution-cache/reports/ch.epfl.lara-amyc$sources_javadoc-compile.xml[0m
+[0m[[0m[0mdebug[0m] [0m[0m	report for ch.epfl.lara#amyc$sources_javadoc;1.5 runtime produced in /home/sebastien/EPFL/Bachelor 5/Computer Language Processing/Projet/lab02/target/scala-2.12/resolution-cache/reports/ch.epfl.lara-amyc$sources_javadoc-runtime.xml[0m
+[0m[[0m[0mdebug[0m] [0m[0m	report for ch.epfl.lara#amyc$sources_javadoc;1.5 test produced in /home/sebastien/EPFL/Bachelor 5/Computer Language Processing/Projet/lab02/target/scala-2.12/resolution-cache/reports/ch.epfl.lara-amyc$sources_javadoc-test.xml[0m
+[0m[[0m[0mdebug[0m] [0m[0m	report for ch.epfl.lara#amyc$sources_javadoc;1.5 provided produced in /home/sebastien/EPFL/Bachelor 5/Computer Language Processing/Projet/lab02/target/scala-2.12/resolution-cache/reports/ch.epfl.lara-amyc$sources_javadoc-provided.xml[0m
+[0m[[0m[0mdebug[0m] [0m[0m	report for ch.epfl.lara#amyc$sources_javadoc;1.5 optional produced in /home/sebastien/EPFL/Bachelor 5/Computer Language Processing/Projet/lab02/target/scala-2.12/resolution-cache/reports/ch.epfl.lara-amyc$sources_javadoc-optional.xml[0m
+[0m[[0m[0mdebug[0m] [0m[0m	report for ch.epfl.lara#amyc$sources_javadoc;1.5 compile-internal produced in /home/sebastien/EPFL/Bachelor 5/Computer Language Processing/Projet/lab02/target/scala-2.12/resolution-cache/reports/ch.epfl.lara-amyc$sources_javadoc-compile-internal.xml[0m
+[0m[[0m[0mdebug[0m] [0m[0m	report for ch.epfl.lara#amyc$sources_javadoc;1.5 runtime-internal produced in /home/sebastien/EPFL/Bachelor 5/Computer Language Processing/Projet/lab02/target/scala-2.12/resolution-cache/reports/ch.epfl.lara-amyc$sources_javadoc-runtime-internal.xml[0m
+[0m[[0m[0mdebug[0m] [0m[0m	report for ch.epfl.lara#amyc$sources_javadoc;1.5 test-internal produced in /home/sebastien/EPFL/Bachelor 5/Computer Language Processing/Projet/lab02/target/scala-2.12/resolution-cache/reports/ch.epfl.lara-amyc$sources_javadoc-test-internal.xml[0m
+[0m[[0m[0mdebug[0m] [0m[0m	report for ch.epfl.lara#amyc$sources_javadoc;1.5 plugin produced in /home/sebastien/EPFL/Bachelor 5/Computer Language Processing/Projet/lab02/target/scala-2.12/resolution-cache/reports/ch.epfl.lara-amyc$sources_javadoc-plugin.xml[0m
+[0m[[0m[0mdebug[0m] [0m[0m	report for ch.epfl.lara#amyc$sources_javadoc;1.5 pom produced in /home/sebastien/EPFL/Bachelor 5/Computer Language Processing/Projet/lab02/target/scala-2.12/resolution-cache/reports/ch.epfl.lara-amyc$sources_javadoc-pom.xml[0m
+[0m[[0m[0mdebug[0m] [0m[0m	report for ch.epfl.lara#amyc$sources_javadoc;1.5 scala-tool produced in /home/sebastien/EPFL/Bachelor 5/Computer Language Processing/Projet/lab02/target/scala-2.12/resolution-cache/reports/ch.epfl.lara-amyc$sources_javadoc-scala-tool.xml[0m
+[0m[[0m[0mdebug[0m] [0m[0m	resolve done (102ms resolve - 9396ms download)[0m
