@@ -186,6 +186,8 @@ object Lexer extends Pipeline[List[File], Stream[Token]] {
         case ':' => useOne(COLON())
         case '.' => useOne(DOT())
         case '_' => useOne(UNDERSCORE())
+        case '[' => useOne(LBRACKET())
+        case ']' => useOne(RBRACKET())
         case _ => ctx.reporter.error(currentChar + "is a invalid character", currentPos)
         useOne(BAD())
           

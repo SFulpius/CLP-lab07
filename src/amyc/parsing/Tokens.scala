@@ -58,6 +58,8 @@ object Tokens {
   case class EQSIGN()     extends Token // =
   case class RARROW()     extends Token // =>
   case class UNDERSCORE() extends Token // _
+  case class LBRACKET()   extends Token
+  case class RBRACKET()   extends Token
 
   // Identifiers
   case class ID(value: String) extends Token with TerminalClass
