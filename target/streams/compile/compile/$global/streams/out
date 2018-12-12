@@ -1,0 +1,4 @@
+[0m[[0m[33mwarn[0m] [0m[0m/home/sebastien/EPFL/Bachelor 5/Computer Language Processing/Projet/lab02/src/amyc/analyzer/TypeChecker.scala:122:32: comparing values of types Int and List[amyc.ast.SymbolicTreeModule.Type] using `!=' will always yield true[0m
+[0m[[0m[33mwarn[0m] [0m[0m                if(args.length != constrSignature.argTypes) fatal("Not same size")[0m
+[0m[[0m[33mwarn[0m] [0m[0m                               ^[0m
+[0m[[0m[33mwarn[0m] [0m[0mone warning found[0m
