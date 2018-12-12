@@ -30,6 +30,16 @@ class ASTConstructorLL1 extends ASTConstructor {
     }
   }
   
+  /* to allow polymorphic types */ // TODO
+  override def constructDef0(pTree: NodeOrLeaf[Token]): ClassOrFunDef = {
+  	pTree match {
+      case Node('AbstractClassDef ::= _, List(Leaf(abs), _, name, polyType)) => 
+        AbstractClassDef(constructName(name)._1, ???).setPos(abs)
+    }
+  }
+  
+  
+  
   def constructQname(id : NodeOrLeaf[Token], idN : NodeOrLeaf[Token]) : (QualifiedName, Positioned) = {
      idN match{
       case Node('IdN ::= _, List(_,optId)) =>
@@ -244,7 +254,7 @@ class ASTConstructorLL1 extends ASTConstructor {
         Variable(name).setPos(pos)
       case Node('P10Expr ::= _, List(id, idFunN)) => //function call
         val (moduleOrId, pos) = constructName(id)
-        idFunN match{
+        idFunN match { // TODO update le call
           case Node('IdFunN ::= _, List(_,args,_)) => //function call without module name
             val qName = QualifiedName(None,moduleOrId)
             Call(qName, constructList(args, constructExpr, true)).setPos(pos)

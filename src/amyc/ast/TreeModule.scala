@@ -60,7 +60,7 @@ trait TreeModule {
   case class Neg(e: Expr) extends Expr
 
   // Function/ type constructor call
-  case class Call(qname: QualifiedName, args: List[Expr]) extends Expr
+  case class Call(qname: QualifiedName, args: List[Expr], parametricTypes: List[Type]) extends Expr
   // The ; operator
   case class Sequence(e1: Expr, e2: Expr) extends Expr
   // Local variable definition
@@ -86,12 +86,12 @@ trait TreeModule {
   // Definitions
   trait Definition extends Tree { val name: Name }
   case class ModuleDef(name: Name, defs: List[ClassOrFunDef], optExpr: Option[Expr]) extends Definition
-  trait ClassOrFunDef extends Definition
-  case class FunDef(name: Name, params: List[ParamDef], retType: TypeTree, body: Expr) extends ClassOrFunDef {
+  trait ClassOrFunDef extends Definition { val polymorphicTypes: List[Name] }
+  case class FunDef(name: Name, params: List[ParamDef], retType: TypeTree, body: Expr, polymorphicTypes: List[Name]) extends ClassOrFunDef {
     def paramNames = params.map(_.name)
   }
-  case class AbstractClassDef(name: Name) extends ClassOrFunDef
-  case class CaseClassDef(name: Name, fields: List[TypeTree], parent: Name) extends ClassOrFunDef
+  case class AbstractClassDef(name: Name, polymorphicTypes: List[Name]) extends ClassOrFunDef
+  case class CaseClassDef(name: Name, fields: List[TypeTree], parent: Name, polymorphicTypes: List[Name]) extends ClassOrFunDef
   case class ParamDef(name: Name, tt: TypeTree) extends Definition
 
   // Types

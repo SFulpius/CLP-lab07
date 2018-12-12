@@ -215,3 +215,5 @@ packageSubmission
 run  library/Std.scala examples/TestAdd.scala
 packageSubmission
 exit
+compile
+exit

@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ivy-module version="2.0" xmlns:e="http://ant.apache.org/ivy/extra">
-	<info organisation="ch.epfl.lara"
-		module="amyc_2.12"
-		revision="1.5"
+	<info organisation="default"
+		module="lab07-build"
+		revision="0.1-SNAPSHOT"
 		status="integration"
-		publication="20181212101718"
+		publication="20181212100432"
+		e:sbtVersion="1.0" e:scalaVersion="2.12"
 	>
 		<description>
-		amyc
+		lab07-build
 		</description>
 	</info>
 	<configurations>
@@ -24,15 +25,15 @@
 		<conf name="scala-tool" visibility="private" description=""/>
 	</configurations>
 	<publications>
-		<artifact name="amyc_2.12" type="pom" ext="pom" conf="pom"/>
-		<artifact name="amyc_2.12" type="jar" ext="jar" conf="compile"/>
-		<artifact name="amyc_2.12" type="src" ext="jar" conf="compile" e:classifier="sources"/>
-		<artifact name="amyc_2.12" type="doc" ext="jar" conf="compile" e:classifier="javadoc"/>
+		<artifact name="lab07-build" type="pom" ext="pom" conf="pom"/>
+		<artifact name="lab07-build" type="jar" ext="jar" conf="compile"/>
+		<artifact name="lab07-build" type="src" ext="jar" conf="compile" e:classifier="sources"/>
+		<artifact name="lab07-build" type="doc" ext="jar" conf="compile" e:classifier="javadoc"/>
 	</publications>
 	<dependencies>
 		<dependency org="org.scala-lang" name="scala-compiler" rev="2.12.3" conf="scala-tool->default,optional(default)"/>
-		<dependency org="org.scala-lang" name="scala-library" rev="2.12.3" conf="scala-tool->default,optional(default);compile->default(compile)"/>
-		<dependency org="com.novocode" name="junit-interface" rev="0.11" conf="test->default(compile)"/>
-		<dependency org="org.scala-lang.modules" name="scala-parser-combinators_2.12" rev="1.1.1" conf="compile->default(compile)"/>
+		<dependency org="org.scala-lang" name="scala-library" rev="2.12.3" conf="scala-tool->default,optional(default);provided->default(compile)"/>
+		<dependency org="org.scala-sbt" name="sbt" rev="1.0.0" conf="provided->default(compile)"/>
+		<dependency org="com.typesafe.sbteclipse" name="sbteclipse-plugin" rev="5.2.4" conf="compile->default(compile)" e:sbtVersion="1.0" e:scalaVersion="2.12"/>
 	</dependencies>
 </ivy-module>
