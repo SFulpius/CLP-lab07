@@ -114,7 +114,7 @@ object Parser extends Pipeline[Stream[Token], Program] {
     'ParamList ::= epsilon() | COMMA() ~ 'Param ~ 'ParamList,
     'Param ::= 'Id ~ COLON() ~ 'Type,
     'OptExpr ::= 'Expr | epsilon(),
-    'Type ::= INT() | STRING() | BOOLEAN() | UNIT() | 'Id ~ 'IdN ~ 'PolymorphicDefN
+    'Type ::= INT() | STRING() | BOOLEAN() | UNIT() | 'Id ~ 'IdN ~ 'PolymorphicDefN // TODO permettre aussi les "vrais" types entre brackets
   ))
 
   def run(ctx: Context)(tokens: Stream[Token]): Program = {
