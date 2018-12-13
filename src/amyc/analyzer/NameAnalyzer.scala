@@ -42,8 +42,8 @@ object NameAnalyzer extends Pipeline[N.Program, (S.Program, SymbolTable)] {
           table.getType(module getOrElse inModule, name) match {
             case Some(symbol) =>
               S.ClassType(symbol)
-            case None =>
-              fatal(s"Could not find type $qn", tt)
+            case None => GenericType(name)
+             // fatal(s"Could not find type $qn", tt)
           }
       }
     }
@@ -60,10 +60,10 @@ object NameAnalyzer extends Pipeline[N.Program, (S.Program, SymbolTable)] {
     // Step 3: Discover types and add them to symbol table
     p.modules.foreach{ m =>
       m.defs.foreach{ _ match {
-        case N.AbstractClassDef(name) =>
-          table.addType(m.name, name)
-        case N.CaseClassDef(name, fields, parent) =>
-          table.addType(m.name, name)
+        case N.AbstractClassDef(name, polymorphicTypes) =>
+          table.addType(m.name, name, polymorphicTypes)
+      /*  case N.CaseClassDef(name, fields, parent, polymorphicTypes) =>
+          table.addType(m.name, name)*/
         case _ => //do nothing
       }
         
@@ -73,11 +73,11 @@ object NameAnalyzer extends Pipeline[N.Program, (S.Program, SymbolTable)] {
     // Step 4: Discover type constructors, add them to table
     p.modules.foreach{ m =>
       m.defs.foreach{ c => c match {
-        case N.CaseClassDef(name, fields, parent) =>
+        case N.CaseClassDef(name, fields, parent, polymorphicTypes) =>
           
           table.getType(m.name, parent) match {
             case Some(parentIdentifier) =>
-              table.addConstructor(m.name, name,  typeTreeToType(fields, m.name),  parentIdentifier)
+              table.addConstructor(m.name, name,  typeTreeToType(fields, m.name),  parentIdentifier, polymorphicTypes)
             case None =>
               fatal(s"Could not find the parent class", c.position)
           }
@@ -92,8 +92,8 @@ object NameAnalyzer extends Pipeline[N.Program, (S.Program, SymbolTable)] {
     // Step 5: Discover functions signatures, add them to table
     p.modules.foreach{ m =>
       m.defs.foreach{ fun => fun match{
-        case N.FunDef(name, params, retType, body) =>
-          table.addFunction(m.name, name, typeTreeToType(params.map(_.tt), m.name), transformType(retType, m.name))
+        case N.FunDef(name, params, retType, body, polymorphicTypes) =>
+          table.addFunction(m.name, name, typeTreeToType(params.map(_.tt), m.name), transformType(retType, m.name), polymorphicTypes)
         case _ => //do nothing
         }
       }
