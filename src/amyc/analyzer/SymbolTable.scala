@@ -59,7 +59,7 @@ class SymbolTable {
       argTypes,
       parent,
       constrIndexes.next(parent),
-      polymorphicTypes.map(Identifier.fresh(_)))
+      types.get(owner, parent))
     typesToConstructors += parent -> (typesToConstructors.getOrElse(parent, Nil) :+ s)
     s
   }
