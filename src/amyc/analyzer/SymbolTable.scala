@@ -11,7 +11,7 @@ trait Signature[RT <: Type]{
   val retType: RT
 }
 // The signature of a function in the symbol table
-case class FunSig(argTypes: List[Type], retType: Type, owner: Identifier, polymorphicTypes : List[Identifier]) extends Signature[Type]
+case class FunSig(argTypes: List[Type], retType: Type, owner: Identifier, polymorphicTypes : List[TypeTree]) extends Signature[Type]
 // The signature of a constructor in the symbol table
 case class ConstrSig(argTypes: List[Type], parent: Identifier, index: Int, polymorphicTypes : List[Identifier]) extends Signature[ClassType] {
   val retType = ClassType(parent)
@@ -22,7 +22,7 @@ class SymbolTable {
   private val defsByName = HashMap[(String, String), Identifier]()
   private val modules = HashMap[String, Identifier]()
 
-  private val types = HashMap[Identifier, (Identifier, List[Identifier])]()
+  private val types = HashMap[Identifier, (Identifier, List[TypeTree])]()
   private val functions = HashMap[Identifier, FunSig]()
   private val constructors = HashMap[Identifier, ConstrSig]()
 

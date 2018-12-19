@@ -38,12 +38,18 @@ object NameAnalyzer extends Pipeline[N.Program, (S.Program, SymbolTable)] {
         case N.BooleanType => S.BooleanType
         case N.StringType => S.StringType
         case N.UnitType => S.UnitType
-        case N.ClassType(qn@N.QualifiedName(module, name)) =>
+        case N.ClassTypeOrGeneric(qn@N.QualifiedName(module, name), parametricTypes) =>
           table.getType(module getOrElse inModule, name) match {
-            case Some(symbol) =>
-              S.ClassType(symbol)
-            case None => GenericType(name)
-             // fatal(s"Could not find type $qn", tt)
+            case Some(symbol, types) =>
+              if (parametricTypes.size != types.size) {
+                error(s"Number of polymorphic types doesn't match; expected ${types.size}, actual ${parametricTypes.size}")
+              }
+              S.ClassType(symbol, parametricTypes.map(transformType(_, inModule)))
+            case None => 
+              if (!parametricTypes.isEmpty) {
+                error(s"The class $name does not exist", tt)
+              }
+              S.GenericType(Identifier.fresh(name))
           }
       }
     }
@@ -61,7 +67,8 @@ object NameAnalyzer extends Pipeline[N.Program, (S.Program, SymbolTable)] {
     p.modules.foreach{ m =>
       m.defs.foreach{ _ match {
         case N.AbstractClassDef(name, polymorphicTypes) =>
-          table.addType(m.name, name, polymorphicTypes)
+          // TODO
+          table.addType(m.name, name)
       /*  case N.CaseClassDef(name, fields, parent, polymorphicTypes) =>
           table.addType(m.name, name)*/
         case _ => //do nothing
@@ -69,6 +76,8 @@ object NameAnalyzer extends Pipeline[N.Program, (S.Program, SymbolTable)] {
         
       }
     }
+    
+    // TODO faire un deuxième passage pour vérifier les types polymorphiques ne soient pas des types existants
 
     // Step 4: Discover type constructors, add them to table
     p.modules.foreach{ m =>
