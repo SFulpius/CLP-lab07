@@ -290,11 +290,11 @@ class ASTConstructorLL1 extends ASTConstructor {
         idFunN match {
           case Node('IdCallN ::= _, List(types, _, args, _)) => // call without module name
             val qName = QualifiedName(None,moduleOrId)
-            Call(qName, constructList(args, constructExpr, true, constructParameterList(types))).setPos(pos)
+            Call(qName, constructList(args, constructExpr, true), constructParameterList(types)).setPos(pos)
           case Node('IdCallN ::= _, List(_,id2, types, _,args,_)) => // call with module name
             val(name, pos2) = constructName(id2)
             val qName = QualifiedName(Some(moduleOrId), name)
-            Call(qName, constructList(args, constructExpr, true, constructParameterList(types))).setPos(pos) 
+            Call(qName, constructList(args, constructExpr, true), constructParameterList(types)).setPos(pos) 
         }
       case Node('P10Expr ::= _, List(litWithoutParen)) => //literal without unit
         constructLiteralWithoutParen(litWithoutParen)

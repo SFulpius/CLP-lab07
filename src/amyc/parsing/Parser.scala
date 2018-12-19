@@ -80,9 +80,9 @@ object Parser extends Pipeline[Stream[Token], Program] {
     'P10Expr ::= IF() ~ LPAREN() ~ 'Expr ~ RPAREN() ~ LBRACE() ~ 'Expr ~ RBRACE() ~ ELSE() ~ LBRACE() ~ 'Expr ~ RBRACE() |
               ERROR() ~ LPAREN() ~ 'Expr ~ RPAREN() |
               LPAREN() ~ 'OptExpr ~ RPAREN() |
-              'Id  ~ 'IdFunN | 'LitWithoutParen,
+              'Id  ~ 'IdCallN | 'LitWithoutParen,
     'IdN ::= DOT() ~ 'Id | epsilon(),
-    'IdFunN ::= DOT() ~ 'Id ~ 'PolymorphicTypeN ~ LPAREN() ~ 'Args ~ RPAREN() | 'PolymorphicIdOrTypeN ~ LPAREN() ~ 'Args ~ RPAREN() | epsilon(),
+    'IdCallN ::= DOT() ~ 'Id ~ 'PolymorphicIdOrTypeN ~ LPAREN() ~ 'Args ~ RPAREN() | 'PolymorphicIdOrTypeN ~ LPAREN() ~ 'Args ~ RPAREN() | epsilon(),
     'PolymorphicTypeN ::= epsilon() | LBRACKET() ~ 'Type ~ 'TypeN ~ RBRACKET(),
     'TypeN ::= COMMA() ~ 'Type ~ 'TypeN | epsilon(), 
     'Val ::= VAL() ~ 'Param ~ EQSIGN() ~ 'P2Expr ~ SEMICOLON() ~ 'Expr,
