@@ -40,6 +40,7 @@ class SymbolTable {
   private def checkPolymorphicName(polymorphicTypes : List[String]) = 
     if(polymorphicTypes.distinct.size != polymorphicTypes.size) sys.error("Two polymorphics types can't have the same name.")
   
+  // TODO faire 2 fonctions pour 2 passages
   def addType(owner: String, name: String, polymorphicTypes : List[String]) = {
     val s = Identifier.fresh(name)
     defsByName += (owner, name) -> s //TODO: maybe we need to add the identifier here
