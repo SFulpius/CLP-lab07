@@ -60,7 +60,7 @@ trait TreeModule {
   case class Neg(e: Expr) extends Expr
 
   // Function/ type constructor call
-  case class Call(qname: QualifiedName, args: List[Expr], parametricTypes: List[Type]) extends Expr
+  case class Call(qname: QualifiedName, args: List[Expr], parametricTypes: List[TypeTree]) extends Expr
   // The ; operator
   case class Sequence(e1: Expr, e2: Expr) extends Expr
   // Local variable definition

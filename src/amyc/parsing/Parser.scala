@@ -82,7 +82,7 @@ object Parser extends Pipeline[Stream[Token], Program] {
               LPAREN() ~ 'OptExpr ~ RPAREN() |
               'Id  ~ 'IdFunN | 'LitWithoutParen,
     'IdN ::= DOT() ~ 'Id | epsilon(),
-    'IdFunN ::= DOT() ~ 'Id ~ 'PolymorphicTypeN ~ LPAREN() ~ 'Args ~ RPAREN() | 'PolymorphicTypeN ~ LPAREN() ~ 'Args ~ RPAREN() | epsilon(),
+    'IdFunN ::= DOT() ~ 'Id ~ 'PolymorphicTypeN ~ LPAREN() ~ 'Args ~ RPAREN() | 'PolymorphicIdOrTypeN ~ LPAREN() ~ 'Args ~ RPAREN() | epsilon(),
     'PolymorphicTypeN ::= epsilon() | LBRACKET() ~ 'Type ~ 'TypeN ~ RBRACKET(),
     'TypeN ::= COMMA() ~ 'Type ~ 'TypeN | epsilon(), 
     'Val ::= VAL() ~ 'Param ~ EQSIGN() ~ 'P2Expr ~ SEMICOLON() ~ 'Expr,

@@ -285,16 +285,16 @@ class ASTConstructorLL1 extends ASTConstructor {
       case Node('P10Expr ::= _ , List(id, Node(_,List()))) => //id
         val (name, pos) = constructName(id)
         Variable(name).setPos(pos)
-      case Node('P10Expr ::= _, List(id, idFunN)) => //function call
+      case Node('P10Expr ::= _, List(id, idFunN)) => // call
         val (moduleOrId, pos) = constructName(id)
-        idFunN match { // TODO update le call
-          case Node('IdFunN ::= _, List(_,args,_)) => //function call without module name
+        idFunN match {
+          case Node('IdCallN ::= _, List(types, _, args, _)) => // call without module name
             val qName = QualifiedName(None,moduleOrId)
-            Call(qName, constructList(args, constructExpr, true)).setPos(pos)
-          case Node('IdFunN ::= _, List(_,id2, _,args,_)) => //function call with module name
+            Call(qName, constructList(args, constructExpr, true, constructParameterList(types))).setPos(pos)
+          case Node('IdCallN ::= _, List(_,id2, types, _,args,_)) => // call with module name
             val(name, pos2) = constructName(id2)
             val qName = QualifiedName(Some(moduleOrId), name)
-            Call(qName, constructList(args, constructExpr, true)).setPos(pos) 
+            Call(qName, constructList(args, constructExpr, true, constructParameterList(types))).setPos(pos) 
         }
       case Node('P10Expr ::= _, List(litWithoutParen)) => //literal without unit
         constructLiteralWithoutParen(litWithoutParen)
