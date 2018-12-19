@@ -87,11 +87,11 @@ trait TreeModule {
   trait Definition extends Tree { val name: Name }
   case class ModuleDef(name: Name, defs: List[ClassOrFunDef], optExpr: Option[Expr]) extends Definition
   trait ClassOrFunDef extends Definition { val polymorphicTypes: List[Name] }
-  case class FunDef(name: Name, params: List[ParamDef], retType: TypeTree, body: Expr, polymorphicTypes: List[Name]) extends ClassOrFunDef {
+  case class FunDef(name: Name, params: List[ParamDef], retType: TypeTree, body: Expr, polymorphicTypes: List[TypeTree]) extends ClassOrFunDef {
     def paramNames = params.map(_.name)
   }
-  case class AbstractClassDef(name: Name, polymorphicTypes: List[Name]) extends ClassOrFunDef
-  case class CaseClassDef(name: Name, fields: List[TypeTree], parent: Name, polymorphicTypes: List[Name]) extends ClassOrFunDef
+  case class AbstractClassDef(name: Name, polymorphicTypes: List[TypeTree]) extends ClassOrFunDef
+  case class CaseClassDef(name: Name, fields: List[TypeTree], parent: Name, polymorphicTypes: List[TypeTree], parentPolymorphicTypes : List[TypeTree]) extends ClassOrFunDef
   case class ParamDef(name: Name, tt: TypeTree) extends Definition
 
   // Types
@@ -112,6 +112,9 @@ trait TreeModule {
     override def toString: String = printer.printQName(qname)(false).print
   }
   case class GenericType(parametricType: Name) extends Type {
+    // TODO override toString to help debug
+  }
+  case class ClassTypeOrGeneric(qname : QualifiedName, parameterTypes : List[TypeTree]) extends Type {
     // TODO override toString to help debug
   }
 

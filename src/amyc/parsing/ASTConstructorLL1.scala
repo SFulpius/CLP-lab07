@@ -24,18 +24,51 @@ class ASTConstructorLL1 extends ASTConstructor {
           case BOOLEAN() => BooleanType
           case UNIT() => UnitType
         }).setPos(tp)
-      case Node('Type ::= _, List(id, idN)) =>
+      case Node('Type ::= _, List(id, idN, polymorphicTypesN)) =>
         val (qname, pos) = constructQname(id, idN)
-        TypeTree(ClassType(qname)).setPos(pos)
+        TypeTree(ClassTypeOrGeneric(qname ,
+            constructParameterList(polymorphicTypesN))).setPos(pos)
     }
+  }
+  
+  private def constructParameterList(pTree : NodeOrLeaf[Token]) : List[TypeTree] = pTree match {
+    case Node(_ , List()) => Nil // no parametric types
+    case Node('PolymorphicIdOrTypeListN ::= _, List(_, idOrType, list, _)) =>
+      constructType(idOrType) :: constructList(list, constructType, true)
   }
   
   /* to allow polymorphic types */ // TODO
   override def constructDef0(pTree: NodeOrLeaf[Token]): ClassOrFunDef = {
   	pTree match {
-      case Node('AbstractClassDef ::= _, List(Leaf(abs), _, name, polyType)) => 
-        AbstractClassDef(constructName(name)._1, ???).setPos(abs)
+      case Node('AbstractClassDef ::= _, List(Leaf(abs), _, name, polymorphicTypes)) =>
+        AbstractClassDef(constructName(name)._1, constructGenericList(polymorphicTypes)).setPos(abs)
+      case Node('CaseClassDef ::= _, List(Leaf(cse), _, name, polymorphicTypes , _, params, _, _, parent, parentPolymorphicTypes)) =>
+        CaseClassDef(
+          constructName(name)._1,
+          constructList(params, constructParam, hasComma = true).map(_.tt),
+          constructName(parent)._1,
+          constructGenericList(polymorphicTypes),
+          constructGenericList(parentPolymorphicTypes)
+          ).setPos(cse)
+      case Node('FunDef ::= _, List(Leaf(df), name,polymorphicTypes ,_, params, _, _, retType, _, _, body, _)) =>
+        FunDef(
+          constructName(name)._1,
+          constructList(params, constructParam, hasComma = true),
+          constructType(retType),
+          constructExpr(body),
+          constructGenericList(polymorphicTypes),
+        ).setPos(df)
     }
+  }
+  
+  private def constructGenericList(pTree : NodeOrLeaf[Token]) : List[TypeTree] = pTree match {
+    case Node(_, List()) => Nil
+    case Node('PolymorphicDefN ::= _, List(_, id, list, _)) => 
+      def constructGeneric(id: NodeOrLeaf[Token]) =  {
+        val (name, pos) = constructName(id)
+        TypeTree(GenericType(name)).setPos(pos)
+      }
+      constructGeneric(id) :: constructList(list, constructGeneric, true)
   }
   
   

@@ -110,7 +110,7 @@ object Parser extends Pipeline[Stream[Token], Program] {
     'FunDef ::= DEF() ~ 'Id ~ 'PolymorphicDefN ~ LPAREN() ~ 'Params ~ RPAREN() ~ COLON() ~ 'Type ~ EQSIGN() ~ LBRACE() ~ 'Expr ~ RBRACE(),
     'PolymorphicDefN ::= epsilon() | LBRACKET() ~ 'Id ~ 'PolymorphicIdN ~ RBRACKET(),
     'PolymorphicIdN ::= epsilon() | COMMA() ~ 'Id ~ 'PolymorphicIdN,
-    'PolymorphicIdOrTypeN ::= epsilon() | LBRACKET() ~ 'IdOrType ~ 'PolymorphicIdOrTypeListN ~ RBRACKET,
+    'PolymorphicIdOrTypeN ::= epsilon() | LBRACKET() ~ 'IdOrType ~ 'PolymorphicIdOrTypeListN ~ RBRACKET(),
     'PolymorphicIdOrTypeListN ::= epsilon() | COMMA() ~ 'IdOrType ~ 'PolymorphicIdOrTypeListN,
     'IdOrType ::= 'Id | 'Type,
     'Params ::= epsilon() | 'Param ~ 'ParamList,

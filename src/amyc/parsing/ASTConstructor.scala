@@ -223,7 +223,7 @@ class ASTConstructor {
       case Node(_, List()) => List()
       case Node(_, List(t, ts)) =>
         constructor(t) :: constructList(ts, constructor, hasComma)
-      case Node(_, List(Leaf(COMMA()), t, ts)) if hasComma =>
+      case Node(_, List(Lqnameeaf(COMMA()), t, ts)) if hasComma =>
         constructor(t) :: constructList(ts, constructor, hasComma)
     }
   }
