@@ -32,7 +32,7 @@ object NameAnalyzer extends Pipeline[N.Program, (S.Program, SymbolTable)] {
 
     // Helper method: will transform a nominal type 'tt' to a symbolic type,
     // given that we are within module 'inModule'.
-    def transformType(tt: N.TypeTree, inModule: String): S.Type = {
+    def transformType(tt: N.TypeTree, inModule: String, pTypes: Map[String, Identifier]): S.Type = {
       tt.tpe match {
         case N.IntType     => S.IntType
         case N.BooleanType => S.BooleanType
@@ -40,16 +40,20 @@ object NameAnalyzer extends Pipeline[N.Program, (S.Program, SymbolTable)] {
         case N.UnitType    => S.UnitType
         case N.ClassTypeOrGeneric(qn @ N.QualifiedName(module, name), parametricTypes) =>
           table.getType(module getOrElse inModule, name) match {
-            case Some((symbol, types)) =>
+            case Some(t) =>
+              val types = table.getPType(t)
               if (parametricTypes.size != types.size) {
                 error(s"Number of polymorphic types doesn't match; expected ${types.size}, actual ${parametricTypes.size}")
               }
-              S.ClassType(symbol, parametricTypes.map(transformType(_, inModule)))
+              S.ClassType(t, parametricTypes.map(t => S.TypeTree(transformType(t, inModule, pTypes))))
             case None =>
               if (!parametricTypes.isEmpty) {
                 error(s"The class $name does not exist", tt)
               }
-              S.GenericType(Identifier.fresh(name))
+              pTypes.get(name) match {
+                case Some(pType) => S.GenericType(pType)
+                case None        => fatal(s"The type $name doesn't exist")
+              }
           }
       }
     }
@@ -124,7 +128,7 @@ object NameAnalyzer extends Pipeline[N.Program, (S.Program, SymbolTable)] {
 
       pType.foreach {
         case el @ N.TypeTree(N.GenericType(pType)) => if (table.checkPType(module, pType))
-          error("The generics can not have the same name as a definition", el)
+          error("The generics can not have the same name as a definition.", el)
       }
     }
     //Check that the abstract type don't have the same name as a definition
@@ -152,11 +156,11 @@ object NameAnalyzer extends Pipeline[N.Program, (S.Program, SymbolTable)] {
             case Some(t) => S.AbstractClassDef(t, table.getPType(t).map(S.TypeTree(_)))
             case None    => fatal(s"Abstract type not defined", df)
           }
-        case N.CaseClassDef(name, _, _, _,_) =>
+        case N.CaseClassDef(name, _, _, _, _) =>
           table.getConstructor(module, name) match {
-            case Some((id, constrSig)) => S.CaseClassDef(id, constrSig.argTypes map S.TypeTree, 
-                constrSig.parent, table.getPType(id).map(S.TypeTree(_)), Nil)
-            case None                  => fatal(s"Case class type not defined", df)
+            case Some((id, constrSig)) => S.CaseClassDef(id, constrSig.argTypes map S.TypeTree,
+              constrSig.parent, table.getPType(id).map(S.TypeTree(_)), Nil)
+            case None => fatal(s"Case class type not defined", df)
           }
         case fd: N.FunDef =>
           transformFunDef(fd, module)
@@ -164,7 +168,7 @@ object NameAnalyzer extends Pipeline[N.Program, (S.Program, SymbolTable)] {
     }.setPos(df)
 
     def transformFunDef(fd: N.FunDef, module: String): S.FunDef = {
-      val N.FunDef(name, params, retType, body) = fd
+      val N.FunDef(name, params, retType, body, pTypes) = fd
       val Some((sym, sig)) = table.getFunction(module, name)
 
       params.groupBy(_.name).foreach {
