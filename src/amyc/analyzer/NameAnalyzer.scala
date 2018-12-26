@@ -118,12 +118,12 @@ object NameAnalyzer extends Pipeline[N.Program, (S.Program, SymbolTable)] {
       }
 
     }
-    
-    def check(module : String, pType : List[N.TypeTree]) : Unit = {
-      if(pType.distinct.size != pType.size) sys.error("Two polymorphics types can't have the same name.")
+
+    def check(module: String, pType: List[N.TypeTree]): Unit = {
+      if (pType.distinct.size != pType.size) sys.error("Two polymorphics types can't have the same name.")
 
       pType.foreach {
-        case el@N.TypeTree(N.GenericType(pType)) => if(table.checkPType(module, pType))
+        case el @ N.TypeTree(N.GenericType(pType)) => if (table.checkPType(module, pType))
           error("The generics can not have the same name as a definition", el)
       }
     }
@@ -131,9 +131,9 @@ object NameAnalyzer extends Pipeline[N.Program, (S.Program, SymbolTable)] {
     p.modules.foreach { m =>
       m.defs.foreach { d =>
         d match {
-          case N.AbstractClassDef(name, pType) => check(name, pType)
-          case N.CaseClassDef(name,_,_,pType, parentPType) => check(name, pType)
-          case N.FunDef(name, _, _, _, pType) => check(name, pType)
+          case N.AbstractClassDef(name, pType)                => check(name, pType)
+          case N.CaseClassDef(name, _, _, pType, parentPType) => check(name, pType)
+          case N.FunDef(name, _, _, _, pType)                 => check(name, pType)
         }
       }
     }
@@ -147,14 +147,15 @@ object NameAnalyzer extends Pipeline[N.Program, (S.Program, SymbolTable)] {
 
     def transformDef(df: N.ClassOrFunDef, module: String): S.ClassOrFunDef = {
       df match {
-        case N.AbstractClassDef(name) =>
+        case N.AbstractClassDef(name, _) =>
           table.getType(module, name) match {
-            case Some(t) => S.AbstractClassDef(t)
+            case Some(t) => S.AbstractClassDef(t, table.getPType(t).map(S.TypeTree(_)))
             case None    => fatal(s"Abstract type not defined", df)
           }
-        case N.CaseClassDef(name, _, _) =>
+        case N.CaseClassDef(name, _, _, _,_) =>
           table.getConstructor(module, name) match {
-            case Some((id, constrSig)) => S.CaseClassDef(id, constrSig.argTypes map S.TypeTree, constrSig.parent)
+            case Some((id, constrSig)) => S.CaseClassDef(id, constrSig.argTypes map S.TypeTree, 
+                constrSig.parent, table.getPType(id).map(S.TypeTree(_)), Nil)
             case None                  => fatal(s"Case class type not defined", df)
           }
         case fd: N.FunDef =>

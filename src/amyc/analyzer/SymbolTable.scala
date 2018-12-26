@@ -94,5 +94,7 @@ class SymbolTable {
   def getFunction(symbol: Identifier) = functions.get(symbol)
   
   def checkPType(module : String, pType : String) = defsByName.contains((module, pType))
+  
+  def getPType(i : Identifier) : List[GenericType] = defsToPType(i)
 
 }
