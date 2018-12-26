@@ -119,8 +119,9 @@ object NameAnalyzer extends Pipeline[N.Program, (S.Program, SymbolTable)] {
 
     }
     
-    
     def check(module : String, pType : List[N.TypeTree]) : Unit = {
+      if(pType.distinct.size != pType.size) sys.error("Two polymorphics types can't have the same name.")
+
       pType.foreach {
         case el@N.TypeTree(N.GenericType(pType)) => if(table.checkPType(module, pType))
           error("The generics can not have the same name as a definition", el)
