@@ -118,6 +118,24 @@ object NameAnalyzer extends Pipeline[N.Program, (S.Program, SymbolTable)] {
       }
 
     }
+    
+    
+    def check(module : String, pType : List[N.TypeTree]) : Unit = {
+      pType.foreach {
+        case el@N.TypeTree(N.GenericType(pType)) => if(table.checkPType(module, pType))
+          error("The generics can not have the same name as a definition", el)
+      }
+    }
+    //Check that the abstract type don't have the same name as a definition
+    p.modules.foreach { m =>
+      m.defs.foreach { d =>
+        d match {
+          case N.AbstractClassDef(name, pType) => check(name, pType)
+          case N.CaseClassDef(name,_,_,pType, parentPType) => check(name, pType)
+          case N.FunDef(name, _, _, _, pType) => check(name, pType)
+        }
+      }
+    }
     // Step 6: We now know all definitions in the program.
     //         Reconstruct modules and analyse function bodies/ expressions
 

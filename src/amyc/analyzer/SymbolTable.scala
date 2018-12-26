@@ -49,7 +49,7 @@ class SymbolTable {
     val s = Identifier.fresh(name)
     defsByName += (owner, name) -> s //TODO: maybe we need to add the identifier here
     types += (s -> modules.getOrElse(owner, sys.error(s"Module $name not found!")))
-    defsToPType += (s -> pTypes)
+    //defsToPType += (s -> pTypes)
     s
   }
   def getType(owner: String, name: String) =
@@ -59,7 +59,7 @@ class SymbolTable {
   def addConstructor(owner: String, name: String, argTypes: List[Type], parent: Identifier, polymorphicTypes : List[TypeTree]) = {
     val s = Identifier.fresh(name)
     defsByName += (owner, name) -> s
-    
+    //TODO : check that parent and children have the same number of arguements
     constructors += s -> ConstrSig(
       argTypes,
       parent,
@@ -93,5 +93,7 @@ class SymbolTable {
     } yield (sym, sig)
   }
   def getFunction(symbol: Identifier) = functions.get(symbol)
+  
+  def checkPType(module : String, pType : String) = defsByName.contains((module, pType))
 
 }
