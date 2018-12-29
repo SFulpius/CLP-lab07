@@ -68,7 +68,8 @@ object NameAnalyzer extends Pipeline[N.Program, (S.Program, SymbolTable)] {
             }
         }
     }
-
+    def tranformGeneric(tts : List[N.TypeTree]) : Map[String, Identifier] = 
+      tts.map( _.tpe match { case N.GenericType(t) => (t, Identifier.fresh(t))}).toMap
     // Step 3: Discover types and add them to symbol table
     p.modules.foreach { m =>
       m.defs.foreach {
@@ -109,14 +110,16 @@ object NameAnalyzer extends Pipeline[N.Program, (S.Program, SymbolTable)] {
       }
     }
 
-    def typeTreeToType(l: List[N.TypeTree], inModule: String) = l.map(tt => transformType(tt, inModule))
+  //  def typeTreeToType(l: List[N.TypeTree], inModule: String) = l.map(tt => transformType(tt, inModule))
 
     // Step 5: Discover functions signatures, add them to table
     p.modules.foreach { m =>
       m.defs.foreach { fun =>
         fun match {
           case N.FunDef(name, params, retType, body, polymorphicTypes) =>
-            table.addFunction(m.name, name, typeTreeToType(params.map(_.tt), m.name), transformType(retType, m.name), polymorphicTypes)
+            val pTypes = tranformGeneric(polymorphicTypes)
+            table.addFunction(m.name, name, params.map(e => transformType(e.tt, m.name, pTypes)), 
+                transformType(retType, m.name, pTypes),  pTypes)
           case _ => //do nothing
         }
       }
@@ -192,15 +195,16 @@ object NameAnalyzer extends Pipeline[N.Program, (S.Program, SymbolTable)] {
         sym,
         newParams,
         S.TypeTree(sig.retType).setPos(retType),
-        transformExpr(body)(module, (paramsMap, Map()))).setPos(fd)
+        transformExpr(body)(module, (paramsMap, Map(), table.getPTypeMap(sym))),
+            table.getPType(sym).map(S.TypeTree)).setPos(fd)
     }
 
     // This function takes as implicit a pair of two maps:
     // The first is a map from names of parameters to their unique identifiers,
     // the second is similar for local variables.
     // Make sure to update them correctly if needed given the scoping rules of Amy
-    def transformExpr(expr: N.Expr)(implicit module: String, names: (Map[String, Identifier], Map[String, Identifier])): S.Expr = {
-      val (params, locals) = names
+    def transformExpr(expr: N.Expr)(implicit module: String, names: (Map[String, Identifier], Map[String, Identifier], Map[String, Identifier])): S.Expr = {
+      val (params, locals, pTypes) = names
 
       def getId(n: String): Option[Identifier] = names._2.get(n) match {
         case id @ Some(_) => id
@@ -218,9 +222,10 @@ object NameAnalyzer extends Pipeline[N.Program, (S.Program, SymbolTable)] {
         case _                       => fatal(s"This is not a literal", lit.position)
       }
 
+      //TODO : check that we always use the tranformExpr map
       def transformParamDef(df: N.ParamDef) = {
         val id = Identifier.fresh(df.name)
-        S.ParamDef(id, S.TypeTree(transformType(df.tt, module)))
+        S.ParamDef(id, S.TypeTree(transformType(df.tt, module, pTypes)))
       }
 
       val res = expr match {
@@ -275,7 +280,7 @@ object NameAnalyzer extends Pipeline[N.Program, (S.Program, SymbolTable)] {
             val N.MatchCase(pat, rhs) = cse
             val (newPat, moreLocals) = transformPattern(pat)
             val newLocals: Map[String, Identifier] = locals ++ moreLocals.toMap
-            S.MatchCase(newPat, transformExpr(rhs)(module, (params, newLocals))).setPos(cse)
+            S.MatchCase(newPat, transformExpr(rhs)(module, (params, newLocals, pTypes))).setPos(cse)
           }
 
           S.Match(transformExpr(scrut), cases.map(transformCase)).setPos(expr)
@@ -298,7 +303,7 @@ object NameAnalyzer extends Pipeline[N.Program, (S.Program, SymbolTable)] {
         case t @ N.Not(e)                => S.Not(transformExpr(e)).setPos(t)
         case t @ N.Neg(e)                => S.Neg(transformExpr(e)).setPos(t)
 
-        case t @ N.Call(qname, args) =>
+        case t @ N.Call(qname, args, iTypes) =>
           val moduleName = qname.module.getOrElse(module)
           val name = qname.name
           val actualSize = args.size
@@ -316,14 +321,14 @@ object NameAnalyzer extends Pipeline[N.Program, (S.Program, SymbolTable)] {
                 case None => fatal(s"Could not find the identifier $name in module $moduleName.", t.position)
               }
           }
-          S.Call(newQname, args.map(transformExpr)).setPos(t)
+          S.Call(newQname, args.map(transformExpr), iTypes.map(e => S.TypeTree(transformType(e, moduleName, pTypes)))).setPos(t)
         case t @ N.Sequence(e1, e2) => S.Sequence(transformExpr(e1), transformExpr(e2)).setPos(t)
         case t @ N.Let(df, value, body) =>
           val name = df.name
           if (locals.contains(name)) fatal(s"The name $name has already been defined in this scope", df.position)
           else if (params.contains(name)) warning(s"The variable $name is shadowing parameters.", df)
           val paramDef = transformParamDef(df)
-          S.Let(paramDef, transformExpr(value), transformExpr(body)(module, (params, locals + (name -> paramDef.name))))
+          S.Let(paramDef, transformExpr(value), transformExpr(body)(module, (params, locals + (name -> paramDef.name), pTypes)))
             .setPos(t)
         case t @ N.Ite(cond, thenn, elze) => S.Ite(transformExpr(cond), transformExpr(thenn), transformExpr(elze)).setPos(t)
         case t @ N.Error(msg)             => S.Error(transformExpr(msg)).setPos(t)
@@ -346,7 +351,7 @@ object NameAnalyzer extends Pipeline[N.Program, (S.Program, SymbolTable)] {
           S.ModuleDef(
             table.getModule(name).get,
             defs map (transformDef(_, name)),
-            optExpr map (transformExpr(_)(name, (Map(), Map())))).setPos(mod)
+            optExpr map (transformExpr(_)(name, (Map(), Map(), Map())))).setPos(mod)
       }).setPos(p)
 
     (newProgram, table)

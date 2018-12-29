@@ -29,7 +29,7 @@ class SymbolTable {
   private val defsToPType = HashMap[Identifier, List[GenericType]]()
   private val functions = HashMap[Identifier, FunSig]()
   private val constructors = HashMap[Identifier, ConstrSig]()
-
+  private val defsToPTypeMap = HashMap[Identifier, Map[String, Identifier]]()
   private val typesToConstructors = HashMap[Identifier, List[Identifier]]()
 
   private val constrIndexes = new UniqueCounter[Identifier]
@@ -77,7 +77,7 @@ class SymbolTable {
 
   def getConstructorsForType(t: Identifier) = typesToConstructors.get(t)
 
-  def addFunction(owner: String, name: String, argTypes: List[Type], retType: Type, polymorphicTypes : List[GenericType]) = {
+  def addFunction(owner: String, name: String, argTypes: List[Type], retType: Type, polymorphicTypes : Map[String, Identifier]) = {
     val s = Identifier.fresh(name)
     defsByName += (owner, name) -> s
     functions += s -> FunSig(argTypes, retType, getModule(owner).getOrElse(sys.error(s"Module $owner not found!")),
@@ -96,5 +96,7 @@ class SymbolTable {
   def checkPType(module : String, pType : String) = defsByName.contains((module, pType))
   
   def getPType(i : Identifier) : List[GenericType] = defsToPType(i)
+  
+  def getPTypeMap(i : Identifier) : Map[String, Identifier] = defsToPTypeMap(i)
 
 }
