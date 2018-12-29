@@ -4,6 +4,7 @@ import utils._
 import ast._
 import parsing._
 import analyzer._
+import codegen._
 
 import java.io.File
 
@@ -18,7 +19,9 @@ object Main extends MainHelpers {
       Lexer andThen
       Parser andThen
       NameAnalyzer andThen
-      treePrinterS("Trees after name analysis")
+     // treePrinterS("Trees after name analysis")
+      CodeGen andThen
+      CodePrinter
 
     val files = ctx.files.map(new File(_))
 

@@ -1,4 +1,3 @@
 object Hello {
-  Std.printString("Hello " ++ "world !" ++ "example");
-	Std.print()
+  Std.printString("Hello " ++ "world !" ++ "example")
 }
