@@ -18,6 +18,8 @@ trait Printer {
 
     def binOp(e1: Expr, op: String, e2: Expr) = "(" <:> rec(e1) <:> " " + op + " " <:> rec(e2) <:> ")"
 
+    def printPolyTypes(pTypes: List[TypeTree]) = "[" <:> Lined(pTypes.map(rec(_)), ",") <:> "]"
+
     def rec(t: Tree, parens: Boolean = true): Document = t match {
       /* Definitions */
       case Program(modules) =>
@@ -33,17 +35,17 @@ trait Printer {
         )
 
       case AbstractClassDef(name, pTypes) =>
-        "abstract class " <:> printName(name) // TODO
+        "abstract class " <:> printName(name) <:> printPolyTypes(pTypes)
 
       case CaseClassDef(name, fields, parent, pTypes, parentPTypes) =>
         def printField(f: TypeTree) = "v: " <:> rec(f)
-        "case class " <:> name <:> "(" <:> Lined(fields map printField, ", ") <:> ") extends " <:> parent // TODO
+        "case class " <:> name <:> printPolyTypes(pTypes) <:> "(" <:> Lined(fields map printField, ", ") <:> ") extends " <:> parent <:> printPolyTypes(parentPTypes)
 
       case FunDef(name, params, retType, body, pTypes) =>
         Stacked(
-          "def " <:> name <:> "(" <:> Lined(params map (rec(_)), ", ") <:> "): " <:> rec(retType) <:> " = {",
+          "def " <:> name <:> printPolyTypes(pTypes) <:> "(" <:> Lined(params map (rec(_)), ", ") <:> "): " <:> rec(retType) <:> " = {",
           Indented(rec(body, false)),
-          "}" // TODO
+          "}"
         )
 
       case ParamDef(name, tpe) =>
@@ -86,8 +88,8 @@ trait Printer {
         "!(" <:> rec(e) <:> ")"
       case Neg(e) =>
         "-(" <:> rec(e) <:> ")"
-      case Call(name, args, _) => // TODO
-        name <:> "(" <:> Lined(args map (rec(_)), ", ") <:> ")"
+      case Call(name, args, iTypes) => // TODO
+        name <:> printPolyTypes(iTypes) <:> "(" <:> Lined(args map (rec(_)), ", ") <:> ")"
       case Sequence(lhs, rhs) =>
         val main = Stacked(
           rec(lhs, false) <:> ";",
@@ -156,7 +158,8 @@ trait Printer {
           case BooleanType => "Boolean"
           case StringType => "String"
           case UnitType => "Unit"
-          case ClassType(name, pTypes) => name // TODO
+          case ClassType(name, pTypes) => name <:> printPolyTypes(pTypes.map(TypeTree))
+          case GenericType(name) => name
         }
 
     }

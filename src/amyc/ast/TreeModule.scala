@@ -109,10 +109,15 @@ trait TreeModule {
     override def toString: String = "Unit"
   }
   case class ClassType(qname: QualifiedName, parametricTypes: List[Type]) extends Type {
-    override def toString: String = printer.printQName(qname)(false).print
+    override def toString: String = {
+      val pTypesString = if (!parametricTypes.isEmpty) "[" ++ parametricTypes.map(_.toString).head ++ "]" else ""
+      printer.printQName(qname)(false).print ++ pTypesString
+    }
   }
-  case class GenericType(parametricType: Name) extends Type {
-    // TODO override toString to help debug
+  case class GenericType(name: Name) extends Type {
+    override def toString: String = {
+      printer.printName(name)(false).print
+    }
   }
   case class ClassTypeOrGeneric(qname : QualifiedName, parametricTypes : List[TypeTree]) extends Type {
     // TODO override toString to help debug

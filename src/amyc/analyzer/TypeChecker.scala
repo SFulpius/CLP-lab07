@@ -84,7 +84,7 @@ object TypeChecker extends Pipeline[(Program, SymbolTable), (Program, SymbolTabl
               val funDef = table.getFunction(id).get
               (funDef.argTypes, funDef.retType, funDef.polymorphicTypes)
           }
-          val typeEnv = pTypes.map(_.parametricType).zip(iTypes.map(_.tpe)).toMap
+          val typeEnv = pTypes.map(_.name).zip(iTypes.map(_.tpe)).toMap
 
           topLevelConstraint(returnType) ::: args.zip(argTypes).flatMap(pair => genConstraints(pair._1, pair._2)(env ++ typeEnv))
         case Sequence(e1, e2) =>
@@ -168,7 +168,7 @@ object TypeChecker extends Pipeline[(Program, SymbolTable), (Program, SymbolTabl
               case TypeVariable(id) => 
                 solveConstraints(subst_*(more, id, found))
               case _ =>
-                if(found != expected) 
+                if(found != expected)
                   error("The types don't match. Expected " + expected.toString() + " but was " + found.toString() + ".", pos)
                 solveConstraints(more)
             }
