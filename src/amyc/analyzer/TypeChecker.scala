@@ -30,7 +30,7 @@ object TypeChecker extends Pipeline[(Program, SymbolTable), (Program, SymbolTabl
     //  extend these, e.g., to account for local variables).
     // Returns a list of constraints among types. These will later be solved via unification.
     def genConstraints(e: Expr, expected: Type)(implicit env: Map[Identifier, Type]): List[Constraint] = {
-      
+
       // This helper returns a list of a single constraint recording the type
       //  that we found (or generated) for the current expression `e`
       def topLevelConstraint(found: Type): List[Constraint] =
@@ -77,14 +77,16 @@ object TypeChecker extends Pipeline[(Program, SymbolTable), (Program, SymbolTabl
         case Neg(e) =>
           topLevelConstraint(IntType) ::: genConstraints(e, IntType)
         
-        case Call(id, args) =>
-          val (argTypes, returnType) = table.getConstructor(id) match {
-            case Some(constr) => (constr.argTypes, constr.retType)
+        case Call(id, args, iTypes) =>
+          val (argTypes, returnType, pTypes) = table.getConstructor(id) match {
+            case Some(constr) => (constr.argTypes, constr.retType, constr.polymorphicTypes)
             case None => 
               val funDef = table.getFunction(id).get
-              (funDef.argTypes, funDef.retType)
+              (funDef.argTypes, funDef.retType, funDef.polymorphicTypes)
           }
-          topLevelConstraint(returnType) ::: args.zip(argTypes).flatMap(pair => genConstraints(pair._1, pair._2))
+          val typeEnv = pTypes.map(_.parametricType).zip(iTypes.map(_.tpe)).toMap
+
+          topLevelConstraint(returnType) ::: args.zip(argTypes).flatMap(pair => genConstraints(pair._1, pair._2)(env ++ typeEnv))
         case Sequence(e1, e2) =>
           val typeE2 = TypeVariable.fresh()
           topLevelConstraint(typeE2) ::: genConstraints(e2, typeE2) ::: genConstraints(e1, TypeVariable.fresh)
@@ -177,7 +179,7 @@ object TypeChecker extends Pipeline[(Program, SymbolTable), (Program, SymbolTabl
     // Putting it all together to type-check each module's functions and main expression.
     program.modules.foreach { mod =>
       // Put function parameters to the symbol table, then typecheck them against the return type
-      mod.defs.collect { case FunDef(_, params, retType, body) =>
+      mod.defs.collect { case FunDef(_, params, retType, body, _) =>
         val env = params.map{ case ParamDef(name, tt) => name -> tt.tpe }.toMap
         solveConstraints(genConstraints(body, retType.tpe)(env))
       }
