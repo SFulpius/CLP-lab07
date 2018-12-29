@@ -33,7 +33,7 @@ class ASTConstructorLL1 extends ASTConstructor {
   
   private def constructParameterList(pTree : NodeOrLeaf[Token]) : List[TypeTree] = pTree match {
     case Node(_ , List()) => Nil // no parametric types
-    case Node('PolymorphicIdOrTypeListN ::= _, List(_, idOrType, list, _)) =>
+    case Node('PolymorphicIdOrTypeN ::= _, List(_, idOrType, list, _)) =>
       constructType(idOrType) :: constructList(list, constructType, true)
   }
   

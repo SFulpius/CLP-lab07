@@ -169,7 +169,7 @@ object TypeChecker extends Pipeline[(Program, SymbolTable), (Program, SymbolTabl
                 solveConstraints(subst_*(more, id, found))
               case _ =>
                 if(found != expected) 
-                  error("The types doesn't match. Expected " + expected.toString() + " but was " + found.toString() + ".", pos)
+                  error("The types don't match. Expected " + expected.toString() + " but was " + found.toString() + ".", pos)
                 solveConstraints(more)
             }
           }

@@ -19,7 +19,8 @@ object Main extends MainHelpers {
       Lexer andThen
       Parser andThen
       NameAnalyzer andThen
-     // treePrinterS("Trees after name analysis")
+      //treePrinterS("Trees after name analysis")
+      TypeChecker andThen
       CodeGen andThen
       CodePrinter
 

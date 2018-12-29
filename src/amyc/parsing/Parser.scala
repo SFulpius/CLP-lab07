@@ -96,7 +96,7 @@ object Parser extends Pipeline[Stream[Token], Program] {
     'CaseN ::= 'Cases | epsilon(),
     'Case ::= CASE() ~ 'Pattern ~ RARROW() ~ 'Expr,
     'Pattern ::= UNDERSCORE() | 'Literal |  'Id ~ 'IdPatternN,
-    'IdPatternN ::=  'IdN ~LPAREN() ~ 'Patterns ~ RPAREN() | epsilon(),
+    'IdPatternN ::=  'IdN ~ LPAREN() ~ 'Patterns ~ RPAREN() | epsilon(),
     'Patterns ::= epsilon() | 'Pattern ~ 'PatternList,
     'PatternList ::= epsilon() | COMMA() ~ 'Pattern ~ 'PatternList,
     
