@@ -108,7 +108,7 @@ trait TreeModule {
   case object UnitType extends Type {
     override def toString: String = "Unit"
   }
-  case class ClassType(qname: QualifiedName, parametricTypes: List[TypeTree]) extends Type {
+  case class ClassType(qname: QualifiedName, parametricTypes: List[Type]) extends Type {
     override def toString: String = printer.printQName(qname)(false).print
   }
   case class GenericType(parametricType: Name) extends Type {

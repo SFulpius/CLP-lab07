@@ -14,7 +14,7 @@ trait Signature[RT <: Type]{
 case class FunSig(argTypes: List[Type], retType: Type, owner: Identifier, polymorphicTypes : List[GenericType]) extends Signature[Type]
 // The signature of a constructor in the symbol table
 case class ConstrSig(argTypes: List[Type], parent: Identifier, index: Int, polymorphicTypes : List[GenericType]) extends Signature[ClassType] {
-  val retType = ClassType(parent, polymorphicTypes.map(TypeTree))
+  val retType = ClassType(parent, polymorphicTypes)
 }
 
 // A class that represents a dictionary of symbols for an Amy program
