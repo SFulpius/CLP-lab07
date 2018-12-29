@@ -52,19 +52,21 @@ class SymbolTable {
     defsByName.get(owner,name) filter types.contains
   def getType(symbol: Identifier) = types.get(symbol)
 
-  def addConstructor(owner: String, name: String, argTypes: List[Type], parent: Identifier, polymorphicTypes : List[GenericType]) = {
+  def addConstructor(owner: String, name: String, argTypes: List[Type], parent: Identifier, polymorphicTypes : Map[String, Identifier]) = {
     val s = Identifier.fresh(name)
     defsByName += (owner, name) -> s
     if (defsToPType(parent).size != polymorphicTypes.size) {
       sys.error("the number of polymorphic types don't match")
     }
+    val polymorphicList = polymorphicTypes.toList.map { case (_, id) => GenericType(id) }
     constructors += s -> ConstrSig(
       argTypes,
       parent,
       constrIndexes.next(parent),
-      polymorphicTypes)
+      polymorphicList)
     typesToConstructors += parent -> (typesToConstructors.getOrElse(parent, Nil) :+ s)
-    defsToPType += (s -> polymorphicTypes)
+    defsToPType += (s -> polymorphicList)
+    defsToPTypeMap += (s -> polymorphicTypes)
     s
   }
   def getConstructor(owner: String, name: String): Option[(Identifier, ConstrSig)] = {
@@ -80,9 +82,11 @@ class SymbolTable {
   def addFunction(owner: String, name: String, argTypes: List[Type], retType: Type, polymorphicTypes : Map[String, Identifier]) = {
     val s = Identifier.fresh(name)
     defsByName += (owner, name) -> s
+    val polymorphicList = polymorphicTypes.toList.map { case (_, id) => GenericType(id) }
     functions += s -> FunSig(argTypes, retType, getModule(owner).getOrElse(sys.error(s"Module $owner not found!")),
-        polymorphicTypes)
-    defsToPType += (s -> polymorphicTypes)
+        polymorphicList)
+    defsToPType += (s -> polymorphicList)
+    defsToPTypeMap += (s -> polymorphicTypes)
     s
   }
   def getFunction(owner: String, name: String): Option[(Identifier, FunSig)] = {

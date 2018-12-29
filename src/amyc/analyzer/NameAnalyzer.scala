@@ -2,7 +2,8 @@ package amyc
 package analyzer
 
 import utils._
-import ast.{ Identifier, NominalTreeModule => N, SymbolicTreeModule => S }
+import ast.{Identifier, NominalTreeModule => N, SymbolicTreeModule => S}
+
 /*import amyc.ast.TreeModule.AbstractClassDef
 import amyc.ast.TreeModule.TypeTree
 import amyc.ast.TreeModule.WildcardPattern*/
@@ -34,11 +35,11 @@ object NameAnalyzer extends Pipeline[N.Program, (S.Program, SymbolTable)] {
     // given that we are within module 'inModule'.
     def transformType(tt: N.TypeTree, inModule: String, pTypes: Map[String, Identifier]): S.Type = {
       tt.tpe match {
-        case N.IntType     => S.IntType
+        case N.IntType => S.IntType
         case N.BooleanType => S.BooleanType
-        case N.StringType  => S.StringType
-        case N.UnitType    => S.UnitType
-        case N.ClassTypeOrGeneric(qn @ N.QualifiedName(module, name), parametricTypes) =>
+        case N.StringType => S.StringType
+        case N.UnitType => S.UnitType
+        case N.ClassTypeOrGeneric(qn@N.QualifiedName(module, name), parametricTypes) =>
           table.getType(module getOrElse inModule, name) match {
             case Some(t) =>
               val types = table.getPType(t)
@@ -52,7 +53,7 @@ object NameAnalyzer extends Pipeline[N.Program, (S.Program, SymbolTable)] {
               }
               pTypes.get(name) match {
                 case Some(pType) => S.GenericType(pType)
-                case None        => fatal(s"The type $name doesn't exist")
+                case None => fatal(s"The type $name doesn't exist")
               }
           }
       }
@@ -68,29 +69,23 @@ object NameAnalyzer extends Pipeline[N.Program, (S.Program, SymbolTable)] {
             }
         }
     }
-    def tranformGeneric(tts : List[N.TypeTree]) : Map[String, Identifier] = 
-      tts.map( _.tpe match { case N.GenericType(t) => (t, Identifier.fresh(t))}).toMap
+
+
+    def tranformGeneric(tts: List[N.TypeTree]): Map[String, Identifier] =
+      tts.map(_.tpe match { case N.GenericType(t) => (t, Identifier.fresh(t)) }).toMap
+
+
     // Step 3: Discover types and add them to symbol table
     p.modules.foreach { m =>
       m.defs.foreach {
         _ match {
           case N.AbstractClassDef(name, polymorphicTypes) =>
-            // TODO
-            val t: List[S.GenericType] = polymorphicTypes.map(transformType(_, m.name) match {
-              case s @ S.GenericType(_) => s
-            })
-
-            table.addType(m.name, name, t)
-
-          /*  case N.CaseClassDef(name, fields, parent, polymorphicTypes) =>
-          table.addType(m.name, name)*/
+            table.addType(m.name, name, tranformGeneric(polymorphicTypes).toList.map { case (_, id) => S.GenericType(id) })
           case _ => //do nothing
         }
 
       }
     }
-
-    // TODO faire un deuxième passage pour vérifier les types polymorphiques ne soient pas des types existants
 
     // Step 4: Discover type constructors, add them to table
     p.modules.foreach { m =>
@@ -98,9 +93,18 @@ object NameAnalyzer extends Pipeline[N.Program, (S.Program, SymbolTable)] {
         c match {
           case N.CaseClassDef(name, fields, parent, polymorphicTypes, parentPolymorphicTypes) =>
 
+            if (polymorphicTypes.size != parentPolymorphicTypes.size) {
+              fatal("The number of polymorphic types don't match", c.position)
+            }
+
+            if (!polymorphicTypes.zip(parentPolymorphicTypes).forall { case (t1, t2) => t1.tpe == t2.tpe }) {
+              fatal("The polymorphic types don't match", c.position)
+            }
+
             table.getType(m.name, parent) match {
               case Some(parentIdentifier) =>
-                table.addConstructor(m.name, name, typeTreeToType(fields, m.name), parentIdentifier, polymorphicTypes)
+                val pTypes = tranformGeneric(polymorphicTypes)
+                table.addConstructor(m.name, name, fields.map(transformType(_, m.name, pTypes)), parentIdentifier, pTypes)
               case None =>
                 fatal(s"Could not find the parent class", c.position)
             }
@@ -110,7 +114,7 @@ object NameAnalyzer extends Pipeline[N.Program, (S.Program, SymbolTable)] {
       }
     }
 
-  //  def typeTreeToType(l: List[N.TypeTree], inModule: String) = l.map(tt => transformType(tt, inModule))
+    //  def typeTreeToType(l: List[N.TypeTree], inModule: String) = l.map(tt => transformType(tt, inModule))
 
     // Step 5: Discover functions signatures, add them to table
     p.modules.foreach { m =>
@@ -118,8 +122,8 @@ object NameAnalyzer extends Pipeline[N.Program, (S.Program, SymbolTable)] {
         fun match {
           case N.FunDef(name, params, retType, body, polymorphicTypes) =>
             val pTypes = tranformGeneric(polymorphicTypes)
-            table.addFunction(m.name, name, params.map(e => transformType(e.tt, m.name, pTypes)), 
-                transformType(retType, m.name, pTypes),  pTypes)
+            table.addFunction(m.name, name, params.map(e => transformType(e.tt, m.name, pTypes)),
+              transformType(retType, m.name, pTypes), pTypes)
           case _ => //do nothing
         }
       }
@@ -130,7 +134,7 @@ object NameAnalyzer extends Pipeline[N.Program, (S.Program, SymbolTable)] {
       if (pType.distinct.size != pType.size) sys.error("Two polymorphics types can't have the same name.")
 
       pType.foreach {
-        case el @ N.TypeTree(N.GenericType(pType)) => if (table.checkPType(module, pType))
+        case el@N.TypeTree(N.GenericType(pType)) => if (table.checkPType(module, pType))
           error("The generics can not have the same name as a definition.", el)
       }
     }
@@ -138,12 +142,14 @@ object NameAnalyzer extends Pipeline[N.Program, (S.Program, SymbolTable)] {
     p.modules.foreach { m =>
       m.defs.foreach { d =>
         d match {
-          case N.AbstractClassDef(name, pType)                => check(name, pType)
-          case N.CaseClassDef(name, _, _, pType, parentPType) => check(name, pType)
-          case N.FunDef(name, _, _, _, pType)                 => check(name, pType)
+          case N.AbstractClassDef(name, pType) => check(name, pType)
+          case N.CaseClassDef(name, _, _, pType, _) => check(name, pType)
+          case N.FunDef(name, _, _, _, pType) => check(name, pType)
         }
       }
     }
+
+
     // Step 6: We now know all definitions in the program.
     //         Reconstruct modules and analyse function bodies/ expressions
 
@@ -157,7 +163,7 @@ object NameAnalyzer extends Pipeline[N.Program, (S.Program, SymbolTable)] {
         case N.AbstractClassDef(name, _) =>
           table.getType(module, name) match {
             case Some(t) => S.AbstractClassDef(t, table.getPType(t).map(S.TypeTree(_)))
-            case None    => fatal(s"Abstract type not defined", df)
+            case None => fatal(s"Abstract type not defined", df)
           }
         case N.CaseClassDef(name, _, _, _, _) =>
           table.getConstructor(module, name) match {
@@ -171,7 +177,7 @@ object NameAnalyzer extends Pipeline[N.Program, (S.Program, SymbolTable)] {
     }.setPos(df)
 
     def transformFunDef(fd: N.FunDef, module: String): S.FunDef = {
-      val N.FunDef(name, params, retType, body, pTypes) = fd
+      val N.FunDef(name, params, retType, body, _) = fd
       val Some((sym, sig)) = table.getFunction(module, name)
 
       params.groupBy(_.name).foreach {
@@ -184,7 +190,7 @@ object NameAnalyzer extends Pipeline[N.Program, (S.Program, SymbolTable)] {
       val paramNames = params.map(_.name)
 
       val newParams = params zip sig.argTypes map {
-        case (pd @ N.ParamDef(name, tt), tpe) =>
+        case (pd@N.ParamDef(name, tt), tpe) =>
           val s = Identifier.fresh(name)
           S.ParamDef(s, S.TypeTree(tpe).setPos(tt)).setPos(pd)
       }
@@ -196,7 +202,7 @@ object NameAnalyzer extends Pipeline[N.Program, (S.Program, SymbolTable)] {
         newParams,
         S.TypeTree(sig.retType).setPos(retType),
         transformExpr(body)(module, (paramsMap, Map(), table.getPTypeMap(sym))),
-            table.getPType(sym).map(S.TypeTree)).setPos(fd)
+        table.getPType(sym).map(S.TypeTree)).setPos(fd)
     }
 
     // This function takes as implicit a pair of two maps:
@@ -207,19 +213,19 @@ object NameAnalyzer extends Pipeline[N.Program, (S.Program, SymbolTable)] {
       val (params, locals, pTypes) = names
 
       def getId(n: String): Option[Identifier] = names._2.get(n) match {
-        case id @ Some(_) => id
+        case id@Some(_) => id
         case None => names._1.get(n) match {
-          case id @ Some(_) => id
-          case None         => None
+          case id@Some(_) => id
+          case None => None
         }
       }
 
       def transformLiteral(lit: N.Literal[Any]) = lit match {
-        case N.IntLiteral(value)     => S.IntLiteral(value)
+        case N.IntLiteral(value) => S.IntLiteral(value)
         case N.BooleanLiteral(value) => S.BooleanLiteral(value)
-        case N.StringLiteral(value)  => S.StringLiteral(value)
-        case N.UnitLiteral()         => S.UnitLiteral()
-        case _                       => fatal(s"This is not a literal", lit.position)
+        case N.StringLiteral(value) => S.StringLiteral(value)
+        case N.UnitLiteral() => S.UnitLiteral()
+        case _ => fatal(s"This is not a literal", lit.position)
       }
 
       //TODO : check that we always use the tranformExpr map
@@ -234,8 +240,8 @@ object NameAnalyzer extends Pipeline[N.Program, (S.Program, SymbolTable)] {
           // from strings to unique identifiers for names bound in the pattern.
           // Also, calls 'fatal' if a new name violates the Amy naming rules.
           def transformPattern(pat: N.Pattern): (S.Pattern, List[(String, Identifier)]) = pat match {
-            case w @ N.WildcardPattern() => (S.WildcardPattern().setPos(w), Nil)
-            case i @ N.IdPattern(name) =>
+            case w@N.WildcardPattern() => (S.WildcardPattern().setPos(w), Nil)
+            case i@N.IdPattern(name) =>
 
               if (locals.contains(name)) fatal(s"The name $name is already used by another variable.", pat)
               val id = Identifier.fresh(name)
@@ -246,13 +252,13 @@ object NameAnalyzer extends Pipeline[N.Program, (S.Program, SymbolTable)] {
               }
 
               (S.IdPattern(id).setPos(i), List((name, id)))
-            case l @ N.LiteralPattern(lit) => (S.LiteralPattern(transformLiteral(lit)).setPos(l), Nil)
-            case caseClass @ N.CaseClassPattern(constr, args) =>
+            case l@N.LiteralPattern(lit) => (S.LiteralPattern(transformLiteral(lit)).setPos(l), Nil)
+            case caseClass@N.CaseClassPattern(constr, args) =>
               val (id, constrSig) = table.getConstructor(constr.module.getOrElse(module),
                 constr.name) match {
-                  case Some(pair) => pair
-                  case None       => fatal(s"Could not find the constructor", caseClass.position)
-                }
+                case Some(pair) => pair
+                case None => fatal(s"Could not find the constructor", caseClass.position)
+              }
 
               def combinePattern(list: List[(S.Pattern, List[(String, Identifier)])]): (List[S.Pattern], List[(String, Identifier)]) = {
                 list match {
@@ -285,25 +291,25 @@ object NameAnalyzer extends Pipeline[N.Program, (S.Program, SymbolTable)] {
 
           S.Match(transformExpr(scrut), cases.map(transformCase)).setPos(expr)
 
-        case t @ N.IntLiteral(value)     => S.IntLiteral(value).setPos(t)
-        case t @ N.BooleanLiteral(value) => S.BooleanLiteral(value).setPos(t)
-        case t @ N.StringLiteral(value)  => S.StringLiteral(value).setPos(t)
-        case t @ N.UnitLiteral()         => S.UnitLiteral().setPos(t)
-        case t @ N.Plus(lhs, rhs)        => S.Plus(transformExpr(lhs), transformExpr(rhs)).setPos(t)
-        case t @ N.Minus(lhs, rhs)       => S.Minus(transformExpr(lhs), transformExpr(rhs)).setPos(t)
-        case t @ N.Times(lhs, rhs)       => S.Times(transformExpr(lhs), transformExpr(rhs)).setPos(t)
-        case t @ N.Div(lhs, rhs)         => S.Div(transformExpr(lhs), transformExpr(rhs)).setPos(t)
-        case t @ N.Mod(lhs, rhs)         => S.Mod(transformExpr(lhs), transformExpr(rhs)).setPos(t)
-        case t @ N.LessThan(lhs, rhs)    => S.LessThan(transformExpr(lhs), transformExpr(rhs)).setPos(t)
-        case t @ N.LessEquals(lhs, rhs)  => S.LessEquals(transformExpr(lhs), transformExpr(rhs)).setPos(t)
-        case t @ N.And(lhs, rhs)         => S.And(transformExpr(lhs), transformExpr(rhs)).setPos(t)
-        case t @ N.Or(lhs, rhs)          => S.Or(transformExpr(lhs), transformExpr(rhs)).setPos(t)
-        case t @ N.Equals(lhs, rhs)      => S.Equals(transformExpr(lhs), transformExpr(rhs)).setPos(t)
-        case t @ N.Concat(lhs, rhs)      => S.Concat(transformExpr(lhs), transformExpr(rhs)).setPos(t)
-        case t @ N.Not(e)                => S.Not(transformExpr(e)).setPos(t)
-        case t @ N.Neg(e)                => S.Neg(transformExpr(e)).setPos(t)
+        case t@N.IntLiteral(value) => S.IntLiteral(value).setPos(t)
+        case t@N.BooleanLiteral(value) => S.BooleanLiteral(value).setPos(t)
+        case t@N.StringLiteral(value) => S.StringLiteral(value).setPos(t)
+        case t@N.UnitLiteral() => S.UnitLiteral().setPos(t)
+        case t@N.Plus(lhs, rhs) => S.Plus(transformExpr(lhs), transformExpr(rhs)).setPos(t)
+        case t@N.Minus(lhs, rhs) => S.Minus(transformExpr(lhs), transformExpr(rhs)).setPos(t)
+        case t@N.Times(lhs, rhs) => S.Times(transformExpr(lhs), transformExpr(rhs)).setPos(t)
+        case t@N.Div(lhs, rhs) => S.Div(transformExpr(lhs), transformExpr(rhs)).setPos(t)
+        case t@N.Mod(lhs, rhs) => S.Mod(transformExpr(lhs), transformExpr(rhs)).setPos(t)
+        case t@N.LessThan(lhs, rhs) => S.LessThan(transformExpr(lhs), transformExpr(rhs)).setPos(t)
+        case t@N.LessEquals(lhs, rhs) => S.LessEquals(transformExpr(lhs), transformExpr(rhs)).setPos(t)
+        case t@N.And(lhs, rhs) => S.And(transformExpr(lhs), transformExpr(rhs)).setPos(t)
+        case t@N.Or(lhs, rhs) => S.Or(transformExpr(lhs), transformExpr(rhs)).setPos(t)
+        case t@N.Equals(lhs, rhs) => S.Equals(transformExpr(lhs), transformExpr(rhs)).setPos(t)
+        case t@N.Concat(lhs, rhs) => S.Concat(transformExpr(lhs), transformExpr(rhs)).setPos(t)
+        case t@N.Not(e) => S.Not(transformExpr(e)).setPos(t)
+        case t@N.Neg(e) => S.Neg(transformExpr(e)).setPos(t)
 
-        case t @ N.Call(qname, args, iTypes) =>
+        case t@N.Call(qname, args, iTypes) =>
           val moduleName = qname.module.getOrElse(module)
           val name = qname.name
           val actualSize = args.size
@@ -322,20 +328,20 @@ object NameAnalyzer extends Pipeline[N.Program, (S.Program, SymbolTable)] {
               }
           }
           S.Call(newQname, args.map(transformExpr), iTypes.map(e => S.TypeTree(transformType(e, moduleName, pTypes)))).setPos(t)
-        case t @ N.Sequence(e1, e2) => S.Sequence(transformExpr(e1), transformExpr(e2)).setPos(t)
-        case t @ N.Let(df, value, body) =>
+        case t@N.Sequence(e1, e2) => S.Sequence(transformExpr(e1), transformExpr(e2)).setPos(t)
+        case t@N.Let(df, value, body) =>
           val name = df.name
           if (locals.contains(name)) fatal(s"The name $name has already been defined in this scope", df.position)
           else if (params.contains(name)) warning(s"The variable $name is shadowing parameters.", df)
           val paramDef = transformParamDef(df)
           S.Let(paramDef, transformExpr(value), transformExpr(body)(module, (params, locals + (name -> paramDef.name), pTypes)))
             .setPos(t)
-        case t @ N.Ite(cond, thenn, elze) => S.Ite(transformExpr(cond), transformExpr(thenn), transformExpr(elze)).setPos(t)
-        case t @ N.Error(msg)             => S.Error(transformExpr(msg)).setPos(t)
-        case t @ N.Variable(name) =>
+        case t@N.Ite(cond, thenn, elze) => S.Ite(transformExpr(cond), transformExpr(thenn), transformExpr(elze)).setPos(t)
+        case t@N.Error(msg) => S.Error(transformExpr(msg)).setPos(t)
+        case t@N.Variable(name) =>
           val id = getId(name) match {
             case Some(i) => i
-            case None    => fatal(s"The variable $name has not been declared before", t)
+            case None => fatal(s"The variable $name has not been declared before", t)
           }
           S.Variable(id).setPos(t)
 
@@ -347,7 +353,7 @@ object NameAnalyzer extends Pipeline[N.Program, (S.Program, SymbolTable)] {
     // Putting it all together to construct the final program for step 6.
     val newProgram = S.Program(
       p.modules map {
-        case mod @ N.ModuleDef(name, defs, optExpr) =>
+        case mod@N.ModuleDef(name, defs, optExpr) =>
           S.ModuleDef(
             table.getModule(name).get,
             defs map (transformDef(_, name)),
