@@ -23,7 +23,7 @@ object CodeGen extends Pipeline[(Program, SymbolTable), Module] {
       } ++
       // Generate code for the "main" function, which contains the module expression
       optExpr.toList.map { expr =>
-        val mainFd = FunDef(Identifier.fresh("main"), Nil, TypeTree(IntType), expr)
+        val mainFd = FunDef(Identifier.fresh("main"), Nil, TypeTree(IntType), expr, Nil)
         cgFunction(mainFd, name, true)
       }
     }
@@ -74,7 +74,7 @@ object CodeGen extends Pipeline[(Program, SymbolTable), Module] {
       case Not(e) => cgExpr(e) <:> Eqz
       case Neg(e) => Const(0) <:> cgExpr(e)  <:> Sub
         
-      case AmyCall(qname, args) => table.getFunction(qname) match{
+      case AmyCall(qname, args, _) => table.getFunction(qname) match{
         case Some(funSig) => args.foldLeft(Code(Nil))((acc,el) => acc <:> cgExpr(el)) <:>
         Call(fullName(funSig.owner, qname))
         case None => //constructor call

@@ -32,18 +32,18 @@ trait Printer {
           ""
         )
 
-      case AbstractClassDef(name) =>
-        "abstract class " <:> printName(name)
+      case AbstractClassDef(name, pTypes) =>
+        "abstract class " <:> printName(name) // TODO
 
-      case CaseClassDef(name, fields, parent) =>
+      case CaseClassDef(name, fields, parent, pTypes, parentPTypes) =>
         def printField(f: TypeTree) = "v: " <:> rec(f)
-        "case class " <:> name <:> "(" <:> Lined(fields map printField, ", ") <:> ") extends " <:> parent
+        "case class " <:> name <:> "(" <:> Lined(fields map printField, ", ") <:> ") extends " <:> parent // TODO
 
-      case FunDef(name, params, retType, body) =>
+      case FunDef(name, params, retType, body, pTypes) =>
         Stacked(
           "def " <:> name <:> "(" <:> Lined(params map (rec(_)), ", ") <:> "): " <:> rec(retType) <:> " = {",
           Indented(rec(body, false)),
-          "}"
+          "}" // TODO
         )
 
       case ParamDef(name, tpe) =>
@@ -86,7 +86,7 @@ trait Printer {
         "!(" <:> rec(e) <:> ")"
       case Neg(e) =>
         "-(" <:> rec(e) <:> ")"
-      case Call(name, args) =>
+      case Call(name, args, _) => // TODO
         name <:> "(" <:> Lined(args map (rec(_)), ", ") <:> ")"
       case Sequence(lhs, rhs) =>
         val main = Stacked(
@@ -156,7 +156,7 @@ trait Printer {
           case BooleanType => "Boolean"
           case StringType => "String"
           case UnitType => "Unit"
-          case ClassType(name) => name
+          case ClassType(name, pTypes) => name // TODO
         }
 
     }

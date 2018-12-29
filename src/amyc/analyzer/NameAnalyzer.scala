@@ -46,7 +46,7 @@ object NameAnalyzer extends Pipeline[N.Program, (S.Program, SymbolTable)] {
               if (parametricTypes.size != types.size) {
                 error(s"Number of polymorphic types doesn't match; expected ${types.size}, actual ${parametricTypes.size}")
               }
-              S.ClassType(t, parametricTypes.map(t => transformType(N.TypeTree(t), inModule, pTypes)))
+              S.ClassType(t, parametricTypes.map(t => transformType(t, inModule, pTypes)))
             case None =>
               if (!parametricTypes.isEmpty) {
                 error(s"The class $name does not exist", tt)

@@ -45,23 +45,24 @@ class ASTConstructor {
   }
 
   def constructDef0(pTree: NodeOrLeaf[Token]): ClassOrFunDef = {
-    pTree match {
-      case Node('AbstractClassDef ::= _, List(Leaf(abs), _, name)) =>
-        AbstractClassDef(constructName(name)._1).setPos(abs)
-      case Node('CaseClassDef ::= _, List(Leaf(cse), _, name, _, params, _, _, parent)) =>
-        CaseClassDef(
-          constructName(name)._1,
-          constructList(params, constructParam, hasComma = true).map(_.tt),
-          constructName(parent)._1
-        ).setPos(cse)
-      case Node('FunDef ::= _, List(Leaf(df), name, _, params, _, _, retType, _, _, body, _)) =>
-        FunDef(
-          constructName(name)._1,
-          constructList(params, constructParam, hasComma = true),
-          constructType(retType),
-          constructExpr(body)
-        ).setPos(df)
-    }
+//    pTree match {
+//      case Node('AbstractClassDef ::= _, List(Leaf(abs), _, name)) =>
+//        AbstractClassDef(constructName(name)._1).setPos(abs)
+//      case Node('CaseClassDef ::= _, List(Leaf(cse), _, name, _, params, _, _, parent)) =>
+//        CaseClassDef(
+//          constructName(name)._1,
+//          constructList(params, constructParam, hasComma = true).map(_.tt),
+//          constructName(parent)._1
+//        ).setPos(cse)
+//      case Node('FunDef ::= _, List(Leaf(df), name, _, params, _, _, retType, _, _, body, _)) =>
+//        FunDef(
+//          constructName(name)._1,
+//          constructList(params, constructParam, hasComma = true),
+//          constructType(retType),
+//          constructExpr(body)
+//        ).setPos(df)
+//    }
+    ???
   }
 
   def constructParam(pTree: NodeOrLeaf[Token]): ParamDef = {
@@ -73,7 +74,7 @@ class ASTConstructor {
   }
 
   def constructType(pTree: NodeOrLeaf[Token]): TypeTree = {
-    pTree match {
+    /*pTree match {
       case Node('Type ::= _, List(Leaf(tp))) =>
         TypeTree((tp: @unchecked) match {
           case INT() => IntType
@@ -84,7 +85,8 @@ class ASTConstructor {
       case Node('Type ::= _, List(qn)) =>
         val (qname, pos) = constructQname(qn)
         TypeTree(ClassType(qname)).setPos(pos)
-    }
+    }*/
+    ???
   }
 
   def constructQname(pTree: NodeOrLeaf[Token]): (QualifiedName, Positioned) = {
@@ -142,7 +144,7 @@ class ASTConstructor {
       case Node('Expr ::= ('QName :: _), List(name, _, as, _)) =>
         val (qname, pos) = constructQname(name)
         val args = constructList(as, constructExpr, hasComma = true)
-        Call(qname, args).setPos(pos)
+        Call(qname, args, Nil).setPos(pos)
       case Node('Expr ::= List('Expr, SEMICOLON(), 'Expr), List(e1, _, e2)) =>
         val expr1 = constructExpr(e1)
         val expr2 = constructExpr(e2)
@@ -223,7 +225,7 @@ class ASTConstructor {
       case Node(_, List()) => List()
       case Node(_, List(t, ts)) =>
         constructor(t) :: constructList(ts, constructor, hasComma)
-      case Node(_, List(Lqnameeaf(COMMA()), t, ts)) if hasComma =>
+      case Node(_, List(Leaf(COMMA()), t, ts)) if hasComma =>
         constructor(t) :: constructList(ts, constructor, hasComma)
     }
   }
