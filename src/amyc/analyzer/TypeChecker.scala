@@ -124,14 +124,12 @@ object TypeChecker extends Pipeline[(Program, SymbolTable), (Program, SymbolTabl
                 (genConstraints(literal, scrutExpected), Map.empty)
               case CaseClassPattern(constr, args) =>
                 val constrSignature = table.getConstructor(constr).get
-                val typeEnv = scrutExpected match {
-                  case ClassType(qname, types) => constrSignature.polymorphicTypes.zip(types).toMap
-                  //TODO : launch error
-                }
-                
+
+                val typeEnv = constrSignature.polymorphicTypes.zip(constrSignature.polymorphicTypes.map(_ => TypeVariable.fresh())).toMap
+
                 val typeConstraint = Constraint(substitute(constrSignature.retType)(typeEnv), scrutExpected, pat.position)
 
-                val t = args.zip(constrSignature.argTypes)
+                val t = args.zip(constrSignature.argTypes.map(substitute(_)(typeEnv)))
                 .map(p => handlePattern(p._1, p._2))
                 .unzip
                  (typeConstraint :: t._1.flatten , t._2.foldLeft(Map.empty: Map[Identifier, Type])((acc,el) => acc ++ el))
@@ -145,7 +143,7 @@ object TypeChecker extends Pipeline[(Program, SymbolTable), (Program, SymbolTabl
 
           val st = TypeVariable.fresh()
           val returnExpected = TypeVariable.fresh()
-          genConstraints(scrut, st) ++ cases.flatMap(cse => handleCase(cse, scrut, returnExpected)) ++ topLevelConstraint(returnExpected)
+          genConstraints(scrut, st) ++ cases.flatMap(cse => handleCase(cse, st, returnExpected)) ++ topLevelConstraint(returnExpected)
       }
     }
 
@@ -175,17 +173,22 @@ object TypeChecker extends Pipeline[(Program, SymbolTable), (Program, SymbolTabl
         case Constraint(found, expected, pos) :: more =>
           // HINT: You can use the `subst_*` helper above to replace a type variable
           //       by another type in your current set of constraints.
-          found match {
-            case TypeVariable(id) =>
-              solveConstraints(subst_*(more, id, expected))
-            case _ => expected match {
-              case TypeVariable(id) => 
-                solveConstraints(subst_*(more, id, found))
-              case _ =>
-                if(found != expected)
-                  error("The types don't match. Expected " + expected.toString() + " but was " + found.toString() + ".", pos)
+
+          (found, expected) match {
+            case (TypeVariable(id), _) => solveConstraints(subst_*(more, id, expected))
+            case (_, TypeVariable(id)) => solveConstraints(subst_*(more, id, found))
+            case (ClassType(qname1, types1), ClassType(qname2, types2)) =>
+              if (qname1 == qname2) {
+                val typesConstraints = types1.zip(types2).map{ case (t1, t2) => Constraint(t1, t2, pos)}
+                solveConstraints(typesConstraints ++ more)
+              } else {
+                error("The types don't match. Expected " + expected.toString() + " but was " + found.toString() + ".", pos)
                 solveConstraints(more)
-            }
+              }
+            case _ =>
+              if(found != expected)
+                error("The types don't match. Expected " + expected.toString() + " but was " + found.toString() + ".", pos)
+              solveConstraints(more)
           }
       }
     }
