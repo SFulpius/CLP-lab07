@@ -36,6 +36,12 @@ object TypeChecker extends Pipeline[(Program, SymbolTable), (Program, SymbolTabl
       def topLevelConstraint(found: Type): List[Constraint] =
         List(Constraint(found, expected, e.position))
       
+        def substitute(t : Type)(implicit typeEnv : Map[GenericType, Type]) : Type = t match {
+            case g@GenericType(name) => typeEnv(g)
+            case ClassType(qname, types) => ClassType(qname, types map substitute)
+            case _ => t
+          }
+      
       e match {
         case IntLiteral(_) =>
           topLevelConstraint(IntType)
@@ -84,9 +90,11 @@ object TypeChecker extends Pipeline[(Program, SymbolTable), (Program, SymbolTabl
               val funDef = table.getFunction(id).get
               (funDef.argTypes, funDef.retType, funDef.polymorphicTypes)
           }
-          val typeEnv = pTypes.map(_.name).zip(iTypes.map(_.tpe)).toMap
-
-          topLevelConstraint(returnType) ::: args.zip(argTypes).flatMap(pair => genConstraints(pair._1, pair._2)(env ++ typeEnv))
+          val typeEnv = pTypes.zip(iTypes.map(_.tpe)).toMap
+          
+          
+          
+          topLevelConstraint(substitute(returnType)(typeEnv)) ::: args.zip(argTypes).flatMap(pair => genConstraints(pair._1, substitute(pair._2)(typeEnv))(env))
         case Sequence(e1, e2) =>
           val typeE2 = TypeVariable.fresh()
           topLevelConstraint(typeE2) ::: genConstraints(e2, typeE2) ::: genConstraints(e1, TypeVariable.fresh)
@@ -116,7 +124,13 @@ object TypeChecker extends Pipeline[(Program, SymbolTable), (Program, SymbolTabl
                 (genConstraints(literal, scrutExpected), Map.empty)
               case CaseClassPattern(constr, args) =>
                 val constrSignature = table.getConstructor(constr).get
-                val typeConstraint = Constraint(constrSignature.retType, scrutExpected, pat.position)
+                val typeEnv = scrutExpected match {
+                  case ClassType(qname, types) => constrSignature.polymorphicTypes.zip(types).toMap
+                  //TODO : launch error
+                }
+                
+                val typeConstraint = Constraint(substitute(constrSignature.retType)(typeEnv), scrutExpected, pat.position)
+
                 val t = args.zip(constrSignature.argTypes)
                 .map(p => handlePattern(p._1, p._2))
                 .unzip
@@ -131,7 +145,7 @@ object TypeChecker extends Pipeline[(Program, SymbolTable), (Program, SymbolTabl
 
           val st = TypeVariable.fresh()
           val returnExpected = TypeVariable.fresh()
-          genConstraints(scrut, st) ++ cases.flatMap(cse => handleCase(cse, st, returnExpected)) ++ topLevelConstraint(returnExpected)
+          genConstraints(scrut, st) ++ cases.flatMap(cse => handleCase(cse, scrut, returnExpected)) ++ topLevelConstraint(returnExpected)
       }
     }
 
