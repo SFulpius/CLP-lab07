@@ -139,12 +139,13 @@ object NameAnalyzer extends Pipeline[N.Program, (S.Program, SymbolTable)] {
       }
     }
     //Check that the abstract type don't have the same name as a definition
+    
     p.modules.foreach { m =>
       m.defs.foreach { d =>
         d match {
-          case N.AbstractClassDef(name, pType) => check(name, pType)
-          case N.CaseClassDef(name, _, _, pType, _) => check(name, pType)
-          case N.FunDef(name, _, _, _, pType) => check(name, pType)
+          case N.AbstractClassDef(name, pType) => check(m.name, pType)
+          case N.CaseClassDef(name, _, _, pType, _) => check(m.name, pType)
+          case N.FunDef(name, _, _, _, pType) => check(m.name, pType)
         }
       }
     }
