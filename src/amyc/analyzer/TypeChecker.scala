@@ -125,7 +125,7 @@ object TypeChecker extends Pipeline[(Program, SymbolTable), (Program, SymbolTabl
               case CaseClassPattern(constr, args) =>
                 val constrSignature = table.getConstructor(constr).get
 
-                val typeEnv = constrSignature.polymorphicTypes.zip(constrSignature.polymorphicTypes.map(_ => TypeVariable.fresh())).toMap
+                val typeEnv = constrSignature.polymorphicTypes.map((_, TypeVariable.fresh())).toMap
 
                 val typeConstraint = Constraint(substitute(constrSignature.retType)(typeEnv), scrutExpected, pat.position)
 
@@ -182,12 +182,12 @@ object TypeChecker extends Pipeline[(Program, SymbolTable), (Program, SymbolTabl
                 val typesConstraints = types1.zip(types2).map{ case (t1, t2) => Constraint(t1, t2, pos)}
                 solveConstraints(typesConstraints ++ more)
               } else {
-                error("The types don't match. Expected " + expected.toString() + " but was " + found.toString() + ".", pos)
+                error("The types don't match. Expected " + expected.toString + " but was " + found.toString + ".", pos)
                 solveConstraints(more)
               }
             case _ =>
               if(found != expected)
-                error("The types don't match. Expected " + expected.toString() + " but was " + found.toString() + ".", pos)
+                error("The types don't match. Expected " + expected.toString + " but was " + found.toString + ".", pos)
               solveConstraints(more)
           }
       }

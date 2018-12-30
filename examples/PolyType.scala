@@ -11,7 +11,9 @@ object PolyType {
   }
 
   val x: List[Int] = Cons[Int](2, Nil[Int]());
+  val z: String = 42;
   x match {
-    case Cons(h, t) => Std.printInt(h)
+    case Cons(h, t) => Std.printString(h)
   }
+
 }
