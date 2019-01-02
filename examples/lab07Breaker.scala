@@ -1,5 +1,5 @@
 object lab07Breaker {
-	abstract class Option[A]
+	abstract class Option[A_B]
 	case class Some[A](value: A) extends Option[A]
 	case class None[A]() extends Option[A]
 
