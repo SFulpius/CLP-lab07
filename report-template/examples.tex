@@ -1,22 +1,55 @@
-Give code examples where your extension is useful, and describe how they work
-with it. Make sure you include examples where the most intricate features of
-your extension are used, so that we have an immediate understanding of what the
-challenges are.
+\newcommand{\code}[1]{\texttt{#1}}
 
-You can pretty-print tool code like this:
+The most basic and useful example is the one of lists. Previously, we could define an abstract type \code{List} and extend it with \code{Cons} and \code{Nil} the usual way, but we then had to make a choice about the type of the elements that the list would contain when defining \code{Cons}. With polymorphic types we don't have to make that choice and can define them in the following way:
+
 \begin{lstlisting}
-object {
-  def main() : Unit = { println(new A().foo(-41)); }
-}
-
-class A {
-  def foo(i : Int) : Int = {
-    var j : Int;
-    if(i < 0) { j = 0 - i; } else { j = i; }
-    return j + 1;
-  }
-}
+abstract class List[T]
+case class Cons[T](h: T, t: List[T]) extends List[T]
+case class Nil[T]() extends List[T]
 \end{lstlisting}
 
-This section should convince us that you understand how your extension can be
-useful and that you thought about the corner cases.
+Here \code{T} represents a parametric type, and can represent any existing type in Amy. The capital letter is a convention, and using the same everywhere is clearer, but it works of course for any sequence of characters, so it could have been:
+\begin{lstlisting}
+case class Nil[manyLettersAndAlso_42]()
+   extends List[manyLettersAndAlso_42]
+\end{lstlisting}
+
+What is important is that the same identifier is used for the case class and the abstract class after the \code{extends} keyword, even though the abstract class was not defined using that identifier.
+
+Once we defined the classes, they can be used with the following syntax:
+\begin{lstlisting}
+val x: List[String] = Cons[String]("foo", Nil[String]()); 
+(...)
+\end{lstlisting}
+
+For simplicity, the concrete type must be mentioned at every use of a constructor. Additionally, they must be consistent with the one declared in the abstract type, here \code{String}, otherwise an error is thrown from the type checker.
+
+Functions using polymorphic types can also be defined. The polymorphic type they use must be declared between brackets just after their name, and it will be the only one recognized for the evaluation of the arguments and the body. 
+\begin{lstlisting}
+def head[A](l: List[A]): A = {
+    l match {
+      case Cons(h, _) => h
+      case Nil() => 
+          error("Cannot call head on empty list")
+    }
+  }
+\end{lstlisting}
+Notice that for the pattern matching, the brackets after the constructors are not necessary, they are even not allowed.
+
+One difficulty is that, since polymorphic types can represent any type, even user-defined types, we cannot know \emph{a priori} if what is inside the brackets is an identifier for a polymorphic type, or an ADT. Consider the example:
+\begin{lstlisting}
+abstract class A
+
+def append(elem: A, l: List[A]): List[A] = {
+    Cons[A](elem, l)
+}
+
+def append2[A](elem: A, l: List[A]): List[A] = {
+    Cons[A](elem, l)
+}
+\end{lstlisting}
+Until the \code{append2} function, this is a perfectly valid piece of code, where A represents here an ADT and not a polymorphic type. 
+That is why the brackets after the name of the function specifying the polymorphic type used are important, because this is what makes the function polymorphic. 
+
+But here if the intention was to use a polymorphic type, as in the \code{append2} function, an error is then thrown, because we are not able to differentiate between the polymorphic and the concrete type anymore.
+

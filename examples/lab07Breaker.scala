@@ -3,11 +3,13 @@ object lab07Breaker {
 	case class Some[A](value: A) extends Option[A]
 	case class None[A]() extends Option[A]
 
-  abstract class List[A]
+  abstract class List[manyLettersAndAlso_numbers42]
   case class Cons[B](head: B, tail: List[B]) extends List[B]
   case class Nil[A]() extends List[A]
 
-  def add[C](elem: C, l: List[C]): List[C] = {
+  abstract class C
+
+  def add(elem: C, l: List[C]): List[C] = {
     Cons[C](elem, l)
   }
 
@@ -28,6 +30,8 @@ object lab07Breaker {
 
 	val x : List[Option[String]] = Cons[Option[String]](Some[String]("foo"),
     Cons[Option[String]](Some[String]("bar"), Cons[Option[String]](None[String](), Nil[Option[String]]())));
+
+  //val y : List[Int] = Cons(2, Nil());
 
   val hello : String = "hello";
   val o : Option[String] = Some[String](hello);
