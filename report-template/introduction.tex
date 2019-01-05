@@ -1,7 +1,3 @@
-Describe in a few words what you did in the first part of the compiler project
-(the non-optional labs), and briefly say what problem you want to solve with
-your extension.
+In the labs we developped a compiler for Amy. It is a simple functionnal programming language. In Amy, the most interesting language feature is the use of abstract data types (ADT). We define types and then use pattern matching to manipulate them. One of the most commonly used ADT is List. 
 
-This section should convince us that you have a clear picture of the general
-architecture of your compiler and that you understand how your extension fits
-in it.
+As Amy is a typed language, ADT are defined for a specific type. For example List is defined for elements of type Int in the Amy standard library. If we want to use a list of String and use all functions defined on List, we have to remake all the types and functions definitions. This is very slow and is prone to error as we have to copy some code. To solve this problem, we will introduce polymorphic types. Polymorphic types are type that are defined for one abstract class, case class or function. We define one type or function using one or more polymorphic types. Then we can use this function or class with any types, as long as the usage is coherent with the definition.

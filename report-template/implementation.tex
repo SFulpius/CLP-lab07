@@ -1,5 +1,3 @@
-This is a very important section, you explain to us how you made it work.
-
 \subsection{Theoretical Background}
 If you are using theoretical concepts, explain them first in this subsection.
 Even if they come from the course (eg. lattices), try to explain the essential
@@ -8,13 +6,17 @@ points \emph{in your own words}. Cite any reference work you used like this
 you coded. 
 
 \subsection{Implementation Details}
-Describe all non-obvious tricks you used. Tell us what you thought was hard and
-why. If it took you time to figure out the solution to a problem, it probably
-means it wasn't easy and you should definitely describe the solution in details
-here. If you used what you think is a cool algorithm for some problem, tell us.
-Do not however spend time describing trivial things (we what a tree traversal
-is, for instance). 
+\subsubsection{Lexing}
+\subsubsection{Parsing}
+\subsubsection{Name analysis}
+The most important part for polymorphic types implementation is the name analysis phase. In this phase, we have to add informations about polymorphic types in the symbol table, in the case class of definitions and calls and check that every aspect of polymorphic types except type checking is correct.
 
-After reading this section, we should be convinced that you knew what you were
-doing when you wrote your extension, and that you put some extra consideration
-for the harder parts.
+As we add polymorphic types we have to change the function transformType. We pass as argument a map with information about polymorphic types. When we transform ClassTypeOrPolymorphic, we can now determine if it is a class type or polymorphic type. If we find the type in the symbol table, this is a class type. If not, it should be a polymorphic type and we check that the type is defined using the map given as arguments.
+
+When we add definitions in the symbol table, we also add a map from String to Identifier. This allow us to know which polymorphic type Identifier correspond to a given symbol type. For constructor, we check that the number of polymorphic types is the same as the abstract class type. We also check that the polymorphic types used in constructor definition are the same as the ones in the extends part of the definition. Once we added all definitions, we then check that no polymorphic type as the same name as a definition using informations in the symbol table.
+
+In the transformDef function, we are getting information from the symbol table and adding it to the symbolic types. The intersting part is the transformFunDef function. When transform the body of the function, we have to give information about the polymorphic types defined in the function. For this we add a third map to transformExpr.
+
+In transformExpr itself, there are few changes as we already handled most informations about types. When we transform a Call, we keep informations about types used for this instance of the case class.
+\subsubsection{Type checking}
+\subsubsection{Code generation}
