@@ -7,16 +7,25 @@ you coded.
 
 \subsection{Implementation Details}
 \subsubsection{Lexing}
+The only thing needed in the lexing phase was to recognize open and closed bracket ('[', ']') as a token, which was not done before.
 \subsubsection{Parsing}
+To allow the use of polymorphic types, we needed to make the grammar more flexible for definitions and calls. That is, when defining (or calling) an abstract class, a case class, or a function, allow the use of (possibly many) type parameters between brackets, but also keep the possibility to not write any. 
+
+There were two main cases: when defining a construct (abstract class, case class or function), only letters can be used (that is, an identifier for the type) and not real types, whereas for calls (of case classes or functions) and types (that is, ADT), anything can be used between the brackets, identifiers as well as primitive types. An interesting thing is that, when discovering an identifier between the brackets, it is at this point impossible to determine if it is a polymorphic type identifier or an ADT. That is why we had to create a new type, ClassTypeOrPolymorphic, in addition of the ClassType and PolymorphicType. The final decision can only be made at the Name Analysis phase, when we know more about the environment.
 \subsubsection{Name analysis}
-The most important part for polymorphic types implementation is the name analysis phase. In this phase, we have to add informations about polymorphic types in the symbol table, in the case class of definitions and calls and check that every aspect of polymorphic types except type checking is correct.
+The most important part for polymorphic types implementation is the name analysis phase. In this phase, we have to add information about polymorphic types in the symbol table, in the case class of definitions and calls and check that every aspect of polymorphic types except type checking is correct.
 
 As we add polymorphic types we have to change the function transformType. We pass as argument a map with information about polymorphic types. When we transform ClassTypeOrPolymorphic, we can now determine if it is a class type or polymorphic type. If we find the type in the symbol table, this is a class type. If not, it should be a polymorphic type and we check that the type is defined using the map given as arguments.
 
-When we add definitions in the symbol table, we also add a map from String to Identifier. This allow us to know which polymorphic type Identifier correspond to a given symbol type. For constructor, we check that the number of polymorphic types is the same as the abstract class type. We also check that the polymorphic types used in constructor definition are the same as the ones in the extends part of the definition. Once we added all definitions, we then check that no polymorphic type as the same name as a definition using informations in the symbol table.
+When we add definitions in the symbol table, we also add a map from String to Identifier. This allow us to know which polymorphic type Identifier correspond to a given symbol type. For constructor, we check that the number of polymorphic types is the same as the abstract class type. We also check that the polymorphic types used in constructor definition are the same as the ones in the extends part of the definition. Once we added all definitions, we then check that no polymorphic type has the same name as a definition using information in the symbol table.
 
-In the transformDef function, we are getting information from the symbol table and adding it to the symbolic types. The intersting part is the transformFunDef function. When transform the body of the function, we have to give information about the polymorphic types defined in the function. For this we add a third map to transformExpr.
+In the transformDef function, we are getting information from the symbol table and adding it to the symbolic types. The interesting part is the transformFunDef function. When we transform the body of the function, we have to give information about the polymorphic types defined in the function. For this we add a third map to transformExpr.
 
-In transformExpr itself, there are few changes as we already handled most informations about types. When we transform a Call, we keep informations about types used for this instance of the case class.
+In transformExpr itself, there are few changes as we already handled most information about types. When we transform a Call, we keep information about types used for this instance of the case class.
 \subsubsection{Type checking}
+Surprisingly, even though our extension is allowing more expressiveness with types, once in the type checking phase most of the work is already done. What is left to do is to adapt constraints for calls (and the pattern matching), because we need here to check that the definitions are used correctly. 
+
+From the information that is given from the name analysis phase, we create a type environment, where each polymorphic type is mapped to the one used for the call (that can also be polymorphic, or not). When generating the constraints, we then call the substitute function, that replaces each type by the one that is equivalent, if present in the type environment. This allows to use different identifiers for the same polymorphic type, for instance calling Cons[B] when Cons was defined as Cons[C].
+
+About the pattern matching, and more precisely changing the CaseClassPattern, since we have more information about the expected type than for calls, we realized types could be inferred and did not need to be specified between brackets. We again call the substitute function for the type constraint, using this time newly created TypeVariables in the type environment. We then had to adapt the resolve of the constraints, that is the solveConstraints function, to also solve constraints inside the polymorphic type list of ClassTypes.
 \subsubsection{Code generation}

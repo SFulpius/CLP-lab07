@@ -1,6 +1,6 @@
 \newcommand{\code}[1]{\texttt{#1}}
 
-The most basic and useful example is the one of lists. Previously, we could define an abstract type \code{List} and extend it with \code{Cons} and \code{Nil} the usual way, but we then had to make a choice about the type of the elements that the list would contain when defining \code{Cons}. With polymorphic types we don't have to make that choice and can define them in the following way:
+Let's get back to our List example. With polymorphic types we can define lists in the following way:
 
 \begin{lstlisting}
 abstract class List[T]
@@ -16,15 +16,24 @@ case class Nil[manyLettersAndAlso_42]()
 
 What is important is that the same identifier is used for the case class and the abstract class after the \code{extends} keyword, even though the abstract class was not defined using that identifier.
 
+There can also be more than one polymorphic type, but then the number must be the same than the parent class. The following is therefore not correct:
+\begin{lstlisting}
+case class Nil[A, B] extends List[A]
+or
+case class Nil[A, B] extends List[A, B]
+\end{lstlisting}
+Since List has been defined with only one polymorphic type it cannot be extended with two.
+
+
 Once we defined the classes, they can be used with the following syntax:
 \begin{lstlisting}
 val x: List[String] = Cons[String]("foo", Nil[String]()); 
 (...)
 \end{lstlisting}
 
-For simplicity, the concrete type must be mentioned at every use of a constructor. Additionally, they must be consistent with the one declared in the abstract type, here \code{String}, otherwise an error is thrown from the type checker.
+For simplicity, the concrete type \textbf{must} be mentioned at every use of a constructor. Additionally, they must be consistent with the one declared in the abstract type, here \code{String}, otherwise an error is thrown from the type checker.
 
-Functions using polymorphic types can also be defined. The polymorphic type they use must be declared between brackets just after their name, and it will be the only one recognized for the evaluation of the arguments and the body. 
+Functions using polymorphic types can also be defined. The polymorphic type they use must be declared between brackets just after their name, and it will be the only one recognized for the evaluation of the arguments and the body. To call them, the concrete types which will replace the polymorphic ones must also be specified between brackets, just like for constructors.
 \begin{lstlisting}
 def head[A](l: List[A]): A = {
     l match {
@@ -32,9 +41,11 @@ def head[A](l: List[A]): A = {
       case Nil() => 
           error("Cannot call head on empty list")
     }
-  }
+}
+  
+head[Int](x);
 \end{lstlisting}
-Notice that for the pattern matching, the brackets after the constructors are not necessary, they are even not allowed.
+Notice that for the pattern matching, the brackets after the constructors' name are not necessary, they are even not allowed.
 
 One difficulty is that, since polymorphic types can represent any type, even user-defined types, we cannot know \emph{a priori} if what is inside the brackets is an identifier for a polymorphic type, or an ADT. Consider the example:
 \begin{lstlisting}
@@ -43,13 +54,15 @@ abstract class A
 def append(elem: A, l: List[A]): List[A] = {
     Cons[A](elem, l)
 }
+\end{lstlisting}
+This is a perfectly valid piece of code, where A represents here an ADT and not a polymorphic type. 
+That is why the brackets after the name of the function specifying the polymorphic type used are important, because this is what makes the function polymorphic. 
 
-def append2[A](elem: A, l: List[A]): List[A] = {
+But here if the intention was to use a polymorphic type called A, that is:
+\begin{lstlisting}
+def append[A](elem: A, l: List[A]): List[A] = {
     Cons[A](elem, l)
 }
 \end{lstlisting}
-Until the \code{append2} function, this is a perfectly valid piece of code, where A represents here an ADT and not a polymorphic type. 
-That is why the brackets after the name of the function specifying the polymorphic type used are important, because this is what makes the function polymorphic. 
-
-But here if the intention was to use a polymorphic type, as in the \code{append2} function, an error is then thrown, because we are not able to differentiate between the polymorphic and the concrete type anymore.
+An error would be thrown, because we are not able to differentiate the polymorphic and the concrete type (both called A) anymore.
 
