@@ -26,14 +26,14 @@ class ASTConstructorLL1 extends ASTConstructor {
         }).setPos(tp)
       case Node('Type ::= _, List(id, idN, polymorphicTypesN)) =>
         val (qname, pos) = constructQname(id, idN)
-        TypeTree(ClassTypeOrGeneric(qname ,
+        TypeTree(ClassTypeOrPolymorphic(qname ,
             constructParameterList(polymorphicTypesN))).setPos(pos)
     }
   }
   
   private def constructParameterList(pTree : NodeOrLeaf[Token]) : List[TypeTree] = pTree match {
     case Node(_ , List()) => Nil // no parametric types
-    case Node('PolymorphicIdOrTypeN ::= _, List(_, idOrType, list, _)) =>
+    case Node('PolymorphicTypeN ::= _, List(_, idOrType, list, _)) =>
       constructType(idOrType) :: constructList(list, constructType, true)
   }
   
@@ -66,7 +66,7 @@ class ASTConstructorLL1 extends ASTConstructor {
     case Node('PolymorphicDefN ::= _, List(_, id, list, _)) => 
       def constructGeneric(id: NodeOrLeaf[Token]) =  {
         val (name, pos) = constructName(id)
-        TypeTree(GenericType(name)).setPos(pos)
+        TypeTree(PolymorphicType(name)).setPos(pos)
       }
       constructGeneric(id) :: constructList(list, constructGeneric, true)
   }

@@ -39,7 +39,7 @@ object NameAnalyzer extends Pipeline[N.Program, (S.Program, SymbolTable)] {
         case N.BooleanType => S.BooleanType
         case N.StringType => S.StringType
         case N.UnitType => S.UnitType
-        case N.ClassTypeOrGeneric(qn@N.QualifiedName(module, name), parametricTypes) =>
+        case N.ClassTypeOrPolymorphic(qn@N.QualifiedName(module, name), parametricTypes) =>
           table.getType(module getOrElse inModule, name) match {
             case Some(t) =>
               val types = table.getPType(t)
@@ -52,7 +52,7 @@ object NameAnalyzer extends Pipeline[N.Program, (S.Program, SymbolTable)] {
                 error(s"The class $name does not exist", tt)
               }
               pTypes.get(name) match {
-                case Some(pType) => S.GenericType(pType)
+                case Some(pType) => S.PolymorphicType(pType)
                 case None => fatal(s"The type $name doesn't exist")
               }
           }
@@ -72,7 +72,7 @@ object NameAnalyzer extends Pipeline[N.Program, (S.Program, SymbolTable)] {
 
 
     def tranformGeneric(tts: List[N.TypeTree]): Map[String, Identifier] =
-      tts.map(_.tpe match { case N.GenericType(t) => (t, Identifier.fresh(t)) }).toMap
+      tts.map(_.tpe match { case N.PolymorphicType(t) => (t, Identifier.fresh(t)) }).toMap
 
 
     // Step 3: Discover types and add them to symbol table
@@ -80,7 +80,7 @@ object NameAnalyzer extends Pipeline[N.Program, (S.Program, SymbolTable)] {
       m.defs.foreach {
         _ match {
           case N.AbstractClassDef(name, polymorphicTypes) =>
-            table.addType(m.name, name, tranformGeneric(polymorphicTypes).toList.map { case (_, id) => S.GenericType(id) })
+            table.addType(m.name, name, tranformGeneric(polymorphicTypes).toList.map { case (_, id) => S.PolymorphicType(id) })
           case _ => //do nothing
         }
 
@@ -134,7 +134,7 @@ object NameAnalyzer extends Pipeline[N.Program, (S.Program, SymbolTable)] {
       if (pType.distinct.size != pType.size) sys.error("Two polymorphics types can't have the same name.")
 
       pType.foreach {
-        case el@N.TypeTree(N.GenericType(pType)) => if (table.checkPType(module, pType))
+        case el@N.TypeTree(N.PolymorphicType(pType)) => if (table.checkPType(module, pType))
           error("The generics can not have the same name as a definition.", el)
       }
     }

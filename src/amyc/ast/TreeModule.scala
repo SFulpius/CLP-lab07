@@ -114,13 +114,12 @@ trait TreeModule {
       printer.printQName(qname)(false).print ++ pTypesString
     }
   }
-  case class GenericType(name: Name) extends Type {
+  case class PolymorphicType(name: Name) extends Type {
     override def toString: String = {
       printer.printName(name)(false).print
     }
   }
-  case class ClassTypeOrGeneric(qname : QualifiedName, parametricTypes : List[TypeTree]) extends Type {
-    // TODO override toString to help debug
+  case class ClassTypeOrPolymorphic(qname : QualifiedName, parametricTypes : List[TypeTree]) extends Type {
   }
 
   // A wrapper for types that is also a Tree (i.e. has a position)

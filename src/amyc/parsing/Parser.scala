@@ -82,9 +82,7 @@ object Parser extends Pipeline[Stream[Token], Program] {
               LPAREN() ~ 'OptExpr ~ RPAREN() |
               'Id  ~ 'IdCallN | 'LitWithoutParen,
     'IdN ::= DOT() ~ 'Id | epsilon(),
-    'IdCallN ::= DOT() ~ 'Id ~ 'PolymorphicIdOrTypeN ~ LPAREN() ~ 'Args ~ RPAREN() | 'PolymorphicIdOrTypeN ~ LPAREN() ~ 'Args ~ RPAREN() | epsilon(),
-    'PolymorphicTypeN ::= epsilon() | LBRACKET() ~ 'Type ~ 'TypeN ~ RBRACKET(),
-    'TypeN ::= COMMA() ~ 'Type ~ 'TypeN | epsilon(), 
+    'IdCallN ::= DOT() ~ 'Id ~ 'PolymorphicTypeN ~ LPAREN() ~ 'Args ~ RPAREN() | 'PolymorphicTypeN ~ LPAREN() ~ 'Args ~ RPAREN() | epsilon(),
     'Val ::= VAL() ~ 'Param ~ EQSIGN() ~ 'P2Expr ~ SEMICOLON() ~ 'Expr,
     
     'Args ::= epsilon() | 'Expr ~ 'ExprList,
@@ -110,13 +108,13 @@ object Parser extends Pipeline[Stream[Token], Program] {
     'FunDef ::= DEF() ~ 'Id ~ 'PolymorphicDefN ~ LPAREN() ~ 'Params ~ RPAREN() ~ COLON() ~ 'Type ~ EQSIGN() ~ LBRACE() ~ 'Expr ~ RBRACE(),
     'PolymorphicDefN ::= epsilon() | LBRACKET() ~ 'Id ~ 'PolymorphicIdN ~ RBRACKET(),
     'PolymorphicIdN ::= epsilon() | COMMA() ~ 'Id ~ 'PolymorphicIdN,
-    'PolymorphicIdOrTypeN ::= epsilon() | LBRACKET() ~ 'Type ~ 'PolymorphicIdOrTypeListN ~ RBRACKET(),
-    'PolymorphicIdOrTypeListN ::= epsilon() | COMMA() ~ 'Type ~ 'PolymorphicIdOrTypeListN,
+    'PolymorphicTypeN ::= epsilon() | LBRACKET() ~ 'Type ~ 'PolymorphicTypeListN ~ RBRACKET(),
+    'PolymorphicTypeListN ::= epsilon() | COMMA() ~ 'Type ~ 'PolymorphicTypeListN,
     'Params ::= epsilon() | 'Param ~ 'ParamList,
     'ParamList ::= epsilon() | COMMA() ~ 'Param ~ 'ParamList,
     'Param ::= 'Id ~ COLON() ~ 'Type,
     'OptExpr ::= 'Expr | epsilon(),
-    'Type ::= INT() | STRING() | BOOLEAN() | UNIT() | 'Id ~ 'IdN ~ 'PolymorphicIdOrTypeN
+    'Type ::= INT() | STRING() | BOOLEAN() | UNIT() | 'Id ~ 'IdN ~ 'PolymorphicTypeN
   ))
 
   def run(ctx: Context)(tokens: Stream[Token]): Program = {

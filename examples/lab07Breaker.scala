@@ -38,5 +38,5 @@ object lab07Breaker {
   val p : Option[Int] = Some[Int](42);
   val q : Option[Unit] = Some[Unit](());
 
-  Std.printString(get[String](head[Option[String]](x)))
+  Std.printString(get[String](head(x)))
 }

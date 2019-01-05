@@ -159,7 +159,7 @@ trait Printer {
           case StringType => "String"
           case UnitType => "Unit"
           case ClassType(name, pTypes) => name <:> printPolyTypes(pTypes.map(TypeTree))
-          case GenericType(name) => name
+          case PolymorphicType(name) => name
         }
 
     }

@@ -36,8 +36,8 @@ object TypeChecker extends Pipeline[(Program, SymbolTable), (Program, SymbolTabl
       def topLevelConstraint(found: Type): List[Constraint] =
         List(Constraint(found, expected, e.position))
       
-        def substitute(t : Type)(implicit typeEnv : Map[GenericType, Type]) : Type = t match {
-            case g@GenericType(name) => typeEnv(g)
+        def substitute(t : Type)(implicit typeEnv : Map[PolymorphicType, Type]) : Type = t match {
+            case g@PolymorphicType(_) => typeEnv.getOrElse(g, fatal("Actual type(s) must be specified between brackets after the call", e.position))
             case ClassType(qname, types) => ClassType(qname, types map substitute)
             case _ => t
           }
@@ -97,7 +97,7 @@ object TypeChecker extends Pipeline[(Program, SymbolTable), (Program, SymbolTabl
           topLevelConstraint(substitute(returnType)(typeEnv)) ::: args.zip(argTypes).flatMap(pair => genConstraints(pair._1, substitute(pair._2)(typeEnv))(env))
         case Sequence(e1, e2) =>
           val typeE2 = TypeVariable.fresh()
-          topLevelConstraint(typeE2) ::: genConstraints(e2, typeE2) ::: genConstraints(e1, TypeVariable.fresh)
+          topLevelConstraint(typeE2) ::: genConstraints(e2, typeE2) ::: genConstraints(e1, TypeVariable.fresh())
         case Let(df, value, body) =>
           val typeBody = TypeVariable.fresh()
           topLevelConstraint(typeBody) ::: genConstraints(value, df.tt.tpe)  ::: genConstraints(body, typeBody)(env + (df.name -> df.tt.tpe))
