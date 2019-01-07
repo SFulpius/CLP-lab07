@@ -41,14 +41,14 @@ class ASTConstructorLL1 extends ASTConstructor {
   override def constructDef0(pTree: NodeOrLeaf[Token]): ClassOrFunDef = {
   	pTree match {
       case Node('AbstractClassDef ::= _, List(Leaf(abs), _, name, polymorphicTypes)) =>
-        AbstractClassDef(constructName(name)._1, constructGenericList(polymorphicTypes)).setPos(abs)
+        AbstractClassDef(constructName(name)._1, constructPolymorphicList(polymorphicTypes)).setPos(abs)
       case Node('CaseClassDef ::= _, List(Leaf(cse), _, name, polymorphicTypes , _, params, _, _, parent, parentPolymorphicTypes)) =>
         CaseClassDef(
           constructName(name)._1,
           constructList(params, constructParam, hasComma = true).map(_.tt),
           constructName(parent)._1,
-          constructGenericList(polymorphicTypes),
-          constructGenericList(parentPolymorphicTypes)
+          constructPolymorphicList(polymorphicTypes),
+          constructPolymorphicList(parentPolymorphicTypes)
           ).setPos(cse)
       case Node('FunDef ::= _, List(Leaf(df), name,polymorphicTypes ,_, params, _, _, retType, _, _, body, _)) =>
         FunDef(
@@ -56,19 +56,19 @@ class ASTConstructorLL1 extends ASTConstructor {
           constructList(params, constructParam, hasComma = true),
           constructType(retType),
           constructExpr(body),
-          constructGenericList(polymorphicTypes),
+          constructPolymorphicList(polymorphicTypes),
         ).setPos(df)
     }
   }
-  
-  private def constructGenericList(pTree : NodeOrLeaf[Token]) : List[TypeTree] = pTree match {
+
+  private def constructPolymorphicList(pTree : NodeOrLeaf[Token]) : List[TypeTree] = pTree match {
     case Node(_, List()) => Nil
     case Node('PolymorphicDefN ::= _, List(_, id, list, _)) => 
-      def constructGeneric(id: NodeOrLeaf[Token]) =  {
+      def constructPolymorphic(id: NodeOrLeaf[Token]) =  {
         val (name, pos) = constructName(id)
         TypeTree(PolymorphicType(name)).setPos(pos)
       }
-      constructGeneric(id) :: constructList(list, constructGeneric, true)
+      constructPolymorphic(id) :: constructList(list, constructPolymorphic, true)
   }
   
   

@@ -163,13 +163,13 @@ object NameAnalyzer extends Pipeline[N.Program, (S.Program, SymbolTable)] {
       df match {
         case N.AbstractClassDef(name, _) =>
           table.getType(module, name) match {
-            case Some(t) => S.AbstractClassDef(t, table.getPType(t).map(S.TypeTree(_)))
+            case Some(t) => S.AbstractClassDef(t, table.getPType(t).map(S.TypeTree(_).setPos(df.position)))
             case None => fatal(s"Abstract type not defined", df)
           }
         case N.CaseClassDef(name, _, _, _, _) =>
           table.getConstructor(module, name) match {
             case Some((id, constrSig)) => S.CaseClassDef(id, constrSig.argTypes map S.TypeTree,
-              constrSig.parent, table.getPType(id).map(S.TypeTree(_)), Nil)
+              constrSig.parent, table.getPType(id).map(S.TypeTree(_).setPos(df.position)), Nil)
             case None => fatal(s"Case class type not defined", df)
           }
         case fd: N.FunDef =>
