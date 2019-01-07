@@ -1,6 +1,16 @@
-If you did not finish what you had planned, explain here what's missing.
-
-In any case, describe how you could further extend your compiler in the
-direction you chose. This section should convince us that you understand the
-challenges of writing a good compiler for high-level programming languages.
 \subsubsection{Type inference}
+When use polymorphic types, we always require to specify the types. This is easier to write a compiler with this restriction, but in general we don't always need it. By example, when we create a case class, we write :
+\begin{lstlisting}
+val x : List[Int] = Nil[Int]()
+\end{lstlisting}
+We could easily infer the types : the case class must have the same types as it's parent class. We already do this in pattern matching, but we could also do this in general.
+
+In some case we could even infer the type of the parent class. We could write:
+\begin{lstlisting}
+val x : List = Cons(2, Nil())
+\end{lstlisting}
+Then by looking at the types in the case class, we could know that this is a list of Int. This will not work in all cases. If we write: 
+\begin{lstlisting}
+val x : List = Nil()
+\end{lstlisting}
+then we don't have enough information to determine the type of the list.
