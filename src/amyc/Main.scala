@@ -17,12 +17,12 @@ object Main extends MainHelpers {
     val ctx = parseArgs(args)
     val pipeline =
       Lexer andThen
-      Parser andThen
-      NameAnalyzer andThen
-      //treePrinterS("Trees after name analysis")
-      TypeChecker andThen
-      CodeGen andThen
-      CodePrinter
+        Parser andThen
+        NameAnalyzer andThen
+        //treePrinterS("Trees after name analysis")
+        TypeChecker andThen
+        CodeGen andThen
+        CodePrinter
 
     val files = ctx.files.map(new File(_))
 
@@ -43,8 +43,8 @@ object Main extends MainHelpers {
 }
 
 trait MainHelpers {
-  import SymbolicTreeModule.{Program => SP}
-  import NominalTreeModule.{Program => NP}
+  import SymbolicTreeModule.{ Program => SP }
+  import NominalTreeModule.{ Program => NP }
 
   def treePrinterS(title: String): Pipeline[(SP, SymbolTable), Unit] = {
     new Pipeline[(SP, SymbolTable), Unit] {

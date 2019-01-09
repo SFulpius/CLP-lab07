@@ -12,9 +12,6 @@ import Tokens._
 // override whatever has changed. You can look into ASTConstructor as an example.
 class ASTConstructorLL1 extends ASTConstructor {
 
-  // TODO: Override methods from ASTConstructor as needed
-  
-  /* ... */
   override def constructType(pTree: NodeOrLeaf[Token]): TypeTree = {
     pTree match {
       case Node('Type ::= _, List(Leaf(tp))) =>
@@ -37,7 +34,6 @@ class ASTConstructorLL1 extends ASTConstructor {
       constructType(idOrType) :: constructList(list, constructType, true)
   }
   
-  /* to allow polymorphic types */ // TODO
   override def constructDef0(pTree: NodeOrLeaf[Token]): ClassOrFunDef = {
   	pTree match {
       case Node('AbstractClassDef ::= _, List(Leaf(abs), _, name, polymorphicTypes)) =>

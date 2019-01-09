@@ -13,8 +13,7 @@ object ModulePrinter {
     Indented(Stacked(mod.imports map mkImport)),
     Indented("(global (mut i32) i32.const 0) " * mod.globals),
     Indented(Stacked(mod.functions map mkFun)),
-    ")"
-  )
+    ")")
 
   private def mkImport(s: String): Document =
     Lined(List("(import ", s, ")"))
@@ -27,8 +26,7 @@ object ModulePrinter {
       Lined(List(
         "(param ",
         Lined(List.fill(fh.args)(Raw("i32")), " "),
-        ") "
-      ))
+        ") "))
     }
     val resultDoc: Document = if (isMain) "" else "(result i32) "
     val localsDoc: Document =
@@ -41,8 +39,7 @@ object ModulePrinter {
       exportDoc,
       Lined(List(s"(func $$${fh.name} ", paramsDoc, resultDoc, localsDoc)),
       Indented(Stacked(mkCode(fh.code))),
-      ")"
-    )
+      ")")
   }
 
   private def mkCode(code: Code): List[Document] = code.instructions match {
@@ -50,52 +47,52 @@ object ModulePrinter {
     case h :: t => h match {
       case Else =>
         Unindented(mkInstr(h)) ::
-        mkCode(t)
+          mkCode(t)
       case End =>
         Unindented(mkInstr(h)) ::
-        (mkCode(t) map Unindented)
+          (mkCode(t) map Unindented)
       case If_void | If_i32 | Block(_) | Loop(_) =>
         mkInstr(h) ::
-        (mkCode(t) map Indented)
+          (mkCode(t) map Indented)
       case _ =>
         mkInstr(h) ::
-        mkCode(t)
+          mkCode(t)
     }
   }
 
   private def mkInstr(instr: Instruction): Document = {
     instr match {
-      case Const(value) => s"i32.const $value"
-      case Add => "i32.add"
-      case Sub => "i32.sub"
-      case Mul => "i32.mul"
-      case Div => "i32.div_s"
-      case Rem => "i32.rem_s"
-      case And => "i32.and"
-      case Or  => "i32.or"
-      case Eqz => "i32.eqz"
-      case Lt_s => "i32.lt_s"
-      case Le_s => "i32.le_s"
-      case Eq => "i32.eq"
-      case Drop => "drop"
-      case If_void => "if"
-      case If_i32 => "if (result i32)"
-      case Else => "else"
-      case Block(label) => s"block $$$label"
-      case Loop(label) => s"loop $$$label"
-      case Br(label)=> s"br $$$label"
-      case Return => "ret"
-      case End => "end"
-      case Call(name) => s"call $$$name"
-      case Unreachable => "unreachable"
-      case GetLocal(index) => s"get_local $index"
-      case SetLocal(index) => s"set_local $index"
+      case Const(value)     => s"i32.const $value"
+      case Add              => "i32.add"
+      case Sub              => "i32.sub"
+      case Mul              => "i32.mul"
+      case Div              => "i32.div_s"
+      case Rem              => "i32.rem_s"
+      case And              => "i32.and"
+      case Or               => "i32.or"
+      case Eqz              => "i32.eqz"
+      case Lt_s             => "i32.lt_s"
+      case Le_s             => "i32.le_s"
+      case Eq               => "i32.eq"
+      case Drop             => "drop"
+      case If_void          => "if"
+      case If_i32           => "if (result i32)"
+      case Else             => "else"
+      case Block(label)     => s"block $$$label"
+      case Loop(label)      => s"loop $$$label"
+      case Br(label)        => s"br $$$label"
+      case Return           => "ret"
+      case End              => "end"
+      case Call(name)       => s"call $$$name"
+      case Unreachable      => "unreachable"
+      case GetLocal(index)  => s"get_local $index"
+      case SetLocal(index)  => s"set_local $index"
       case GetGlobal(index) => s"get_global $index"
       case SetGlobal(index) => s"set_global $index"
-      case Store => "i32.store"
-      case Load => "i32.load"
-      case Store8 => "i32.store8"
-      case Load8_u => "i32.load8_u"
+      case Store            => "i32.store"
+      case Load             => "i32.load"
+      case Store8           => "i32.store8"
+      case Load8_u          => "i32.load8_u"
     }
   }
 

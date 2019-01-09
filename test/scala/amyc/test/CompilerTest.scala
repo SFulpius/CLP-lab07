@@ -16,8 +16,7 @@ abstract class CompilerTest extends TestUtils {
   private def runPipelineRedirected(
     pipeline: Pipeline[List[File], Unit],
     compiledFiles: List[String],
-    input: String
-  ): String = {
+    input: String): String = {
     testWithRedirectedIO(runPipeline(pipeline, compiledFiles), input)
   }
 
@@ -47,8 +46,7 @@ abstract class CompilerTest extends TestUtils {
     pipeline: Pipeline[List[File], Unit],
     compiledFiles: List[String],
     expectedFile: String,
-    input: String = ""
-  ) = {
+    input: String = "") = {
     try {
       val output = runPipelineRedirected(pipeline, compiledFiles, input)
       val expected = scala.io.Source.fromFile(new File(expectedFile)).mkString
@@ -63,8 +61,7 @@ abstract class CompilerTest extends TestUtils {
   protected def demandPass(
     pipeline: Pipeline[List[File], Unit],
     compiledFiles: List[String],
-    input: String = ""
-  ) = {
+    input: String = "") = {
     try {
       runPipelineRedirected(pipeline, compiledFiles, input)
     } catch {
@@ -76,8 +73,7 @@ abstract class CompilerTest extends TestUtils {
   protected def demandFailure(
     pipeline: Pipeline[List[File], Unit],
     compiledFiles: List[String],
-    input: String = ""
-  ) = {
+    input: String = "") = {
     try {
       runPipelineRedirected(pipeline, compiledFiles, input)
       fail("Test should fail but it passed!")
@@ -87,6 +83,5 @@ abstract class CompilerTest extends TestUtils {
     }
 
   }
-
 
 }

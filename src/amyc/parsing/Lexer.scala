@@ -12,9 +12,10 @@ import scala.annotation.tailrec
 object Lexer extends Pipeline[List[File], Stream[Token]] {
   import Tokens._
 
-  /** Maps a string s to the corresponding keyword,
-    * or None if it corresponds to no keyword
-    */
+  /**
+   * Maps a string s to the corresponding keyword,
+   * or None if it corresponds to no keyword
+   */
   private def keywords(s: String): Option[Token] = s match {
     case "abstract" => Some(ABSTRACT())
     case "Boolean"  => Some(BOOLEAN())
@@ -41,7 +42,7 @@ object Lexer extends Pipeline[List[File], Stream[Token]] {
 
     // Special character which represents the end of an input file
     val EndOfFile: Char = scala.Char.MaxValue
-    def isEndOfLine(c : Character) : Boolean = c == '\n' || c == '\r'
+    def isEndOfLine(c: Character): Boolean = c == '\n' || c == '\r'
 
     val source = Source.fromFile(f)
 
@@ -56,9 +57,10 @@ object Lexer extends Pipeline[List[File], Stream[Token]] {
     val inputStream: Stream[Input] =
       source.toStream.map(c => (c, mkPos(source.pos))) #::: Stream((EndOfFile, mkPos(source.pos)))
 
-    /** Gets rid of whitespaces and comments and calls readToken to get the next token.
-      * Returns the first token and the remaining input that did not get consumed
-      */
+    /**
+     * Gets rid of whitespaces and comments and calls readToken to get the next token.
+     * Returns the first token and the remaining input that did not get consumed
+     */
     @scala.annotation.tailrec
     def nextToken(stream: Stream[Input]): (Token, Stream[Input]) = {
       require(stream.nonEmpty)
@@ -69,20 +71,20 @@ object Lexer extends Pipeline[List[File], Stream[Token]] {
       def nextChar = rest.head._1
 
       if (Character.isWhitespace(currentChar)) {
-        nextToken(stream.dropWhile{ case (c, _) => Character.isWhitespace(c) } )
+        nextToken(stream.dropWhile { case (c, _) => Character.isWhitespace(c) })
       } else if (currentChar == '/' && nextChar == '/') {
         // Single-line comment
-        nextToken(stream.dropWhile{ case (c,_) => !isEndOfLine(c) && c != EndOfFile })
+        nextToken(stream.dropWhile { case (c, _) => !isEndOfLine(c) && c != EndOfFile })
       } else if (currentChar == '/' && nextChar == '*') {
         // Multi-line comment
-    	  var s = rest.tail
-        do{
-          val st = s.dropWhile{ case(c,_) => c != '*'}
-        	s = if(st.nonEmpty) st.tail else st
-        } while(s.nonEmpty && s.head._1 != '/')
-          
-        if(s.nonEmpty) nextToken(s.tail)
-        else{
+        var s = rest.tail
+        do {
+          val st = s.dropWhile { case (c, _) => c != '*' }
+          s = if (st.nonEmpty) st.tail else st
+        } while (s.nonEmpty && s.head._1 != '/')
+
+        if (s.nonEmpty) nextToken(s.tail)
+        else {
           ctx.reporter.error("multilines comment not closed", currentPos)
           (BAD().setPos(currentPos), s)
         }
@@ -91,9 +93,10 @@ object Lexer extends Pipeline[List[File], Stream[Token]] {
       }
     }
 
-    /** Reads the next token from the stream. Assumes no whitespace or comments at the beginning.
-      * Returns the first token and the remaining input that did not get consumed.
-      */
+    /**
+     * Reads the next token from the stream. Assumes no whitespace or comments at the beginning.
+     * Returns the first token and the remaining input that did not get consumed.
+     */
     def readToken(stream: Stream[Input]): (Token, Stream[Input]) = {
       require(stream.nonEmpty)
 
@@ -112,35 +115,36 @@ object Lexer extends Pipeline[List[File], Stream[Token]] {
 
         // Reserved word or Identifier
         case _ if Character.isLetter(currentChar) =>
-          val (wordLetters, afterWord) = stream.span { case (ch, _) =>
-            Character.isLetterOrDigit(ch) || ch == '_'
+          val (wordLetters, afterWord) = stream.span {
+            case (ch, _) =>
+              Character.isLetterOrDigit(ch) || ch == '_'
           }
           val word = wordLetters.map(_._1).mkString
-          
+
           // Hint: Decide if it's a letter or reserved word (use our infrastructure!),
           // and return the correct token, along with the remaining input stream.
           // Make sure you set the correct position for the token.
-           val token = keywords(word) match {
+          val token = keywords(word) match {
             case Some(t) => t
-            case None => ID(word)
+            case None    => ID(word)
           }
           (token.setPos(currentPos), afterWord)
-          
 
         // Int literal
         case _ if Character.isDigit(currentChar) =>
           // Hint: Use a strategy similar to the previous example.
           // Make sure you fail for integers that do not fit 32 bits.
-          val(wordDigit, afterWord) = stream.span{ case(c,_) =>
-            Character.isDigit(c)
+          val (wordDigit, afterWord) = stream.span {
+            case (c, _) =>
+              Character.isDigit(c)
           }
-          
+
           val stringDigit = wordDigit.map(_._1).mkString
-          val token : Token = try{
+          val token: Token = try {
             INTLIT(stringDigit.toInt)
-          }
-          catch{
-            case e : Throwable => ctx.reporter.error(stringDigit + "is too big", currentPos)
+          } catch {
+            case e: Throwable =>
+              ctx.reporter.error(stringDigit + "is too big", currentPos)
               BAD()
           }
 
@@ -148,34 +152,35 @@ object Lexer extends Pipeline[List[File], Stream[Token]] {
 
         // String literal
         case '"' =>
-          val (wordString, afterWord) = rest.span{ case(c,_) =>
-            c != '"' && c != EndOfFile && !isEndOfLine(c)
+          val (wordString, afterWord) = rest.span {
+            case (c, _) =>
+              c != '"' && c != EndOfFile && !isEndOfLine(c)
           }
-          if( afterWord.nonEmpty && afterWord.head._1 != EndOfFile && !isEndOfLine(afterWord.head._1))
+          if (afterWord.nonEmpty && afterWord.head._1 != EndOfFile && !isEndOfLine(afterWord.head._1))
             (STRINGLIT(wordString.map(_._1).mkString).setPos(currentPos), afterWord.tail)
-          else{ //no string terminator
+          else { //no string terminator
             ctx.reporter.error("The string " + wordString.map(_._1).mkString + "is an invalid string", currentPos)
             (BAD().setPos(currentPos), afterWord)
           }
-          //Operators
+        //Operators
         case ';' => useOne(SEMICOLON())
-        case '+' => if(nextChar == '+') useTwo(CONCAT()) else useOne(PLUS())
+        case '+' => if (nextChar == '+') useTwo(CONCAT()) else useOne(PLUS())
         case '-' => useOne(MINUS())
         case '*' => useOne(TIMES())
         case '/' => useOne(DIV())
         case '%' => useOne(MOD())
-        case '<' => if(nextChar == '=') useTwo(LESSEQUALS()) else useOne(LESSTHAN())
-        case '&' => if(nextChar == '&') useTwo(AND()) else{
+        case '<' => if (nextChar == '=') useTwo(LESSEQUALS()) else useOne(LESSTHAN())
+        case '&' => if (nextChar == '&') useTwo(AND()) else {
           ctx.reporter.error("& is invalid character", currentPos)
           useOne(BAD())
         }
-        case '|' => if(nextChar == '|') useTwo(OR()) else{
+        case '|' => if (nextChar == '|') useTwo(OR()) else {
           ctx.reporter.error("| is invalid character", currentPos)
           useOne(BAD())
         }
-        case '=' => if(nextChar == '=') useTwo(EQUALS())
-                    else if(nextChar == '>') useTwo(RARROW())
-                    else useOne(EQSIGN())
+        case '=' => if (nextChar == '=') useTwo(EQUALS())
+        else if (nextChar == '>') useTwo(RARROW())
+        else useOne(EQSIGN())
         case '!' => useOne(BANG())
         //Delimiters and wildcard
         case '{' => useOne(LBRACE())
@@ -188,16 +193,11 @@ object Lexer extends Pipeline[List[File], Stream[Token]] {
         case '_' => useOne(UNDERSCORE())
         case '[' => useOne(LBRACKET())
         case ']' => useOne(RBRACKET())
-        case _ => ctx.reporter.error(currentChar + "is a invalid character", currentPos)
-        useOne(BAD())
-          
-            // TODO: Replace this catch-all by additional cases for other tokens
-               // (You can look at Tokens.scala for an exhaustive list of tokens)
-               // There should also be a case for all remaining (invalid) characters in the end
+        case _ =>
+          ctx.reporter.error(currentChar + "is a invalid character", currentPos)
+          useOne(BAD())
       }
     }
-    
-    
 
     // To lex a file, call nextToken() until it returns the empty Stream as "rest"
     def tokenStream(s: Stream[Input]): Stream[Token] = {

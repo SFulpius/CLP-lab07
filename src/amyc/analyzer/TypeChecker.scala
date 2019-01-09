@@ -35,13 +35,13 @@ object TypeChecker extends Pipeline[(Program, SymbolTable), (Program, SymbolTabl
       //  that we found (or generated) for the current expression `e`
       def topLevelConstraint(found: Type): List[Constraint] =
         List(Constraint(found, expected, e.position))
-      
-        def substitute(t : Type)(implicit typeEnv : Map[PolymorphicType, Type]) : Type = t match {
-            case g@PolymorphicType(_) => typeEnv.getOrElse(g, fatal("Actual type(s) must be specified between brackets after the call", e.position))
-            case ClassType(qname, types) => ClassType(qname, types map substitute)
-            case _ => t
-          }
-      
+
+      def substitute(t: Type)(implicit typeEnv: Map[PolymorphicType, Type]): Type = t match {
+        case g @ PolymorphicType(_)  => typeEnv.getOrElse(g, fatal("Actual type(s) must be specified between brackets after the call", e.position))
+        case ClassType(qname, types) => ClassType(qname, types map substitute)
+        case _                       => t
+      }
+
       e match {
         case IntLiteral(_) =>
           topLevelConstraint(IntType)
@@ -51,92 +51,89 @@ object TypeChecker extends Pipeline[(Program, SymbolTable), (Program, SymbolTabl
           topLevelConstraint(StringType)
         case UnitLiteral() =>
           topLevelConstraint(UnitType)
-        
+
         case Variable(name) =>
           topLevelConstraint(env(name))
-        
+
         case Equals(lhs, rhs) =>
           val typ = TypeVariable.fresh()
-          topLevelConstraint(BooleanType) ::: genConstraints(lhs,typ) ::: genConstraints(rhs,typ)
-        case Plus(lhs,rhs) =>
+          topLevelConstraint(BooleanType) ::: genConstraints(lhs, typ) ::: genConstraints(rhs, typ)
+        case Plus(lhs, rhs) =>
           topLevelConstraint(IntType) ::: genConstraints(lhs, IntType) ::: genConstraints(rhs, IntType)
-        case Minus(lhs,rhs) =>
+        case Minus(lhs, rhs) =>
           topLevelConstraint(IntType) ::: genConstraints(lhs, IntType) ::: genConstraints(rhs, IntType)
-        case Times(lhs,rhs) =>
+        case Times(lhs, rhs) =>
           topLevelConstraint(IntType) ::: genConstraints(lhs, IntType) ::: genConstraints(rhs, IntType)
-        case Div(lhs,rhs) =>
+        case Div(lhs, rhs) =>
           topLevelConstraint(IntType) ::: genConstraints(lhs, IntType) ::: genConstraints(rhs, IntType)
-        case Mod(lhs,rhs) =>
+        case Mod(lhs, rhs) =>
           topLevelConstraint(IntType) ::: genConstraints(lhs, IntType) ::: genConstraints(rhs, IntType)
-        case LessThan(lhs,rhs) =>
+        case LessThan(lhs, rhs) =>
           topLevelConstraint(BooleanType) ::: genConstraints(lhs, IntType) ::: genConstraints(rhs, IntType)
-        case LessEquals(lhs,rhs) =>
+        case LessEquals(lhs, rhs) =>
           topLevelConstraint(BooleanType) ::: genConstraints(lhs, IntType) ::: genConstraints(rhs, IntType)
-        case And(lhs,rhs) =>
+        case And(lhs, rhs) =>
           topLevelConstraint(BooleanType) ::: genConstraints(lhs, BooleanType) ::: genConstraints(rhs, BooleanType)
-        case Or(lhs,rhs) =>
+        case Or(lhs, rhs) =>
           topLevelConstraint(BooleanType) ::: genConstraints(lhs, BooleanType) ::: genConstraints(rhs, BooleanType)
-        case Concat(lhs,rhs) =>
+        case Concat(lhs, rhs) =>
           topLevelConstraint(StringType) ::: genConstraints(lhs, StringType) ::: genConstraints(rhs, StringType)
         case Not(e) =>
           topLevelConstraint(BooleanType) ::: genConstraints(e, BooleanType)
         case Neg(e) =>
           topLevelConstraint(IntType) ::: genConstraints(e, IntType)
-        
+
         case Call(id, args, iTypes) =>
           val (argTypes, returnType, pTypes) = table.getConstructor(id) match {
             case Some(constr) => (constr.argTypes, constr.retType, constr.polymorphicTypes)
-            case None => 
+            case None =>
               val funDef = table.getFunction(id).get
               (funDef.argTypes, funDef.retType, funDef.polymorphicTypes)
           }
           val typeEnv = pTypes.zip(iTypes.map(_.tpe)).toMap
-          
-          
-          
+
           topLevelConstraint(substitute(returnType)(typeEnv)) ::: args.zip(argTypes).flatMap(pair => genConstraints(pair._1, substitute(pair._2)(typeEnv))(env))
         case Sequence(e1, e2) =>
           val typeE2 = TypeVariable.fresh()
           topLevelConstraint(typeE2) ::: genConstraints(e2, typeE2) ::: genConstraints(e1, TypeVariable.fresh())
         case Let(df, value, body) =>
           val typeBody = TypeVariable.fresh()
-          topLevelConstraint(typeBody) ::: genConstraints(value, df.tt.tpe)  ::: genConstraints(body, typeBody)(env + (df.name -> df.tt.tpe))
+          topLevelConstraint(typeBody) ::: genConstraints(value, df.tt.tpe) ::: genConstraints(body, typeBody)(env + (df.name -> df.tt.tpe))
         case Ite(cond, thenn, elze) =>
           val returnType = TypeVariable.fresh()
           topLevelConstraint(returnType) ::: genConstraints(cond, BooleanType) ::: genConstraints(thenn, returnType) ::: genConstraints(elze, returnType)
         case Error(msg) =>
           topLevelConstraint(TypeVariable.fresh()) ::: genConstraints(msg, StringType)
-          
+
         case Match(scrut, cases) =>
           // Returns additional constraints from within the pattern with all bindings
           // from identifiers to types for names bound in the pattern.
           // (This is analogous to `transformPattern` in NameAnalyzer.)
-          def handlePattern(pat: Pattern, scrutExpected: Type):
-            (List[Constraint], Map[Identifier, Type]) =
-          {
-            pat match {
-              case WildcardPattern() => 
-                (List(), Map.empty)
-              case IdPattern(name) => 
-                val typ = TypeVariable.fresh()
-                (List(Constraint(typ, scrutExpected, pat.position)), Map(name -> typ))
-              case LiteralPattern(literal) =>
-                (genConstraints(literal, scrutExpected), Map.empty)
-              case CaseClassPattern(constr, args) =>
-                val constrSignature = table.getConstructor(constr).get
+          def handlePattern(pat: Pattern, scrutExpected: Type): (List[Constraint], Map[Identifier, Type]) =
+            {
+              pat match {
+                case WildcardPattern() =>
+                  (List(), Map.empty)
+                case IdPattern(name) =>
+                  val typ = TypeVariable.fresh()
+                  (List(Constraint(typ, scrutExpected, pat.position)), Map(name -> typ))
+                case LiteralPattern(literal) =>
+                  (genConstraints(literal, scrutExpected), Map.empty)
+                case CaseClassPattern(constr, args) =>
+                  val constrSignature = table.getConstructor(constr).get
 
-                val typeEnv = constrSignature.polymorphicTypes.map((_, TypeVariable.fresh())).toMap
+                  val typeEnv = constrSignature.polymorphicTypes.map((_, TypeVariable.fresh())).toMap
 
-                val typeConstraint = Constraint(substitute(constrSignature.retType)(typeEnv), scrutExpected, pat.position)
+                  val typeConstraint = Constraint(substitute(constrSignature.retType)(typeEnv), scrutExpected, pat.position)
 
-                val t = args.zip(constrSignature.argTypes.map(substitute(_)(typeEnv)))
-                .map(p => handlePattern(p._1, p._2))
-                .unzip
-                 (typeConstraint :: t._1.flatten , t._2.foldLeft(Map.empty: Map[Identifier, Type])((acc,el) => acc ++ el))
-             }
-          }
+                  val t = args.zip(constrSignature.argTypes.map(substitute(_)(typeEnv)))
+                    .map(p => handlePattern(p._1, p._2))
+                    .unzip
+                  (typeConstraint :: t._1.flatten, t._2.foldLeft(Map.empty: Map[Identifier, Type])((acc, el) => acc ++ el))
+              }
+            }
 
-          def handleCase(cse: MatchCase, scrutExpected: Type, returnExpected : Type): List[Constraint] = {
+          def handleCase(cse: MatchCase, scrutExpected: Type, returnExpected: Type): List[Constraint] = {
             val (patConstraints, moreEnv) = handlePattern(cse.pat, scrutExpected)
             genConstraints(cse.expr, returnExpected)(env ++ moreEnv) ::: patConstraints
           }
@@ -147,7 +144,6 @@ object TypeChecker extends Pipeline[(Program, SymbolTable), (Program, SymbolTabl
       }
     }
 
-
     // Given a list of constraints `constraints`, replace every occurence of type variable
     //  with id `from` by type `to`.
     def subst_*(constraints: List[Constraint], from: Int, to: Type): List[Constraint] = {
@@ -155,12 +151,13 @@ object TypeChecker extends Pipeline[(Program, SymbolTable), (Program, SymbolTabl
       def subst(tpe: Type, from: Int, to: Type): Type = {
         tpe match {
           case TypeVariable(`from`) => to
-          case other => other
+          case other                => other
         }
       }
 
-      constraints map { case Constraint(found, expected, pos) =>
-        Constraint(subst(found, from, to), subst(expected, from, to), pos)
+      constraints map {
+        case Constraint(found, expected, pos) =>
+          Constraint(subst(found, from, to), subst(expected, from, to), pos)
       }
     }
 
@@ -171,22 +168,20 @@ object TypeChecker extends Pipeline[(Program, SymbolTable), (Program, SymbolTabl
       constraints match {
         case Nil => ()
         case Constraint(found, expected, pos) :: more =>
-          // HINT: You can use the `subst_*` helper above to replace a type variable
-          //       by another type in your current set of constraints.
 
           (found, expected) match {
             case (TypeVariable(id), _) => solveConstraints(subst_*(more, id, expected))
             case (_, TypeVariable(id)) => solveConstraints(subst_*(more, id, found))
             case (ClassType(qname1, types1), ClassType(qname2, types2)) =>
               if (qname1 == qname2) {
-                val typesConstraints = types1.zip(types2).map{ case (t1, t2) => Constraint(t1, t2, pos)}
+                val typesConstraints = types1.zip(types2).map { case (t1, t2) => Constraint(t1, t2, pos) }
                 solveConstraints(typesConstraints ++ more)
               } else {
                 error("The types don't match. Expected " + expected.toString + " but was " + found.toString + ".", pos)
                 solveConstraints(more)
               }
             case _ =>
-              if(found != expected)
+              if (found != expected)
                 error("The types don't match. Expected " + expected.toString + " but was " + found.toString + ".", pos)
               solveConstraints(more)
           }
@@ -196,9 +191,10 @@ object TypeChecker extends Pipeline[(Program, SymbolTable), (Program, SymbolTabl
     // Putting it all together to type-check each module's functions and main expression.
     program.modules.foreach { mod =>
       // Put function parameters to the symbol table, then typecheck them against the return type
-      mod.defs.collect { case FunDef(_, params, retType, body, _) =>
-        val env = params.map{ case ParamDef(name, tt) => name -> tt.tpe }.toMap
-        solveConstraints(genConstraints(body, retType.tpe)(env))
+      mod.defs.collect {
+        case FunDef(_, params, retType, body, _) =>
+          val env = params.map { case ParamDef(name, tt) => name -> tt.tpe }.toMap
+          solveConstraints(genConstraints(body, retType.tpe)(env))
       }
 
       // Type-check expression if present. We allow the result to be of an arbitrary type by

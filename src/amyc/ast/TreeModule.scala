@@ -22,7 +22,7 @@ trait TreeModule {
 
   // A printer that knows how to print trees in this module.
   // The modules will instantiate it as appropriate
-  val printer: Printer{ val treeModule: TreeModule.this.type }
+  val printer: Printer { val treeModule: TreeModule.this.type }
 
   // Common ancestor for all trees
   trait Tree extends Positioned {
@@ -60,7 +60,7 @@ trait TreeModule {
   case class Neg(e: Expr) extends Expr
 
   // Function/ type constructor call
-  case class Call(qname: QualifiedName, args: List[Expr], parametricTypes: List[TypeTree]) extends Expr
+  case class Call(qname: QualifiedName, args: List[Expr], types: List[TypeTree]) extends Expr
   // The ; operator
   case class Sequence(e1: Expr, e2: Expr) extends Expr
   // Local variable definition
@@ -91,7 +91,7 @@ trait TreeModule {
     def paramNames = params.map(_.name)
   }
   case class AbstractClassDef(name: Name, polymorphicTypes: List[TypeTree]) extends ClassOrFunDef
-  case class CaseClassDef(name: Name, fields: List[TypeTree], parent: Name, polymorphicTypes: List[TypeTree], parentPolymorphicTypes : List[TypeTree]) extends ClassOrFunDef
+  case class CaseClassDef(name: Name, fields: List[TypeTree], parent: Name, polymorphicTypes: List[TypeTree], parentPolymorphicTypes: List[TypeTree]) extends ClassOrFunDef
   case class ParamDef(name: Name, tt: TypeTree) extends Definition
 
   // Types
@@ -108,9 +108,9 @@ trait TreeModule {
   case object UnitType extends Type {
     override def toString: String = "Unit"
   }
-  case class ClassType(qname: QualifiedName, parametricTypes: List[Type]) extends Type {
+  case class ClassType(qname: QualifiedName, types: List[Type]) extends Type {
     override def toString: String = {
-      val pTypesString = if (!parametricTypes.isEmpty) "[" ++ parametricTypes.map(_.toString).head ++ "]" else ""
+      val pTypesString = if (!types.isEmpty) "[" ++ types.map(_.toString).head ++ "]" else ""
       printer.printQName(qname)(false).print ++ pTypesString
     }
   }
@@ -119,8 +119,7 @@ trait TreeModule {
       printer.printName(name)(false).print
     }
   }
-  case class ClassTypeOrPolymorphic(qname : QualifiedName, parametricTypes : List[TypeTree]) extends Type {
-  }
+  case class ClassTypeOrPolymorphic(qname: QualifiedName, types: List[TypeTree]) extends Type
 
   // A wrapper for types that is also a Tree (i.e. has a position)
   case class TypeTree(tpe: Type) extends Tree

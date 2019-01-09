@@ -35,15 +35,15 @@ object Parser extends Pipeline[Stream[Token], Program] {
     'Type ::= INT() | STRING() | BOOLEAN() | UNIT() | 'QName,
     'QName ::= 'Id | 'Id ~ DOT() ~ 'Id,
     'Expr ::= 'Id | 'Literal | 'Expr ~ 'BinOp ~ 'Expr | BANG() ~ 'Expr | MINUS() ~ 'Expr |
-              'QName ~ LPAREN() ~ 'Args ~ RPAREN() | 'Expr ~ SEMICOLON() ~ 'Expr |
-              VAL() ~ 'Param ~ EQSIGN() ~ 'Expr ~ SEMICOLON() ~ 'Expr |
-              IF() ~ LPAREN() ~ 'Expr ~ RPAREN() ~ LBRACE() ~ 'Expr ~ RBRACE() ~ ELSE() ~ LBRACE() ~ 'Expr ~ RBRACE() |
-              'Expr ~ MATCH() ~ LBRACE() ~ 'Cases ~ RBRACE() |
-              ERROR() ~ LPAREN() ~ 'Expr ~ RPAREN() |
-              LPAREN() ~ 'Expr ~ RPAREN(),
+      'QName ~ LPAREN() ~ 'Args ~ RPAREN() | 'Expr ~ SEMICOLON() ~ 'Expr |
+      VAL() ~ 'Param ~ EQSIGN() ~ 'Expr ~ SEMICOLON() ~ 'Expr |
+      IF() ~ LPAREN() ~ 'Expr ~ RPAREN() ~ LBRACE() ~ 'Expr ~ RBRACE() ~ ELSE() ~ LBRACE() ~ 'Expr ~ RBRACE() |
+      'Expr ~ MATCH() ~ LBRACE() ~ 'Cases ~ RBRACE() |
+      ERROR() ~ LPAREN() ~ 'Expr ~ RPAREN() |
+      LPAREN() ~ 'Expr ~ RPAREN(),
     'Literal ::= TRUE() | FALSE() | LPAREN() ~ RPAREN() | INTLITSENT | STRINGLITSENT,
     'BinOp ::= PLUS() | MINUS() | TIMES() | DIV() | MOD() | LESSTHAN() | LESSEQUALS() |
-               AND() | OR() | EQUALS() | CONCAT(),
+      AND() | OR() | EQUALS() | CONCAT(),
     'Cases ::= 'Case | 'Case ~ 'Cases,
     'Case ::= CASE() ~ 'Pattern ~ RARROW() ~ 'Expr,
     'Pattern ::= UNDERSCORE() | 'Literal | 'Id | 'QName ~ LPAREN() ~ 'Patterns ~ RPAREN(),
@@ -51,8 +51,7 @@ object Parser extends Pipeline[Stream[Token], Program] {
     'PatternList ::= epsilon() | COMMA() ~ 'Pattern ~ 'PatternList,
     'Args ::= epsilon() | 'Expr ~ 'ExprList,
     'ExprList ::= epsilon() | COMMA() ~ 'Expr ~ 'ExprList,
-    'Id ::= IDSENT
-  ))
+    'Id ::= IDSENT))
 
   // TODO: Write a grammar that implements the correct syntax of Amy and is LL1.
   // You can start from the example above and work your way from there.
@@ -63,7 +62,7 @@ object Parser extends Pipeline[Stream[Token], Program] {
     'P1ExprN ::= SEMICOLON() ~ 'P1ExprNN | epsilon(),
     'P1ExprNN ::= 'Val | 'P1Expr,
     'P2Expr ::= 'P3Expr ~ 'P2ExprN,
-    'P2ExprN ::=  MATCH() ~ LBRACE() ~ 'Cases ~ RBRACE() | epsilon(),
+    'P2ExprN ::= MATCH() ~ LBRACE() ~ 'Cases ~ RBRACE() | epsilon(),
     'P3Expr ::= 'P4Expr ~ 'P3ExprN,
     'P3ExprN ::= OR() ~ 'P3Expr | epsilon(),
     'P4Expr ::= 'P5Expr ~ 'P4ExprN,
@@ -71,20 +70,20 @@ object Parser extends Pipeline[Stream[Token], Program] {
     'P5Expr ::= 'P6Expr ~ 'P5ExprN,
     'P5ExprN ::= EQUALS() ~ 'P5Expr | epsilon(),
     'P6Expr ::= 'P7Expr ~ 'P6ExprN,
-    'P6ExprN ::=  LESSTHAN() ~ 'P6Expr| LESSEQUALS() ~ 'P6Expr | epsilon(),
+    'P6ExprN ::= LESSTHAN() ~ 'P6Expr | LESSEQUALS() ~ 'P6Expr | epsilon(),
     'P7Expr ::= 'P8Expr ~ 'P7ExprN,
     'P7ExprN ::= PLUS() ~ 'P7Expr | MINUS() ~ 'P7Expr | CONCAT() ~ 'P7Expr | epsilon(),
     'P8Expr ::= 'P9Expr ~ 'P8ExprN,
     'P8ExprN ::= TIMES() ~ 'P8Expr | DIV() ~ 'P8Expr | MOD() ~ 'P8Expr | epsilon(),
-    'P9Expr ::= 'P10Expr | MINUS() ~'P10Expr | BANG() ~ 'P10Expr,
+    'P9Expr ::= 'P10Expr | MINUS() ~ 'P10Expr | BANG() ~ 'P10Expr,
     'P10Expr ::= IF() ~ LPAREN() ~ 'Expr ~ RPAREN() ~ LBRACE() ~ 'Expr ~ RBRACE() ~ ELSE() ~ LBRACE() ~ 'Expr ~ RBRACE() |
-              ERROR() ~ LPAREN() ~ 'Expr ~ RPAREN() |
-              LPAREN() ~ 'OptExpr ~ RPAREN() |
-              'Id  ~ 'IdCallN | 'LitWithoutParen,
+      ERROR() ~ LPAREN() ~ 'Expr ~ RPAREN() |
+      LPAREN() ~ 'OptExpr ~ RPAREN() |
+      'Id ~ 'IdCallN | 'LitWithoutParen,
     'IdN ::= DOT() ~ 'Id | epsilon(),
     'IdCallN ::= DOT() ~ 'Id ~ 'PolymorphicTypeN ~ LPAREN() ~ 'Args ~ RPAREN() | 'PolymorphicTypeN ~ LPAREN() ~ 'Args ~ RPAREN() | epsilon(),
     'Val ::= VAL() ~ 'Param ~ EQSIGN() ~ 'P2Expr ~ SEMICOLON() ~ 'Expr,
-    
+
     'Args ::= epsilon() | 'Expr ~ 'ExprList,
     'ExprList ::= epsilon() | COMMA() ~ 'Expr ~ 'ExprList,
     'Id ::= IDSENT,
@@ -93,12 +92,12 @@ object Parser extends Pipeline[Stream[Token], Program] {
     'Cases ::= 'Case ~ 'CaseN,
     'CaseN ::= 'Cases | epsilon(),
     'Case ::= CASE() ~ 'Pattern ~ RARROW() ~ 'Expr,
-    'Pattern ::= UNDERSCORE() | 'Literal |  'Id ~ 'IdPatternN,
-    'IdPatternN ::=  'IdN ~ LPAREN() ~ 'Patterns ~ RPAREN() | epsilon(),
+    'Pattern ::= UNDERSCORE() | 'Literal | 'Id ~ 'IdPatternN,
+    'IdPatternN ::= 'IdN ~ LPAREN() ~ 'Patterns ~ RPAREN() | epsilon(),
     'Patterns ::= epsilon() | 'Pattern ~ 'PatternList,
     'PatternList ::= epsilon() | COMMA() ~ 'Pattern ~ 'PatternList,
-    
-     'Program ::= 'ModuleDefs,
+
+    'Program ::= 'ModuleDefs,
     'ModuleDefs ::= 'ModuleDef ~ 'ModuleDefs | epsilon(),
     'ModuleDef ::= OBJECT() ~ 'Id ~ LBRACE() ~ 'Definitions ~ 'OptExpr ~ RBRACE() ~ EOF(),
     'Definitions ::= 'Definition ~ 'Definitions | epsilon(),
@@ -114,8 +113,7 @@ object Parser extends Pipeline[Stream[Token], Program] {
     'ParamList ::= epsilon() | COMMA() ~ 'Param ~ 'ParamList,
     'Param ::= 'Id ~ COLON() ~ 'Type,
     'OptExpr ::= 'Expr | epsilon(),
-    'Type ::= INT() | STRING() | BOOLEAN() | UNIT() | 'Id ~ 'IdN ~ 'PolymorphicTypeN
-  ))
+    'Type ::= INT() | STRING() | BOOLEAN() | UNIT() | 'Id ~ 'IdN ~ 'PolymorphicTypeN))
 
   def run(ctx: Context)(tokens: Stream[Token]): Program = {
     // TODO: Switch to LL1 when you are ready
@@ -128,7 +126,7 @@ object Parser extends Pipeline[Stream[Token], Program] {
 
     GrammarUtils.isLL1WithFeedback(grammar) match {
       case InLL1() =>
-         //info("Grammar is in LL1")
+      //info("Grammar is in LL1")
       case other =>
         warning(other)
     }
@@ -137,7 +135,7 @@ object Parser extends Pipeline[Stream[Token], Program] {
     feedback match {
       case s: Success[Token] =>
         constructor.constructProgram(s.parseTrees.head)
-      case err@LL1Error(_, Some(tok)) =>
+      case err @ LL1Error(_, Some(tok)) =>
         fatal(s"Parsing failed: $err", tok.obj.position)
       case err =>
         fatal(s"Parsing failed: $err")

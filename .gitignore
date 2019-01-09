@@ -4,3 +4,7 @@ bin/
 .idea/
 *.iml
 test/
+.cache-main
+.cache-tests
+report-template/
+wasmout/

@@ -6,14 +6,14 @@ import amyc.utils.UniqueCounter
 
 import scala.collection.mutable.HashMap
 
-trait Signature[RT <: Type]{
+trait Signature[RT <: Type] {
   val argTypes: List[Type]
   val retType: RT
 }
 // The signature of a function in the symbol table
-case class FunSig(argTypes: List[Type], retType: Type, owner: Identifier, polymorphicTypes : List[PolymorphicType]) extends Signature[Type]
+case class FunSig(argTypes: List[Type], retType: Type, owner: Identifier, polymorphicTypes: List[PolymorphicType]) extends Signature[Type]
 // The signature of a constructor in the symbol table
-case class ConstrSig(argTypes: List[Type], parent: Identifier, index: Int, polymorphicTypes : List[PolymorphicType]) extends Signature[ClassType] {
+case class ConstrSig(argTypes: List[Type], parent: Identifier, index: Int, polymorphicTypes: List[PolymorphicType]) extends Signature[ClassType] {
   val retType = ClassType(parent, polymorphicTypes)
 }
 
@@ -49,10 +49,10 @@ class SymbolTable {
     s
   }
   def getType(owner: String, name: String) =
-    defsByName.get(owner,name) filter types.contains
+    defsByName.get(owner, name) filter types.contains
   def getType(symbol: Identifier) = types.get(symbol)
 
-  def addConstructor(owner: String, name: String, argTypes: List[Type], parent: Identifier, polymorphicTypes : Map[String, Identifier]) = {
+  def addConstructor(owner: String, name: String, argTypes: List[Type], parent: Identifier, polymorphicTypes: Map[String, Identifier]) = {
     val s = Identifier.fresh(name)
     defsByName += (owner, name) -> s
     if (defsToPType(parent).size != polymorphicTypes.size) {
@@ -79,12 +79,12 @@ class SymbolTable {
 
   def getConstructorsForType(t: Identifier) = typesToConstructors.get(t)
 
-  def addFunction(owner: String, name: String, argTypes: List[Type], retType: Type, polymorphicTypes : Map[String, Identifier]) = {
+  def addFunction(owner: String, name: String, argTypes: List[Type], retType: Type, polymorphicTypes: Map[String, Identifier]) = {
     val s = Identifier.fresh(name)
     defsByName += (owner, name) -> s
     val polymorphicList = polymorphicTypes.toList.map { case (_, id) => PolymorphicType(id) }
     functions += s -> FunSig(argTypes, retType, getModule(owner).getOrElse(sys.error(s"Module $owner not found!")),
-        polymorphicList)
+      polymorphicList)
     defsToPType += (s -> polymorphicList)
     defsToPTypeMap += (s -> polymorphicTypes)
     s
@@ -96,11 +96,11 @@ class SymbolTable {
     } yield (sym, sig)
   }
   def getFunction(symbol: Identifier) = functions.get(symbol)
-  
-  def checkPType(module : String, pType : String) = defsByName.contains((module, pType))
-  
-  def getPType(i : Identifier) : List[PolymorphicType] = defsToPType(i)
-  
-  def getPTypeMap(i : Identifier) : Map[String, Identifier] = defsToPTypeMap(i)
+
+  def checkPType(module: String, pType: String) = defsByName.contains((module, pType))
+
+  def getPType(i: Identifier): List[PolymorphicType] = defsToPType(i)
+
+  def getPTypeMap(i: Identifier): Map[String, Identifier] = defsToPTypeMap(i)
 
 }

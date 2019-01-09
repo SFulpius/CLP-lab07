@@ -4,11 +4,11 @@ import java.io.File
 
 object Position {
   /** Number of bits used to encode the line number */
-  private final val LINE_BITS   = 20
+  private final val LINE_BITS = 20
   /** Number of bits used to encode the column number */
   private final val COLUMN_BITS = 31 - LINE_BITS // no negatives => 31
   /** Mask to decode the line number */
-  private final val LINE_MASK   = (1 << LINE_BITS) - 1
+  private final val LINE_MASK = (1 << LINE_BITS) - 1
   /** Mask to decode the column number */
   private final val COLUMN_MASK = (1 << COLUMN_BITS) - 1
 

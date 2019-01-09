@@ -22,8 +22,7 @@ abstract class TestSuite extends CompilerTest {
       pipeline,
       inputFiles map (f => s"$effectiveBaseDir/$passing/$f.scala"),
       s"$effectiveBaseDir/$outputs/$outputFile.$outputExt",
-      input
-    )
+      input)
   }
 
   def shouldOutput(inputFile: String): Unit = {
@@ -34,8 +33,7 @@ abstract class TestSuite extends CompilerTest {
     demandFailure(
       pipeline,
       inputFiles map (f => s"$effectiveBaseDir/$failing/$f.scala"),
-      input
-    )
+      input)
   }
 
   def shouldFail(inputFile: String): Unit = {

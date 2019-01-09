@@ -4,7 +4,7 @@ package wasm
 // A WebAssembly module
 case class Module(name: String, imports: List[String], globals: Int, functions: List[Function]) {
 
-  import java.io.{File, FileWriter}
+  import java.io.{ File, FileWriter }
 
   def writeWasmText(fileName: String) = {
     val fw = new FileWriter(new File(fileName))
@@ -68,10 +68,10 @@ case class Module(name: String, imports: List[String], globals: Int, functions: 
           |
           |      fetchAndInstantiate('$moduleFile', importObject).then(function(instance) {
           |""".stripMargin ++
-    functions.filter(_.isMain).map { f =>
-         s"        instance.exports.${f.name}();\n"
-    }.mkString ++
-       """|      });
+        functions.filter(_.isMain).map { f =>
+          s"        instance.exports.${f.name}();\n"
+        }.mkString ++
+        """|      });
           |    </script>
           |  </body>
           |
@@ -185,10 +185,10 @@ case class Module(name: String, imports: List[String], globals: Int, functions: 
          |
          |loadWebAssembly('$moduleFile', importObject).then(function(instance) {
          |""".stripMargin ++
-      functions.filter(_.isMain).map { f =>
-        s"  instance.exports.${f.name}();\n"
-      }.mkString ++
-       """  rl.close();
+        functions.filter(_.isMain).map { f =>
+          s"  instance.exports.${f.name}();\n"
+        }.mkString ++
+        """  rl.close();
          |}).catch( function(error) {
          |  rl.close();
          |  process.exit(1)

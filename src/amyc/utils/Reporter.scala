@@ -38,7 +38,6 @@ class Reporter {
   def error(msg: Any, pos: Positioned): Unit = error(msg, pos.position)
   def fatal(msg: Any, pos: Positioned): Nothing = fatal(msg, pos.position)
 
-
   /** Terminates the compiler if any errors have been detected. */
   def terminateIfErrors() = {
     if (hasErrors) {
@@ -56,9 +55,9 @@ class Reporter {
 
       val lines = getLines(pos.file)
 
-      if (pos.line > 0 && pos.line-1 < lines.size) {
-        err(s"$prefix ${lines(pos.line-1)}")
-        err(prefix + " " + " "*(pos.col - 1)+"^")
+      if (pos.line > 0 && pos.line - 1 < lines.size) {
+        err(s"$prefix ${lines(pos.line - 1)}")
+        err(prefix + " " + " " * (pos.col - 1) + "^")
       } else {
         err(s"$prefix <line unavailable in source file>")
       }
