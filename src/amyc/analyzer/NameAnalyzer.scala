@@ -136,6 +136,7 @@ object NameAnalyzer extends Pipeline[N.Program, (S.Program, SymbolTable)] {
       pType.foreach {
         case el@N.TypeTree(N.PolymorphicType(pType)) => if (table.checkPType(module, pType))
           error("The generics can not have the same name as a definition.", el)
+        case _ => fatal("Expected a TypeTree of polymorphhic type")
       }
     }
     //Check that the abstract type don't have the same name as a definition
