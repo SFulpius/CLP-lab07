@@ -9,6 +9,7 @@ import scala.collection.mutable.HashMap
 trait Signature[RT <: Type] {
   val argTypes: List[Type]
   val retType: RT
+  val polymorphicTypes: List[PolymorphicType]
 }
 // The signature of a function in the symbol table
 case class FunSig(argTypes: List[Type], retType: Type, owner: Identifier, polymorphicTypes: List[PolymorphicType]) extends Signature[Type]

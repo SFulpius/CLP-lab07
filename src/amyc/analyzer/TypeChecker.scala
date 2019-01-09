@@ -37,7 +37,7 @@ object TypeChecker extends Pipeline[(Program, SymbolTable), (Program, SymbolTabl
         List(Constraint(found, expected, e.position))
 
       def substitute(t: Type)(implicit typeEnv: Map[PolymorphicType, Type]): Type = t match {
-        case g @ PolymorphicType(_)  => typeEnv.getOrElse(g, fatal("Actual type(s) must be specified between brackets after the call", e.position))
+        case g @ PolymorphicType(_)  => typeEnv(g)
         case ClassType(qname, types) => ClassType(qname, types map substitute)
         case _                       => t
       }

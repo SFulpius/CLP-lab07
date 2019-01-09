@@ -309,20 +309,18 @@ object NameAnalyzer extends Pipeline[N.Program, (S.Program, SymbolTable)] {
           val moduleName = qname.module.getOrElse(module)
           val name = qname.name
           val actualSize = args.size
-          val newQname = table.getConstructor(moduleName, name) match {
-            case Some((id, constrSig)) =>
-              val expectedSize = constrSig.argTypes.size
-              if (expectedSize != actualSize) fatal(s"Expected number of argument is $expectedSize but was $actualSize.", t)
-              id
+          val (newQname, sig) = table.getConstructor(moduleName, name) match {
+            case Some((id, constrSig)) => (id, constrSig)
             case None => //maybe a function call
               table.getFunction(moduleName, name) match {
-                case Some((id, funSig)) =>
-                  val expectedSize = funSig.argTypes.size
-                  if (expectedSize != actualSize) fatal(s"Expected number of argument is $expectedSize but was $actualSize.", t)
-                  id
+                case Some((id, funSig)) => (id, funSig)
                 case None => fatal(s"Could not find the identifier $name in module $moduleName.", t.position)
               }
           }
+          // Check that there are the right number of arguments and polymorphic types
+          val expectedSize = sig.argTypes.size
+          if (expectedSize != actualSize) fatal(s"Expected number of argument is $expectedSize but was $actualSize.", t)
+          if (iTypes.size != sig.polymorphicTypes.size) fatal("All polymorphic types must be precised between brackets after the call", t)
           S.Call(newQname, args.map(transformExpr), iTypes.map(e => S.TypeTree(transformType(e, moduleName, pTypes)))).setPos(t)
         case t @ N.Sequence(e1, e2) => S.Sequence(transformExpr(e1), transformExpr(e2)).setPos(t)
         case t @ N.Let(df, value, body) =>
