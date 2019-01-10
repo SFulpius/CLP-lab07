@@ -44,6 +44,6 @@ About the pattern matching, and more precisely changing the CaseClassPattern, si
 
 Because of this, we have to adapt the resolve of the constraints, that is the solveConstraints function. When facing two ClassTypes as "found" and "expected" types, we first check they have the same name, and then try to solve constraints on the polymorphic types they might have. By doing so we can determine which are the types used to instantiate the case class in the pattern without needing them to be explicit.
 \subsubsection{Code generation}
-Since in Amy, all types work the same way, we did not need to change anything in this phase, and could reuse what we did for the labs as is. 
+Since in Amy all types work the same way, we did not need to change anything in this phase. We could reuse what we did for the labs.
 
-For example, comparison is always done by reference for objects, which means we can always compare just one value. Pattern matching case classes always has the same structure, independently of the types in the case class. This allows us to use the same code for functions and constructors for any type.
+For example, comparison is always done by reference for ADT, which means we can always compare just one value. Pattern matching case classes always has the same structure, independently of the types in the case class. This allows us to use the same code for functions and constructors for any type.
